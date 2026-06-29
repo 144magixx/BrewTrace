@@ -22,6 +22,7 @@
 - [小红书发布能力调研 v0.1](./research/xiaohongshu-publish-research-v0.1.md)
 - [风味联想体系调研 v0.1](./research/flavor-system-research-v0.1.md)
 - [技术选型学习文档 v0.1](./learn/technology-selection-learning-v0.1.md)
+- [后端实现约束验证清单 v0.1](./learn/backend-implementation-checklist-v0.1.md)
 
 ## 维护原则
 

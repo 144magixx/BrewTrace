@@ -14,21 +14,21 @@
 
 **目标**：建立前后端工程、基础设施和中文文档约束。
 
-- [ ] T001 创建后端 Maven 工程骨架和 `pom.xml`，路径为 `backend/pom.xml`
-- [ ] T002 创建后端业务边界包结构，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/{agent,tasting,flavor,copywriting,memory,tools,publishing,trace,user,shared}/`
-- [ ] T003 创建后端测试包结构，路径为 `backend/src/test/java/com/minyuwei/xhs/coffeeagent/`
-- [ ] T004 创建后端资源目录，路径为 `backend/src/main/resources/{prompts,db/migration}/`
-- [ ] T005 初始化前端 React + Vite + TypeScript 工程，路径为 `frontend/package.json`
-- [ ] T006 创建前端功能目录，路径为 `frontend/src/features/{conversation,tasting-form,flavor-suggestions,memory,publishing,agent-trace}/`
-- [ ] T007 创建前端通用目录，路径为 `frontend/src/{app,components,services,stores}/`
-- [ ] T008 创建 Docker Compose 基础设施定义，路径为 `docker-compose.yml`
-- [ ] T009 创建仓库环境变量示例文件，路径为 `backend/.env.example`
-- [ ] T010 创建前端环境变量示例文件，路径为 `frontend/.env.example`
-- [ ] T011 [P] 配置后端测试和构建命令说明，路径为 `backend/README.md`
-- [ ] T012 [P] 配置前端测试和开发命令说明，路径为 `frontend/README.md`
-- [ ] T013 [P] 配置前端 TypeScript、ESLint 和 Vite 基础文件，路径为 `frontend/tsconfig.json`
-- [ ] T014 [P] 配置前端入口和根组件，路径为 `frontend/src/app/App.tsx`
-- [ ] T015 更新项目文档索引，路径为 `docs/README.md`
+- [X] T001 创建后端 Maven 工程骨架和 `pom.xml`，路径为 `backend/pom.xml`
+- [X] T002 创建后端业务边界包结构，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/{agent,tasting,flavor,copywriting,memory,tools,publishing,trace,user,shared}/`
+- [X] T003 创建后端测试包结构，路径为 `backend/src/test/java/com/minyuwei/xhs/coffeeagent/`
+- [X] T004 创建后端资源目录，路径为 `backend/src/main/resources/{prompts,db/migration}/`
+- [X] T005 初始化前端 React + Vite + TypeScript 工程，路径为 `frontend/package.json`
+- [X] T006 创建前端功能目录，路径为 `frontend/src/features/{conversation,tasting-form,flavor-suggestions,memory,publishing,agent-trace}/`
+- [X] T007 创建前端通用目录，路径为 `frontend/src/{app,components,services,stores}/`
+- [X] T008 创建 Docker Compose 基础设施定义，路径为 `docker-compose.yml`
+- [X] T009 创建仓库环境变量示例文件，路径为 `backend/.env.example`
+- [X] T010 创建前端环境变量示例文件，路径为 `frontend/.env.example`
+- [X] T011 [P] 配置后端测试和构建命令说明，路径为 `backend/README.md`
+- [X] T012 [P] 配置前端测试和开发命令说明，路径为 `frontend/README.md`
+- [X] T013 [P] 配置前端 TypeScript、ESLint 和 Vite 基础文件，路径为 `frontend/tsconfig.json`
+- [X] T014 [P] 配置前端入口和根组件，路径为 `frontend/src/app/App.tsx`
+- [X] T015 更新项目文档索引，路径为 `docs/README.md`
 
 ---
 
@@ -36,45 +36,45 @@
 
 **目标**：完成所有用户故事依赖的后端底座、数据结构、工具边界、前端工作台壳和测试基础。
 
-- [ ] T016 创建 Spring Boot 应用入口，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/CoffeeAgentApplication.java`
-- [ ] T017 创建统一 REST envelope 类型，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/shared/api/ApiResponse.java`
-- [ ] T018 创建错误分类和值对象，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/shared/error/ErrorCategory.java`
-- [ ] T019 创建全局异常处理器，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/shared/api/GlobalExceptionHandler.java`
-- [ ] T020 创建 `requestId` 过滤器，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/shared/api/RequestIdFilter.java`
-- [ ] T021 创建本地用户上下文提供器，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/user/application/CurrentUserProvider.java`
-- [ ] T022 创建类型安全配置类，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/shared/config/CoffeeAgentProperties.java`
-- [ ] T023 [P] 创建模型配置类，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/shared/config/ModelProperties.java`
-- [ ] T024 [P] 创建 Embedding 配置类，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/shared/config/EmbeddingProperties.java`
-- [ ] T025 [P] 创建小红书工具配置类，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/shared/config/XiaohongshuProperties.java`
-- [ ] T026 [P] 创建 Redis 和文件存储配置类，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/shared/config/StorageProperties.java`
-- [ ] T027 创建 Flyway 初始化迁移，路径为 `backend/src/main/resources/db/migration/V001__init_core_schema.sql`
-- [ ] T028 创建 pgvector 与 HNSW 迁移，路径为 `backend/src/main/resources/db/migration/V002__memory_embeddings_pgvector.sql`
-- [ ] T029 创建 Outbox 表迁移，路径为 `backend/src/main/resources/db/migration/V003__domain_event_outbox.sql`
-- [ ] T030 创建发布、工具、轨迹表迁移，路径为 `backend/src/main/resources/db/migration/V004__tool_trace_publishing.sql`
-- [ ] T031 创建基础领域事件接口，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/shared/domain/DomainEvent.java`
-- [ ] T032 创建聚合根基类，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/shared/domain/AggregateRoot.java`
-- [ ] T033 创建 Outbox 应用服务，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/shared/application/DomainEventOutboxService.java`
-- [ ] T034 创建 Outbox Publisher 定时任务，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/shared/infrastructure/kafka/OutboxPublisher.java`
-- [ ] T035 创建 Kafka topic 配置，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/shared/infrastructure/kafka/KafkaTopicConfig.java`
-- [ ] T036 创建 `ModelGateway` 接口，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/agent/application/ModelGateway.java`
-- [ ] T037 创建 Spring AI 模型网关适配器，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/agent/infrastructure/SpringAiModelGateway.java`
-- [ ] T038 [P] 创建 FakeModelGateway 测试适配器，路径为 `backend/src/test/java/com/minyuwei/xhs/coffeeagent/support/FakeModelGateway.java`
-- [ ] T039 创建工具注册中心接口，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/tools/application/ToolRegistry.java`
-- [ ] T040 创建工具适配器接口，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/tools/application/ToolAdapter.java`
-- [ ] T041 创建工具调用策略，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/tools/application/ToolCallPolicy.java`
-- [ ] T042 创建工具调用记录服务，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/tools/application/ToolCallRecorder.java`
-- [ ] T043 [P] 创建 FakeToolAdapter 测试适配器，路径为 `backend/src/test/java/com/minyuwei/xhs/coffeeagent/support/FakeToolAdapter.java`
-- [ ] T044 创建本地文件存储服务，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/shared/infrastructure/storage/LocalFileStorageService.java`
-- [ ] T045 创建 Redis 健康检查配置，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/shared/infrastructure/redis/RedisHealthConfig.java`
-- [ ] T046 创建 API 契约测试基类，路径为 `backend/src/test/java/com/minyuwei/xhs/coffeeagent/support/ApiContractTestSupport.java`
-- [ ] T047 创建 Testcontainers 集成测试基类，路径为 `backend/src/test/java/com/minyuwei/xhs/coffeeagent/support/IntegrationTestSupport.java`
-- [ ] T048 创建前端 API client envelope 解析器，路径为 `frontend/src/services/apiClient.ts`
-- [ ] T049 创建前端 SSE client，路径为 `frontend/src/services/sseClient.ts`
-- [ ] T050 创建前端全局工作台 store，路径为 `frontend/src/stores/workbenchStore.ts`
-- [ ] T051 创建三栏工作台布局组件，路径为 `frontend/src/components/layout/WorkbenchLayout.tsx`
-- [ ] T052 创建咖啡豆线条 Logo 组件，路径为 `frontend/src/components/branding/CoffeeBeanLogo.tsx`
-- [ ] T053 创建前端基础样式和配色变量，路径为 `frontend/src/app/styles.css`
-- [ ] T054 创建架构约束验证清单，路径为 `docs/learn/backend-implementation-checklist-v0.1.md`
+- [X] T016 创建 Spring Boot 应用入口，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/CoffeeAgentApplication.java`
+- [X] T017 创建统一 REST envelope 类型，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/shared/api/ApiResponse.java`
+- [X] T018 创建错误分类和值对象，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/shared/error/ErrorCategory.java`
+- [X] T019 创建全局异常处理器，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/shared/api/GlobalExceptionHandler.java`
+- [X] T020 创建 `requestId` 过滤器，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/shared/api/RequestIdFilter.java`
+- [X] T021 创建本地用户上下文提供器，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/user/application/CurrentUserProvider.java`
+- [X] T022 创建类型安全配置类，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/shared/config/CoffeeAgentProperties.java`
+- [X] T023 [P] 创建模型配置类，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/shared/config/ModelProperties.java`
+- [X] T024 [P] 创建 Embedding 配置类，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/shared/config/EmbeddingProperties.java`
+- [X] T025 [P] 创建小红书工具配置类，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/shared/config/XiaohongshuProperties.java`
+- [X] T026 [P] 创建 Redis 和文件存储配置类，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/shared/config/StorageProperties.java`
+- [X] T027 创建 Flyway 初始化迁移，路径为 `backend/src/main/resources/db/migration/V001__init_core_schema.sql`
+- [X] T028 创建 pgvector 与 HNSW 迁移，路径为 `backend/src/main/resources/db/migration/V002__memory_embeddings_pgvector.sql`
+- [X] T029 创建 Outbox 表迁移，路径为 `backend/src/main/resources/db/migration/V003__domain_event_outbox.sql`
+- [X] T030 创建发布、工具、轨迹表迁移，路径为 `backend/src/main/resources/db/migration/V004__tool_trace_publishing.sql`
+- [X] T031 创建基础领域事件接口，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/shared/domain/DomainEvent.java`
+- [X] T032 创建聚合根基类，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/shared/domain/AggregateRoot.java`
+- [X] T033 创建 Outbox 应用服务，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/shared/application/DomainEventOutboxService.java`
+- [X] T034 创建 Outbox Publisher 定时任务，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/shared/infrastructure/kafka/OutboxPublisher.java`
+- [X] T035 创建 Kafka topic 配置，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/shared/infrastructure/kafka/KafkaTopicConfig.java`
+- [X] T036 创建 `ModelGateway` 接口，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/agent/application/ModelGateway.java`
+- [X] T037 创建 Spring AI 模型网关适配器，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/agent/infrastructure/SpringAiModelGateway.java`
+- [X] T038 [P] 创建 FakeModelGateway 测试适配器，路径为 `backend/src/test/java/com/minyuwei/xhs/coffeeagent/support/FakeModelGateway.java`
+- [X] T039 创建工具注册中心接口，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/tools/application/ToolRegistry.java`
+- [X] T040 创建工具适配器接口，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/tools/application/ToolAdapter.java`
+- [X] T041 创建工具调用策略，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/tools/application/ToolCallPolicy.java`
+- [X] T042 创建工具调用记录服务，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/tools/application/ToolCallRecorder.java`
+- [X] T043 [P] 创建 FakeToolAdapter 测试适配器，路径为 `backend/src/test/java/com/minyuwei/xhs/coffeeagent/support/FakeToolAdapter.java`
+- [X] T044 创建本地文件存储服务，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/shared/infrastructure/storage/LocalFileStorageService.java`
+- [X] T045 创建 Redis 健康检查配置，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/shared/infrastructure/redis/RedisHealthConfig.java`
+- [X] T046 创建 API 契约测试基类，路径为 `backend/src/test/java/com/minyuwei/xhs/coffeeagent/support/ApiContractTestSupport.java`
+- [X] T047 创建 Testcontainers 集成测试基类，路径为 `backend/src/test/java/com/minyuwei/xhs/coffeeagent/support/IntegrationTestSupport.java`
+- [X] T048 创建前端 API client envelope 解析器，路径为 `frontend/src/services/apiClient.ts`
+- [X] T049 创建前端 SSE client，路径为 `frontend/src/services/sseClient.ts`
+- [X] T050 创建前端全局工作台 store，路径为 `frontend/src/stores/workbenchStore.ts`
+- [X] T051 创建三栏工作台布局组件，路径为 `frontend/src/components/layout/WorkbenchLayout.tsx`
+- [X] T052 创建咖啡豆线条 Logo 组件，路径为 `frontend/src/components/branding/CoffeeBeanLogo.tsx`
+- [X] T053 创建前端基础样式和配色变量，路径为 `frontend/src/app/styles.css`
+- [X] T054 创建架构约束验证清单，路径为 `docs/learn/backend-implementation-checklist-v0.1.md`
 
 **检查点**：基础能力可运行，后端能启动，前端能显示空工作台，数据库迁移能创建 PostgreSQL/pgvector/Kafka/Redis 依赖所需结构。
 
@@ -390,4 +390,3 @@ T161/T162/T163/T164 前端组件
 - 所有用户故事任务均包含 `[US#]` 标签。
 - 所有任务描述均包含明确文件路径。
 - `[P]` 只标记不同文件且无未完成依赖的可并行任务。
-

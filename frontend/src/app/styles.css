@@ -1,0 +1,27 @@
+:root {
+  --surface: #fbfcfd;
+  --line: #d9e0e7;
+  --text: #1f2933;
+  --accent: #2f6f73;
+  --trace-prompt: #e6f2f0;
+  --trace-model: #eef0ff;
+  --trace-tool: #fff1d8;
+  --trace-memory: #edf7e8;
+  --trace-review: #fdecef;
+}
+
+body {
+  margin: 0;
+  background: var(--surface);
+  color: var(--text);
+  font-family: Inter, "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+.left-nav,
+.agent-trace {
+  min-width: 248px;
+}
+
+.main-workspace {
+  min-width: 480px;
+}
