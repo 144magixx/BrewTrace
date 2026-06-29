@@ -168,32 +168,32 @@
 
 ### 测试与验证
 
-- [ ] T103 [P] [US3] 创建归档 API 契约测试，路径为 `backend/src/test/java/com/minyuwei/xhs/coffeeagent/tasting/api/ArchiveApiContractTest.java`
-- [ ] T104 [P] [US3] 创建 pgvector HNSW 集成测试，路径为 `backend/src/test/java/com/minyuwei/xhs/coffeeagent/memory/infrastructure/MemoryEmbeddingJdbcTest.java`
-- [ ] T105 [P] [US3] 创建 Outbox 事务测试，路径为 `backend/src/test/java/com/minyuwei/xhs/coffeeagent/shared/application/DomainEventOutboxTransactionTest.java`
-- [ ] T106 [P] [US3] 创建记忆召回 Agent 测试，路径为 `backend/src/test/java/com/minyuwei/xhs/coffeeagent/memory/application/MemoryRecallAgentTest.java`
-- [ ] T107 [P] [US3] 创建前端记忆面板测试，路径为 `frontend/src/features/memory/MemoryPanel.test.tsx`
+- [X] T103 [P] [US3] 创建归档 API 契约测试，路径为 `backend/src/test/java/com/minyuwei/xhs/coffeeagent/tasting/api/ArchiveApiContractTest.java`
+- [X] T104 [P] [US3] 创建 pgvector HNSW 集成测试，路径为 `backend/src/test/java/com/minyuwei/xhs/coffeeagent/memory/infrastructure/MemoryEmbeddingJdbcTest.java`
+- [X] T105 [P] [US3] 创建 Outbox 事务测试，路径为 `backend/src/test/java/com/minyuwei/xhs/coffeeagent/shared/application/DomainEventOutboxTransactionTest.java`
+- [X] T106 [P] [US3] 创建记忆召回 Agent 测试，路径为 `backend/src/test/java/com/minyuwei/xhs/coffeeagent/memory/application/MemoryRecallAgentTest.java`
+- [X] T107 [P] [US3] 创建前端记忆面板测试，路径为 `frontend/src/features/memory/MemoryPanel.test.tsx`
 
 ### 实现
 
-- [ ] T108 [P] [US3] 创建咖啡记录聚合，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/tasting/domain/CoffeeRecord.java`
-- [ ] T109 [P] [US3] 创建用户偏好领域模型，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/user/domain/UserPreference.java`
-- [ ] T110 [P] [US3] 创建记忆向量领域模型，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/memory/domain/MemoryEmbedding.java`
-- [ ] T111 [P] [US3] 创建记忆召回领域模型，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/memory/domain/MemoryRecall.java`
-- [ ] T112 [US3] 创建归档 Application Service，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/tasting/application/ArchiveCoffeeRecordService.java`
-- [ ] T113 [US3] 创建 `CoffeeRecordArchivedEvent`，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/tasting/domain/CoffeeRecordArchivedEvent.java`
-- [ ] T114 [US3] 创建记忆向量 JDBC Repository，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/memory/infrastructure/MemoryEmbeddingJdbcRepository.java`
-- [ ] T115 [US3] 创建 Embedding 网关适配器，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/memory/infrastructure/EmbeddingModelGateway.java`
-- [ ] T116 [US3] 创建记忆消费者，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/memory/infrastructure/MemoryEmbeddingConsumer.java`
-- [ ] T117 [US3] 创建偏好推断消费者，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/user/infrastructure/PreferenceInferenceConsumer.java`
-- [ ] T118 [US3] 创建记忆召回服务，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/memory/application/MemoryRecallService.java`
-- [ ] T119 [P] [US3] 创建记忆压缩 Prompt，路径为 `backend/src/main/resources/prompts/memory/compress-v1.md`
-- [ ] T120 [US3] 创建归档 Controller，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/tasting/api/ArchiveController.java`
-- [ ] T121 [US3] 创建记忆召回 Controller，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/memory/api/MemoryRecallController.java`
-- [ ] T122 [US3] 创建用户偏好 Controller，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/user/api/UserPreferenceController.java`
-- [ ] T123 [US3] 创建前端记忆召回面板，路径为 `frontend/src/features/memory/MemoryRecallPanel.tsx`
-- [ ] T124 [US3] 创建前端用户偏好编辑组件，路径为 `frontend/src/features/memory/UserPreferenceEditor.tsx`
-- [ ] T125 [US3] 将记忆召回接入生成文案流程，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/copywriting/application/DraftGenerationService.java`
+- [X] T108 [P] [US3] 创建咖啡记录聚合，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/tasting/domain/CoffeeRecord.java`
+- [X] T109 [P] [US3] 创建用户偏好领域模型，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/user/domain/UserPreference.java`
+- [X] T110 [P] [US3] 创建记忆向量领域模型，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/memory/domain/MemoryEmbedding.java`
+- [X] T111 [P] [US3] 创建记忆召回领域模型，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/memory/domain/MemoryRecall.java`
+- [X] T112 [US3] 创建归档 Application Service，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/tasting/application/ArchiveCoffeeRecordService.java`
+- [X] T113 [US3] 创建 `CoffeeRecordArchivedEvent`，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/tasting/domain/CoffeeRecordArchivedEvent.java`
+- [X] T114 [US3] 创建记忆向量 JDBC Repository，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/memory/infrastructure/MemoryEmbeddingJdbcRepository.java`
+- [X] T115 [US3] 创建 Embedding 网关适配器，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/memory/infrastructure/EmbeddingModelGateway.java`
+- [X] T116 [US3] 创建记忆消费者，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/memory/infrastructure/MemoryEmbeddingConsumer.java`
+- [X] T117 [US3] 创建偏好推断消费者，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/user/infrastructure/PreferenceInferenceConsumer.java`
+- [X] T118 [US3] 创建记忆召回服务，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/memory/application/MemoryRecallService.java`
+- [X] T119 [P] [US3] 创建记忆压缩 Prompt，路径为 `backend/src/main/resources/prompts/memory/compress-v1.md`
+- [X] T120 [US3] 创建归档 Controller，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/tasting/api/ArchiveController.java`
+- [X] T121 [US3] 创建记忆召回 Controller，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/memory/api/MemoryRecallController.java`
+- [X] T122 [US3] 创建用户偏好 Controller，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/user/api/UserPreferenceController.java`
+- [X] T123 [US3] 创建前端记忆召回面板，路径为 `frontend/src/features/memory/MemoryRecallPanel.tsx`
+- [X] T124 [US3] 创建前端用户偏好编辑组件，路径为 `frontend/src/features/memory/UserPreferenceEditor.tsx`
+- [X] T125 [US3] 将记忆召回接入生成文案流程，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/copywriting/application/DraftGenerationService.java`
 
 **检查点**：用户故事 3 可独立归档、异步写入记忆、召回相似记录并管理偏好。
 

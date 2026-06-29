@@ -16,6 +16,9 @@ export function runFrontendChecks() {
   const form = fs.readFileSync(path.join(root, "src/features/tasting-form/TastingForm.test.tsx"), "utf8");
   const formComponent = fs.readFileSync(path.join(root, "src/features/tasting-form/TastingForm.tsx"), "utf8");
   assert(form.includes("甜橙") && form.includes("REJECTED") && formComponent.includes("0-10"), "模板表单测试必须覆盖风味候选状态和评分范围");
+  const memory = fs.readFileSync(path.join(root, "src/features/memory/MemoryPanel.test.tsx"), "utf8");
+  const memoryPanel = fs.readFileSync(path.join(root, "src/features/memory/MemoryRecallPanel.tsx"), "utf8");
+  assert(memoryPanel.includes("可能重复") && memory.includes("CANDIDATE") && memory.includes("相同风味关键词"), "记忆面板测试必须覆盖相似原因、重复提示和偏好候选");
 }
 
 function assert(condition, message) {

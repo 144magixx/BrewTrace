@@ -3,6 +3,10 @@ package com.minyuwei.xhs.coffeeagent.support;
 import com.minyuwei.xhs.coffeeagent.agent.application.ConversationWorkflowAgentTest;
 import com.minyuwei.xhs.coffeeagent.copywriting.domain.DraftFactBoundaryTest;
 import com.minyuwei.xhs.coffeeagent.flavor.application.FlavorSuggestionAgentTest;
+import com.minyuwei.xhs.coffeeagent.memory.application.MemoryRecallAgentTest;
+import com.minyuwei.xhs.coffeeagent.memory.infrastructure.MemoryEmbeddingJdbcTest;
+import com.minyuwei.xhs.coffeeagent.shared.application.DomainEventOutboxTransactionTest;
+import com.minyuwei.xhs.coffeeagent.tasting.api.ArchiveApiContractTest;
 import com.minyuwei.xhs.coffeeagent.tasting.api.TastingTemplateApiContractTest;
 import com.minyuwei.xhs.coffeeagent.tasting.api.TastingSessionApiContractTest;
 import com.minyuwei.xhs.coffeeagent.tasting.application.BagImageExtractionTest;
@@ -19,6 +23,10 @@ public final class TestRunner {
         TastingTemplateApiContractTest.run();
         FlavorSuggestionAgentTest.run();
         BagImageExtractionTest.run();
+        ArchiveApiContractTest.run();
+        MemoryEmbeddingJdbcTest.run();
+        DomainEventOutboxTransactionTest.run();
+        MemoryRecallAgentTest.run();
         System.out.println("backend behavior tests passed");
     }
 }
