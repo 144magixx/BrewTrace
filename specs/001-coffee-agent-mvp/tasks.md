@@ -275,16 +275,16 @@
 
 **目标**：完成跨故事质量门禁、文档更新、安全检查和 quickstart 验证。
 
-- [ ] T166 [P] 更新后端设计实现差异记录，路径为 `docs/architecture/backend-design-v0.1.md`
-- [ ] T167 [P] 更新技术选型学习文档的实现观察，路径为 `docs/learn/technology-selection-learning-v0.1.md`
-- [ ] T168 [P] 更新 API 契约与实现差异，路径为 `specs/001-coffee-agent-mvp/contracts/api-contract.md`
-- [ ] T169 [P] 更新工具契约与实现差异，路径为 `specs/001-coffee-agent-mvp/contracts/tool-contracts.md`
-- [ ] T170 [P] 更新事件契约与实现差异，路径为 `specs/001-coffee-agent-mvp/contracts/event-contracts.md`
-- [ ] T171 运行后端单元测试和集成测试，路径为 `backend/pom.xml`
-- [ ] T172 运行前端单元测试和 Playwright 流程测试，路径为 `frontend/package.json`
-- [ ] T173 验证真实 Key 未进入代码、日志、Agent 轨迹和文档，路径为 `docs/learn/backend-implementation-checklist-v0.1.md`
-- [ ] T174 执行 quickstart 验证场景 0 到 7 并记录结果，路径为 `specs/001-coffee-agent-mvp/quickstart.md`
-- [ ] T175 清理未使用的抽象、样例数据和临时文件，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/`
+- [X] T166 [P] 更新后端设计实现差异记录，路径为 `docs/architecture/backend-design-v0.1.md`
+- [X] T167 [P] 更新技术选型学习文档的实现观察，路径为 `docs/learn/technology-selection-learning-v0.1.md`
+- [X] T168 [P] 更新 API 契约与实现差异，路径为 `specs/001-coffee-agent-mvp/contracts/api-contract.md`
+- [X] T169 [P] 更新工具契约与实现差异，路径为 `specs/001-coffee-agent-mvp/contracts/tool-contracts.md`
+- [X] T170 [P] 更新事件契约与实现差异，路径为 `specs/001-coffee-agent-mvp/contracts/event-contracts.md`
+- [X] T171 运行后端单元测试和集成测试，路径为 `backend/pom.xml`
+- [X] T172 运行前端单元测试和 Playwright 流程测试，路径为 `frontend/package.json`
+- [X] T173 验证真实 Key 未进入代码、日志、Agent 轨迹和文档，路径为 `docs/learn/backend-implementation-checklist-v0.1.md`
+- [X] T174 执行 quickstart 验证场景 0 到 7 并记录结果，路径为 `specs/001-coffee-agent-mvp/quickstart.md`
+- [X] T175 清理未使用的抽象、样例数据和临时文件，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/`
 
 ---
 

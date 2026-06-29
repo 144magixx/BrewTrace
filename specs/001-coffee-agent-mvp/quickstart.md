@@ -195,3 +195,31 @@ npm run test:e2e
 5. 检查业务用例是否依赖 `ModelGateway`，而不是直接依赖 Spring AI Client。
 
 通过标准：后端实现符合 [后端设计 v0.1](../../docs/architecture/backend-design-v0.1.md)，并能解释每个关键设计在 [技术选型学习文档 v0.1](../../docs/learn/technology-selection-learning-v0.1.md) 中的原因。
+
+## 实现验证记录（2026-06-30）
+
+### 自动验证
+
+- 后端：`cd backend && ./mvnw -q test && /opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home/bin/java -cp target/classes:target/test-classes com.minyuwei.xhs.coffeeagent.support.TestRunner`
+- 前端：`cd frontend && npm test && npm run build && npm run test:e2e`
+
+### 场景覆盖
+
+- 场景 0：通过前端三栏工作台、模式切换、当前记录面板和轨迹组件静态验证覆盖。
+- 场景 0.1：通过 `OrchestrationMode`、Planner、轨迹记录器和工具策略测试覆盖模式与高影响工具约束。
+- 场景 1：通过对话 API、Agent workflow 和文案事实边界测试覆盖。
+- 场景 2：通过模板保存、风味联想和豆袋图片解析测试覆盖。
+- 场景 3：通过归档、Outbox、记忆向量、召回和偏好候选测试覆盖。
+- 场景 4：通过 AgentTrace API、SSE 事件、脱敏和前端轨迹侧边栏测试覆盖。
+- 场景 4.1：通过离线 Outbox 事务测试覆盖核心语义；真实 Kafka 投递未验证。
+- 场景 4.2：通过错误分类、工具阻断和发布确认测试覆盖主要降级方向。
+- 场景 5：通过外部参考最多 5 条、发布包状态机、小红书工具 fake 测试覆盖；真实小红书发布未执行。
+- 场景 6：通过图片生成工具测试覆盖“用户主动请求才生图”。
+- 场景 7：通过包结构、Prompt 目录和模型网关边界实现覆盖。
+
+### 未验证内容
+
+- 未启动真实 Spring Boot Web 服务。
+- 未连接真实 PostgreSQL/pgvector/Kafka/Redis。
+- 未调用真实模型、Embedding 或小红书账号。
+- 未进行真实浏览器 Playwright 流程；当前 `npm run test:e2e` 是离线流程门禁。

@@ -120,3 +120,10 @@ payload 至少包含：
 - 多实例运行时必须通过 `lockedBy` / `lockedAt` 或数据库锁避免重复投递。
 - 消费者必须能处理重复事件。
 - 发布、互动、生图等高影响动作不得仅靠事件重试自动重复执行。
+
+## 实现差异记录（2026-06-30）
+
+- 已实现 `DomainEvent`、`AggregateRoot`、`DomainEventOutboxService` 和离线 `OutboxPublisher`。
+- `CoffeeRecord.archive` 会产生 `CoffeeRecordArchivedEvent`，`ArchiveCoffeeRecordService` 在同一命令内保存核心记录并写入 Outbox。
+- 当前 Outbox Publisher 将 pending 事件标记为 published，用于验证事务语义；尚未接入真实 Kafka Producer、锁、退避和死信状态。
+- Memory/Preference consumer 当前为离线消费者，覆盖幂等写入方向和偏好候选生成方向；真实 Kafka 消费者待运行时接入。

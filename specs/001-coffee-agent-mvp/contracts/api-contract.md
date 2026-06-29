@@ -454,3 +454,10 @@ data: {"requestId":"uuid","code":"EXTERNAL_REFERENCE_UNAVAILABLE","category":"DE
 ```
 
 响应返回图片候选资源和生成轨迹。未调用该接口时系统不得自动生图。
+
+## 实现差异记录（2026-06-30）
+
+- 已实现离线 Controller 形状和统一 `ApiResponse<T>` envelope，但当前不是实际 HTTP 路由。
+- 已覆盖创建会话、提交消息、生成文案、模板保存、豆袋解析、风味候选、归档、记忆召回、Agent 轨迹、外部参考、发布包和生图的契约测试。
+- SSE 当前通过 `AgentTraceSsePublisher` 的事件对象测试事件名和 data 形状，尚未接入真实 `text/event-stream`。
+- 错误 envelope 与高影响动作阻断已在领域和工具测试中覆盖；真实 Spring 全局异常处理待接入 Web 运行时后验证。

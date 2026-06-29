@@ -210,3 +210,11 @@
 **输出**：审稿提示、风险等级、建议修改点。
 
 **确认要求**：无需确认；审稿判断必须写入 Agent 轨迹。
+
+## 实现差异记录（2026-06-30）
+
+- 已实现 `ToolRegistry`、`ToolAdapter`、`ToolCallPolicy` 和 `ToolCallRecorder` 的离线版本。
+- 已注册小红书 `checkLogin/searchFeeds/getFeedDetail/fillPublish/clickPublish/saveDraft` 工具定义，其中 `fillPublish`、`clickPublish`、`saveDraft` 需要确认。
+- `xiaohongshu.clickPublish` 在缺少确认时返回失败，不执行公开发布。
+- `image.generate` 只有在 `userInitiated=true` 时返回生成图片候选。
+- 当前小红书适配器是 Fake/离线结构化适配器，尚未调用本机 `xiaohongshu-skills` CLI；真实调用需按人工验证模板记录结果。
