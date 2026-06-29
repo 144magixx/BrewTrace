@@ -130,31 +130,31 @@
 
 ### 测试与验证
 
-- [ ] T081 [P] [US2] 创建模板保存 API 契约测试，路径为 `backend/src/test/java/com/minyuwei/xhs/coffeeagent/tasting/api/TastingTemplateApiContractTest.java`
-- [ ] T082 [P] [US2] 创建风味联想 Agent 测试，路径为 `backend/src/test/java/com/minyuwei/xhs/coffeeagent/flavor/application/FlavorSuggestionAgentTest.java`
-- [ ] T083 [P] [US2] 创建豆袋图片解析 contract 测试，路径为 `backend/src/test/java/com/minyuwei/xhs/coffeeagent/tasting/application/BagImageExtractionTest.java`
-- [ ] T084 [P] [US2] 创建前端模板表单测试，路径为 `frontend/src/features/tasting-form/TastingForm.test.tsx`
+- [X] T081 [P] [US2] 创建模板保存 API 契约测试，路径为 `backend/src/test/java/com/minyuwei/xhs/coffeeagent/tasting/api/TastingTemplateApiContractTest.java`
+- [X] T082 [P] [US2] 创建风味联想 Agent 测试，路径为 `backend/src/test/java/com/minyuwei/xhs/coffeeagent/flavor/application/FlavorSuggestionAgentTest.java`
+- [X] T083 [P] [US2] 创建豆袋图片解析 contract 测试，路径为 `backend/src/test/java/com/minyuwei/xhs/coffeeagent/tasting/application/BagImageExtractionTest.java`
+- [X] T084 [P] [US2] 创建前端模板表单测试，路径为 `frontend/src/features/tasting-form/TastingForm.test.tsx`
 
 ### 实现
 
-- [ ] T085 [P] [US2] 创建咖啡豆领域模型，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/tasting/domain/CoffeeBean.java`
-- [ ] T086 [P] [US2] 创建冲煮参数领域模型，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/tasting/domain/BrewRecipe.java`
-- [ ] T087 [P] [US2] 创建感官评分领域模型，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/tasting/domain/SensoryScore.java`
-- [ ] T088 [P] [US2] 创建温度段风味领域模型，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/tasting/domain/TemperatureFlavor.java`
-- [ ] T089 [P] [US2] 创建风味候选领域模型，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/flavor/domain/FlavorSuggestion.java`
-- [ ] T090 [US2] 创建模板 Application Service，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/tasting/application/TastingTemplateApplicationService.java`
-- [ ] T091 [US2] 创建风味联想服务，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/flavor/application/FlavorSuggestionService.java`
-- [ ] T092 [P] [US2] 创建风味联想 Prompt，路径为 `backend/src/main/resources/prompts/flavor/suggest-v1.md`
-- [ ] T093 [US2] 创建豆袋图片资源领域模型，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/tasting/domain/BagImageAsset.java`
-- [ ] T094 [US2] 创建豆袋图片解析服务，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/tasting/application/BagImageExtractionService.java`
-- [ ] T095 [US2] 创建模板 Controller，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/tasting/api/TastingTemplateController.java`
-- [ ] T096 [US2] 创建风味联想 Controller，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/flavor/api/FlavorSuggestionController.java`
-- [ ] T097 [US2] 创建豆袋图片上传 Controller，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/tasting/api/BagImageController.java`
-- [ ] T098 [US2] 创建前端模板编辑组件，路径为 `frontend/src/features/tasting-form/TastingForm.tsx`
-- [ ] T099 [US2] 创建前端风味候选 chips 组件，路径为 `frontend/src/features/flavor-suggestions/FlavorSuggestionChips.tsx`
-- [ ] T100 [US2] 创建前端感官雷达图组件，路径为 `frontend/src/features/tasting-form/SensoryRadar.tsx`
-- [ ] T101 [US2] 创建前端豆袋图片上传组件，路径为 `frontend/src/features/tasting-form/BagImageUpload.tsx`
-- [ ] T102 [US2] 将模板字段同步到当前记录面板，路径为 `frontend/src/features/tasting-form/CurrentRecordPanel.tsx`
+- [X] T085 [P] [US2] 创建咖啡豆领域模型，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/tasting/domain/CoffeeBean.java`
+- [X] T086 [P] [US2] 创建冲煮参数领域模型，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/tasting/domain/BrewRecipe.java`
+- [X] T087 [P] [US2] 创建感官评分领域模型，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/tasting/domain/SensoryScore.java`
+- [X] T088 [P] [US2] 创建温度段风味领域模型，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/tasting/domain/TemperatureFlavor.java`
+- [X] T089 [P] [US2] 创建风味候选领域模型，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/flavor/domain/FlavorSuggestion.java`
+- [X] T090 [US2] 创建模板 Application Service，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/tasting/application/TastingTemplateApplicationService.java`
+- [X] T091 [US2] 创建风味联想服务，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/flavor/application/FlavorSuggestionService.java`
+- [X] T092 [P] [US2] 创建风味联想 Prompt，路径为 `backend/src/main/resources/prompts/flavor/suggest-v1.md`
+- [X] T093 [US2] 创建豆袋图片资源领域模型，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/tasting/domain/BagImageAsset.java`
+- [X] T094 [US2] 创建豆袋图片解析服务，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/tasting/application/BagImageExtractionService.java`
+- [X] T095 [US2] 创建模板 Controller，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/tasting/api/TastingTemplateController.java`
+- [X] T096 [US2] 创建风味联想 Controller，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/flavor/api/FlavorSuggestionController.java`
+- [X] T097 [US2] 创建豆袋图片上传 Controller，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/tasting/api/BagImageController.java`
+- [X] T098 [US2] 创建前端模板编辑组件，路径为 `frontend/src/features/tasting-form/TastingForm.tsx`
+- [X] T099 [US2] 创建前端风味候选 chips 组件，路径为 `frontend/src/features/flavor-suggestions/FlavorSuggestionChips.tsx`
+- [X] T100 [US2] 创建前端感官雷达图组件，路径为 `frontend/src/features/tasting-form/SensoryRadar.tsx`
+- [X] T101 [US2] 创建前端豆袋图片上传组件，路径为 `frontend/src/features/tasting-form/BagImageUpload.tsx`
+- [X] T102 [US2] 将模板字段同步到当前记录面板，路径为 `frontend/src/features/tasting-form/CurrentRecordPanel.tsx`
 
 **检查点**：用户故事 2 可独立保存结构化记录并验证风味候选事实边界。
 

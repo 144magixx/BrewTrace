@@ -13,6 +13,9 @@ export function runFrontendChecks() {
   assert(styles.includes("--trace-model") && styles.includes("--trace-tool"), "必须定义轨迹类型配色");
   const flow = fs.readFileSync(path.join(root, "src/features/conversation/ConversationFlow.test.tsx"), "utf8");
   assert(flow.includes("还需要确认豆子信息") && flow.includes("未确认风味只作为联想"), "对话流程测试必须覆盖追问和事实边界");
+  const form = fs.readFileSync(path.join(root, "src/features/tasting-form/TastingForm.test.tsx"), "utf8");
+  const formComponent = fs.readFileSync(path.join(root, "src/features/tasting-form/TastingForm.tsx"), "utf8");
+  assert(form.includes("甜橙") && form.includes("REJECTED") && formComponent.includes("0-10"), "模板表单测试必须覆盖风味候选状态和评分范围");
 }
 
 function assert(condition, message) {

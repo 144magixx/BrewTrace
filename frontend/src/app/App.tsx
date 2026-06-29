@@ -16,9 +16,10 @@ export function App(): string {
     { style: "SHARP_REVIEW", title: "锐评版", body: "" }
   ]);
   const recordPanel = CurrentRecordPanel({
-    beanFields: [],
-    brewFields: [],
-    flavorFields: [],
+    beanFields: ["豆名", "烘焙商", "处理法"],
+    brewFields: ["水温", "粉水比", "冲煮时间"],
+    flavorFields: ["高温", "中温", "低温"],
+    sensorySummary: "酸质/甜感/余韵 0-10",
     pendingConfirmations: ["甜橙、青柠、葡萄柚仅为待确认联想"]
   });
   return WorkbenchLayout({
