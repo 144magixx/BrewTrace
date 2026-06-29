@@ -240,32 +240,32 @@
 
 ### 测试与验证
 
-- [ ] T143 [P] [US5] 创建外部参考 API 契约测试，路径为 `backend/src/test/java/com/minyuwei/xhs/coffeeagent/publishing/api/ExternalReferenceApiContractTest.java`
-- [ ] T144 [P] [US5] 创建发布包状态机测试，路径为 `backend/src/test/java/com/minyuwei/xhs/coffeeagent/publishing/domain/PublishingPackageStateTest.java`
-- [ ] T145 [P] [US5] 创建小红书工具适配器 fake 测试，路径为 `backend/src/test/java/com/minyuwei/xhs/coffeeagent/tools/infrastructure/XiaohongshuToolAdapterTest.java`
-- [ ] T146 [P] [US5] 创建图片生成工具测试，路径为 `backend/src/test/java/com/minyuwei/xhs/coffeeagent/tools/infrastructure/ImageGenerationToolAdapterTest.java`
-- [ ] T147 [P] [US5] 创建前端发布确认流程测试，路径为 `frontend/src/features/publishing/PublishingFlow.test.tsx`
-- [ ] T148 [US5] 创建小红书真实发布人工验证记录模板，路径为 `docs/research/xiaohongshu-manual-verification-v0.1.md`
+- [X] T143 [P] [US5] 创建外部参考 API 契约测试，路径为 `backend/src/test/java/com/minyuwei/xhs/coffeeagent/publishing/api/ExternalReferenceApiContractTest.java`
+- [X] T144 [P] [US5] 创建发布包状态机测试，路径为 `backend/src/test/java/com/minyuwei/xhs/coffeeagent/publishing/domain/PublishingPackageStateTest.java`
+- [X] T145 [P] [US5] 创建小红书工具适配器 fake 测试，路径为 `backend/src/test/java/com/minyuwei/xhs/coffeeagent/tools/infrastructure/XiaohongshuToolAdapterTest.java`
+- [X] T146 [P] [US5] 创建图片生成工具测试，路径为 `backend/src/test/java/com/minyuwei/xhs/coffeeagent/tools/infrastructure/ImageGenerationToolAdapterTest.java`
+- [X] T147 [P] [US5] 创建前端发布确认流程测试，路径为 `frontend/src/features/publishing/PublishingFlow.test.tsx`
+- [X] T148 [US5] 创建小红书真实发布人工验证记录模板，路径为 `docs/research/xiaohongshu-manual-verification-v0.1.md`
 
 ### 实现
 
-- [ ] T149 [P] [US5] 创建外部参考领域模型，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/publishing/domain/ExternalReference.java`
-- [ ] T150 [P] [US5] 创建发布包领域模型，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/publishing/domain/PublishingPackage.java`
-- [ ] T151 [P] [US5] 创建生成图片资源领域模型，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/publishing/domain/GeneratedImageAsset.java`
-- [ ] T152 [US5] 创建外部参考检索服务，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/publishing/application/ExternalReferenceService.java`
-- [ ] T153 [US5] 创建发布包 Application Service，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/publishing/application/PublishingPackageService.java`
-- [ ] T154 [P] [US5] 创建发布包 Prompt，路径为 `backend/src/main/resources/prompts/publishing/package-v1.md`
-- [ ] T155 [US5] 创建小红书工具适配器，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/tools/infrastructure/XiaohongshuToolAdapter.java`
-- [ ] T156 [US5] 注册小红书 `checkLogin/searchFeeds/getFeedDetail/fillPublish/clickPublish/saveDraft` 工具，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/tools/infrastructure/XiaohongshuToolRegistrar.java`
-- [ ] T157 [US5] 创建图片生成工具适配器，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/tools/infrastructure/ImageGenerationToolAdapter.java`
-- [ ] T158 [US5] 创建外部参考 Controller，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/publishing/api/ExternalReferenceController.java`
-- [ ] T159 [US5] 创建发布包 Controller，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/publishing/api/PublishingPackageController.java`
-- [ ] T160 [US5] 创建图片生成 Controller，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/publishing/api/ImageGenerationController.java`
-- [ ] T161 [US5] 创建前端外部参考面板，路径为 `frontend/src/features/publishing/ExternalReferencePanel.tsx`
-- [ ] T162 [US5] 创建前端发布包检查页，路径为 `frontend/src/features/publishing/PublishingPackageReview.tsx`
-- [ ] T163 [US5] 创建前端二次确认弹窗，路径为 `frontend/src/features/publishing/PublishConfirmDialog.tsx`
-- [ ] T164 [US5] 创建前端图片生成面板，路径为 `frontend/src/features/publishing/ImageGenerationPanel.tsx`
-- [ ] T165 [US5] 将发布状态和工具结果接入 Agent 轨迹栏，路径为 `frontend/src/features/agent-trace/AgentTracePanel.tsx`
+- [X] T149 [P] [US5] 创建外部参考领域模型，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/publishing/domain/ExternalReference.java`
+- [X] T150 [P] [US5] 创建发布包领域模型，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/publishing/domain/PublishingPackage.java`
+- [X] T151 [P] [US5] 创建生成图片资源领域模型，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/publishing/domain/GeneratedImageAsset.java`
+- [X] T152 [US5] 创建外部参考检索服务，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/publishing/application/ExternalReferenceService.java`
+- [X] T153 [US5] 创建发布包 Application Service，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/publishing/application/PublishingPackageService.java`
+- [X] T154 [P] [US5] 创建发布包 Prompt，路径为 `backend/src/main/resources/prompts/publishing/package-v1.md`
+- [X] T155 [US5] 创建小红书工具适配器，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/tools/infrastructure/XiaohongshuToolAdapter.java`
+- [X] T156 [US5] 注册小红书 `checkLogin/searchFeeds/getFeedDetail/fillPublish/clickPublish/saveDraft` 工具，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/tools/infrastructure/XiaohongshuToolRegistrar.java`
+- [X] T157 [US5] 创建图片生成工具适配器，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/tools/infrastructure/ImageGenerationToolAdapter.java`
+- [X] T158 [US5] 创建外部参考 Controller，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/publishing/api/ExternalReferenceController.java`
+- [X] T159 [US5] 创建发布包 Controller，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/publishing/api/PublishingPackageController.java`
+- [X] T160 [US5] 创建图片生成 Controller，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/publishing/api/ImageGenerationController.java`
+- [X] T161 [US5] 创建前端外部参考面板，路径为 `frontend/src/features/publishing/ExternalReferencePanel.tsx`
+- [X] T162 [US5] 创建前端发布包检查页，路径为 `frontend/src/features/publishing/PublishingPackageReview.tsx`
+- [X] T163 [US5] 创建前端二次确认弹窗，路径为 `frontend/src/features/publishing/PublishConfirmDialog.tsx`
+- [X] T164 [US5] 创建前端图片生成面板，路径为 `frontend/src/features/publishing/ImageGenerationPanel.tsx`
+- [X] T165 [US5] 将发布状态和工具结果接入 Agent 轨迹栏，路径为 `frontend/src/features/agent-trace/AgentTracePanel.tsx`
 
 **检查点**：用户故事 5 可独立完成外部参考、发布包确认、发布页填写、二次确认和主动生图验证。
 
