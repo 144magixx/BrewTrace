@@ -13,3 +13,10 @@ export function createInitialWorkbenchState(): WorkbenchState {
     traceCards: []
   };
 }
+
+export function appendTraceCard(state: WorkbenchState, card: string): WorkbenchState {
+  return {
+    ...state,
+    traceCards: [...state.traceCards, card]
+  };
+}

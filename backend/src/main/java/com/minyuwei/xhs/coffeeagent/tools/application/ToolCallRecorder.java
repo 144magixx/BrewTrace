@@ -8,6 +8,15 @@ import java.util.UUID;
 
 public class ToolCallRecorder {
     private final List<ToolCallRecord> records = new ArrayList<>();
+    private final com.minyuwei.xhs.coffeeagent.trace.application.AgentTraceRecorder traceRecorder;
+
+    public ToolCallRecorder() {
+        this.traceRecorder = null;
+    }
+
+    public ToolCallRecorder(com.minyuwei.xhs.coffeeagent.trace.application.AgentTraceRecorder traceRecorder) {
+        this.traceRecorder = traceRecorder;
+    }
 
     public ToolCallRecord record(String sessionId, String toolName, String purpose, Map<String, Object> inputSummary, ToolAdapter.ToolResult result, boolean requiresConfirmation) {
         ToolCallRecord record = new ToolCallRecord(
@@ -22,6 +31,9 @@ public class ToolCallRecorder {
                 Instant.now()
         );
         records.add(record);
+        if (traceRecorder != null) {
+            traceRecorder.recordSingleStep(sessionId, com.minyuwei.xhs.coffeeagent.trace.domain.AgentTraceStep.StepType.TOOL_CALL, "工具调用：" + toolName, purpose, Map.of("input", redact(inputSummary), "output", redact(result.output())));
+        }
         return record;
     }
 

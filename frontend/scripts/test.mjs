@@ -19,6 +19,8 @@ export function runFrontendChecks() {
   const memory = fs.readFileSync(path.join(root, "src/features/memory/MemoryPanel.test.tsx"), "utf8");
   const memoryPanel = fs.readFileSync(path.join(root, "src/features/memory/MemoryRecallPanel.tsx"), "utf8");
   assert(memoryPanel.includes("可能重复") && memory.includes("CANDIDATE") && memory.includes("相同风味关键词"), "记忆面板测试必须覆盖相似原因、重复提示和偏好候选");
+  const trace = fs.readFileSync(path.join(root, "src/features/agent-trace/AgentTracePanel.test.tsx"), "utf8");
+  assert(trace.includes("USER_INPUT") && trace.includes("MODEL_CALL") && trace.includes("MEMORY_RECALL") && trace.includes("REVIEW") && trace.includes("promptSnapshot"), "轨迹侧边栏测试必须覆盖至少 5 类轨迹和详情快照");
 }
 
 function assert(condition, message) {

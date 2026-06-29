@@ -207,26 +207,26 @@
 
 ### 测试与验证
 
-- [ ] T126 [P] [US4] 创建 Agent 轨迹 API 契约测试，路径为 `backend/src/test/java/com/minyuwei/xhs/coffeeagent/trace/api/AgentTraceApiContractTest.java`
-- [ ] T127 [P] [US4] 创建 SSE 事件流集成测试，路径为 `backend/src/test/java/com/minyuwei/xhs/coffeeagent/trace/api/AgentTraceSseTest.java`
-- [ ] T128 [P] [US4] 创建敏感信息禁止记录测试，路径为 `backend/src/test/java/com/minyuwei/xhs/coffeeagent/trace/application/TraceSecretRedactionTest.java`
-- [ ] T129 [P] [US4] 创建前端轨迹侧边栏测试，路径为 `frontend/src/features/agent-trace/AgentTracePanel.test.tsx`
+- [X] T126 [P] [US4] 创建 Agent 轨迹 API 契约测试，路径为 `backend/src/test/java/com/minyuwei/xhs/coffeeagent/trace/api/AgentTraceApiContractTest.java`
+- [X] T127 [P] [US4] 创建 SSE 事件流集成测试，路径为 `backend/src/test/java/com/minyuwei/xhs/coffeeagent/trace/api/AgentTraceSseTest.java`
+- [X] T128 [P] [US4] 创建敏感信息禁止记录测试，路径为 `backend/src/test/java/com/minyuwei/xhs/coffeeagent/trace/application/TraceSecretRedactionTest.java`
+- [X] T129 [P] [US4] 创建前端轨迹侧边栏测试，路径为 `frontend/src/features/agent-trace/AgentTracePanel.test.tsx`
 
 ### 实现
 
-- [ ] T130 [P] [US4] 创建 AgentTrace 领域模型，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/trace/domain/AgentTrace.java`
-- [ ] T131 [P] [US4] 创建 AgentTraceStep 领域模型，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/trace/domain/AgentTraceStep.java`
-- [ ] T132 [US4] 创建 AgentTrace Repository Adapter，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/trace/infrastructure/AgentTraceRepositoryAdapter.java`
-- [ ] T133 [US4] 创建 AgentTraceService，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/trace/application/AgentTraceService.java`
-- [ ] T134 [US4] 创建 AgentTraceRecorder，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/trace/application/AgentTraceRecorder.java`
-- [ ] T135 [US4] 创建 AgentTrace SSE Publisher，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/trace/api/AgentTraceSsePublisher.java`
-- [ ] T136 [US4] 创建 AgentTrace Controller，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/trace/api/AgentTraceController.java`
-- [ ] T137 [US4] 将 ModelGateway 调用写入轨迹，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/agent/infrastructure/SpringAiModelGateway.java`
-- [ ] T138 [US4] 将 ToolCallRecorder 输出写入轨迹，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/tools/application/ToolCallRecorder.java`
-- [ ] T139 [US4] 创建前端轨迹卡片组件，路径为 `frontend/src/features/agent-trace/AgentTraceCard.tsx`
-- [ ] T140 [US4] 创建前端轨迹侧边栏组件，路径为 `frontend/src/features/agent-trace/AgentTracePanel.tsx`
-- [ ] T141 [US4] 创建前端轨迹详情弹窗，路径为 `frontend/src/features/agent-trace/AgentTraceDetailDialog.tsx`
-- [ ] T142 [US4] 将 SSE 增量事件接入工作台 store，路径为 `frontend/src/stores/workbenchStore.ts`
+- [X] T130 [P] [US4] 创建 AgentTrace 领域模型，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/trace/domain/AgentTrace.java`
+- [X] T131 [P] [US4] 创建 AgentTraceStep 领域模型，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/trace/domain/AgentTraceStep.java`
+- [X] T132 [US4] 创建 AgentTrace Repository Adapter，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/trace/infrastructure/AgentTraceRepositoryAdapter.java`
+- [X] T133 [US4] 创建 AgentTraceService，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/trace/application/AgentTraceService.java`
+- [X] T134 [US4] 创建 AgentTraceRecorder，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/trace/application/AgentTraceRecorder.java`
+- [X] T135 [US4] 创建 AgentTrace SSE Publisher，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/trace/api/AgentTraceSsePublisher.java`
+- [X] T136 [US4] 创建 AgentTrace Controller，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/trace/api/AgentTraceController.java`
+- [X] T137 [US4] 将 ModelGateway 调用写入轨迹，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/agent/infrastructure/SpringAiModelGateway.java`
+- [X] T138 [US4] 将 ToolCallRecorder 输出写入轨迹，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/tools/application/ToolCallRecorder.java`
+- [X] T139 [US4] 创建前端轨迹卡片组件，路径为 `frontend/src/features/agent-trace/AgentTraceCard.tsx`
+- [X] T140 [US4] 创建前端轨迹侧边栏组件，路径为 `frontend/src/features/agent-trace/AgentTracePanel.tsx`
+- [X] T141 [US4] 创建前端轨迹详情弹窗，路径为 `frontend/src/features/agent-trace/AgentTraceDetailDialog.tsx`
+- [X] T142 [US4] 将 SSE 增量事件接入工作台 store，路径为 `frontend/src/stores/workbenchStore.ts`
 
 **检查点**：用户故事 4 可独立展示、实时追加、展开查看 Agent 真实交互过程。
 

@@ -10,6 +10,9 @@ import com.minyuwei.xhs.coffeeagent.tasting.api.ArchiveApiContractTest;
 import com.minyuwei.xhs.coffeeagent.tasting.api.TastingTemplateApiContractTest;
 import com.minyuwei.xhs.coffeeagent.tasting.api.TastingSessionApiContractTest;
 import com.minyuwei.xhs.coffeeagent.tasting.application.BagImageExtractionTest;
+import com.minyuwei.xhs.coffeeagent.trace.api.AgentTraceApiContractTest;
+import com.minyuwei.xhs.coffeeagent.trace.api.AgentTraceSseTest;
+import com.minyuwei.xhs.coffeeagent.trace.application.TraceSecretRedactionTest;
 
 public final class TestRunner {
     private TestRunner() {
@@ -27,6 +30,9 @@ public final class TestRunner {
         MemoryEmbeddingJdbcTest.run();
         DomainEventOutboxTransactionTest.run();
         MemoryRecallAgentTest.run();
+        AgentTraceApiContractTest.run();
+        AgentTraceSseTest.run();
+        TraceSecretRedactionTest.run();
         System.out.println("backend behavior tests passed");
     }
 }
