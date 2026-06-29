@@ -88,35 +88,35 @@
 
 ### 测试与验证
 
-- [ ] T055 [P] [US1] 创建对话 API 契约测试，路径为 `backend/src/test/java/com/minyuwei/xhs/coffeeagent/tasting/api/TastingSessionApiContractTest.java`
-- [ ] T056 [P] [US1] 创建对话 Agent contract 测试，路径为 `backend/src/test/java/com/minyuwei/xhs/coffeeagent/agent/application/ConversationWorkflowAgentTest.java`
-- [ ] T057 [P] [US1] 创建文案事实边界测试，路径为 `backend/src/test/java/com/minyuwei/xhs/coffeeagent/copywriting/domain/DraftFactBoundaryTest.java`
-- [ ] T058 [P] [US1] 创建前端对话流程测试，路径为 `frontend/src/features/conversation/ConversationFlow.test.tsx`
+- [X] T055 [P] [US1] 创建对话 API 契约测试，路径为 `backend/src/test/java/com/minyuwei/xhs/coffeeagent/tasting/api/TastingSessionApiContractTest.java`
+- [X] T056 [P] [US1] 创建对话 Agent contract 测试，路径为 `backend/src/test/java/com/minyuwei/xhs/coffeeagent/agent/application/ConversationWorkflowAgentTest.java`
+- [X] T057 [P] [US1] 创建文案事实边界测试，路径为 `backend/src/test/java/com/minyuwei/xhs/coffeeagent/copywriting/domain/DraftFactBoundaryTest.java`
+- [X] T058 [P] [US1] 创建前端对话流程测试，路径为 `frontend/src/features/conversation/ConversationFlow.test.tsx`
 
 ### 实现
 
-- [ ] T059 [P] [US1] 创建品鉴会话聚合，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/tasting/domain/TastingSession.java`
-- [ ] T060 [P] [US1] 创建对话消息值对象，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/tasting/domain/ConversationMessage.java`
-- [ ] T061 [P] [US1] 创建文案草稿聚合，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/copywriting/domain/DraftCopy.java`
-- [ ] T062 [US1] 创建品鉴会话 Repository 接口，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/tasting/domain/TastingSessionRepository.java`
-- [ ] T063 [US1] 创建品鉴会话 JPA Entity 和 Mapper，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/tasting/infrastructure/TastingSessionJpaEntity.java`
-- [ ] T064 [US1] 创建品鉴会话 Repository Adapter，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/tasting/infrastructure/TastingSessionRepositoryAdapter.java`
-- [ ] T065 [US1] 创建对话 Application Service，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/tasting/application/TastingSessionApplicationService.java`
-- [ ] T066 [US1] 创建上下文组装器，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/agent/application/ContextAssembler.java`
-- [ ] T067 [US1] 创建显式工作流 Planner，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/agent/application/ExplicitWorkflowPlanner.java`
-- [ ] T068 [US1] 创建 Orchestrator，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/agent/application/AgentOrchestrator.java`
-- [ ] T069 [US1] 创建 InterviewAgent，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/agent/application/InterviewAgent.java`
-- [ ] T070 [US1] 创建 DraftAgent，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/agent/application/DraftAgent.java`
-- [ ] T071 [US1] 创建 ReviewAgent，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/agent/application/ReviewAgent.java`
-- [ ] T072 [P] [US1] 创建文案生成 Prompt，路径为 `backend/src/main/resources/prompts/draft/generate-v1.md`
-- [ ] T073 [P] [US1] 创建事实边界审稿 Prompt，路径为 `backend/src/main/resources/prompts/review/fact-boundary-v1.md`
-- [ ] T074 [US1] 创建品鉴会话 Controller，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/tasting/api/TastingSessionController.java`
-- [ ] T075 [US1] 创建文案 Controller，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/copywriting/api/DraftController.java`
-- [ ] T076 [US1] 创建前端对话输入组件，路径为 `frontend/src/features/conversation/ConversationComposer.tsx`
-- [ ] T077 [US1] 创建前端对话流组件，路径为 `frontend/src/features/conversation/ConversationThread.tsx`
-- [ ] T078 [US1] 创建前端文案 Tabs 组件，路径为 `frontend/src/features/conversation/DraftTabs.tsx`
-- [ ] T079 [US1] 创建当前记录紧凑面板基础组件，路径为 `frontend/src/features/tasting-form/CurrentRecordPanel.tsx`
-- [ ] T080 [US1] 将对话、追问和文案草稿接入工作台页面，路径为 `frontend/src/app/App.tsx`
+- [X] T059 [P] [US1] 创建品鉴会话聚合，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/tasting/domain/TastingSession.java`
+- [X] T060 [P] [US1] 创建对话消息值对象，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/tasting/domain/ConversationMessage.java`
+- [X] T061 [P] [US1] 创建文案草稿聚合，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/copywriting/domain/DraftCopy.java`
+- [X] T062 [US1] 创建品鉴会话 Repository 接口，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/tasting/domain/TastingSessionRepository.java`
+- [X] T063 [US1] 创建品鉴会话 JPA Entity 和 Mapper，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/tasting/infrastructure/TastingSessionJpaEntity.java`
+- [X] T064 [US1] 创建品鉴会话 Repository Adapter，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/tasting/infrastructure/TastingSessionRepositoryAdapter.java`
+- [X] T065 [US1] 创建对话 Application Service，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/tasting/application/TastingSessionApplicationService.java`
+- [X] T066 [US1] 创建上下文组装器，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/agent/application/ContextAssembler.java`
+- [X] T067 [US1] 创建显式工作流 Planner，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/agent/application/ExplicitWorkflowPlanner.java`
+- [X] T068 [US1] 创建 Orchestrator，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/agent/application/AgentOrchestrator.java`
+- [X] T069 [US1] 创建 InterviewAgent，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/agent/application/InterviewAgent.java`
+- [X] T070 [US1] 创建 DraftAgent，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/agent/application/DraftAgent.java`
+- [X] T071 [US1] 创建 ReviewAgent，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/agent/application/ReviewAgent.java`
+- [X] T072 [P] [US1] 创建文案生成 Prompt，路径为 `backend/src/main/resources/prompts/draft/generate-v1.md`
+- [X] T073 [P] [US1] 创建事实边界审稿 Prompt，路径为 `backend/src/main/resources/prompts/review/fact-boundary-v1.md`
+- [X] T074 [US1] 创建品鉴会话 Controller，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/tasting/api/TastingSessionController.java`
+- [X] T075 [US1] 创建文案 Controller，路径为 `backend/src/main/java/com/minyuwei/xhs/coffeeagent/copywriting/api/DraftController.java`
+- [X] T076 [US1] 创建前端对话输入组件，路径为 `frontend/src/features/conversation/ConversationComposer.tsx`
+- [X] T077 [US1] 创建前端对话流组件，路径为 `frontend/src/features/conversation/ConversationThread.tsx`
+- [X] T078 [US1] 创建前端文案 Tabs 组件，路径为 `frontend/src/features/conversation/DraftTabs.tsx`
+- [X] T079 [US1] 创建当前记录紧凑面板基础组件，路径为 `frontend/src/features/tasting-form/CurrentRecordPanel.tsx`
+- [X] T080 [US1] 将对话、追问和文案草稿接入工作台页面，路径为 `frontend/src/app/App.tsx`
 
 **检查点**：用户故事 1 可独立运行、独立测试、独立演示。
 

@@ -4,12 +4,15 @@ import path from "node:path";
 export function runFrontendChecks() {
   const root = process.cwd();
   const app = fs.readFileSync(path.join(root, "src/app/App.tsx"), "utf8");
-  assert(app.includes("今天喝了什么咖啡？"), "首页必须展示对话创作入口");
+  const composer = fs.readFileSync(path.join(root, "src/features/conversation/ConversationComposer.tsx"), "utf8");
+  assert(composer.includes("今天喝了什么咖啡？"), "首页必须展示对话创作入口");
   assert(app.includes("显式工作流") && app.includes("模型自主工具调用"), "必须展示双 Agent 模式");
   const layout = fs.readFileSync(path.join(root, "src/components/layout/WorkbenchLayout.tsx"), "utf8");
   assert(layout.includes("leftNav") && layout.includes("agentTrace"), "必须具备三栏工作台布局");
   const styles = fs.readFileSync(path.join(root, "src/app/styles.css"), "utf8");
   assert(styles.includes("--trace-model") && styles.includes("--trace-tool"), "必须定义轨迹类型配色");
+  const flow = fs.readFileSync(path.join(root, "src/features/conversation/ConversationFlow.test.tsx"), "utf8");
+  assert(flow.includes("还需要确认豆子信息") && flow.includes("未确认风味只作为联想"), "对话流程测试必须覆盖追问和事实边界");
 }
 
 function assert(condition, message) {
