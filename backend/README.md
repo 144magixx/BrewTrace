@@ -1,16 +1,38 @@
 # 后端说明
 
-后端当前实现为可离线编译验证的 Java 21 应用内核，保留 Spring Boot 分层命名、配置对象、Controller/Service/Repository 边界和后续接入点。
+后端现在是可启动的本地 Spring Boot Web 服务，复用现有咖啡品鉴 Agent 离线内核，并新增 `workbench` Web 契约层。
 
-## 命令
+## 前置检查
+
+```bash
+./mvnw -v
+```
+
+期望 Maven 使用 Java 21 或更高版本。当前本机默认 `java -version` 可能是 Java 8，但 `./mvnw` 会使用 Homebrew OpenJDK 25。
+
+## 常用命令
 
 ```bash
 ./mvnw test
-./mvnw -q test
-JAVA_HOME=/opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home \
-  /opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home/bin/java \
-  -cp target/classes:target/test-classes \
-  com.minyuwei.xhs.coffeeagent.support.TestRunner
+./mvnw spring-boot:run
 ```
 
-由于当前环境无法连接 Maven Central，Spring Boot 4.x 与 Spring AI 2.x 依赖暂未写入构建主链路；实现差异记录在 `docs/architecture/backend-design-v0.1.md`。
+服务启动后监听：
+
+```text
+http://127.0.0.1:8080
+```
+
+## 工作台接口
+
+- `GET /api/workbench/snapshot`
+- `POST /api/workbench/sessions`
+- `POST /api/workbench/sessions/{sessionId}/messages`
+
+所有响应都使用 `ApiResponse` envelope，错误响应包含 `code`、`category`、`recoverable` 和 `nextActions`。
+
+## 常见问题
+
+- 如果端口 8080 被占用，先停止已有后端进程，或临时修改 `src/main/resources/application.yml` 的 `server.port`。
+- 如果 IDEA 使用 Java 8 编译，切到 Java 21+ SDK 后重新导入 Maven。
+- 当前切片不需要 PostgreSQL、pgvector、Redis、Kafka、真实模型 API Key 或小红书登录态。

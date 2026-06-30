@@ -14,4 +14,8 @@ public record ApiError(
     public static ApiError of(String code, ErrorCategory category, String message, boolean recoverable, String... nextActions) {
         return new ApiError(code, category, message, recoverable, List.of(nextActions), Map.of());
     }
+
+    public ApiError withDetails(Map<String, Object> details) {
+        return new ApiError(code, category, message, recoverable, nextActions, details);
+    }
 }

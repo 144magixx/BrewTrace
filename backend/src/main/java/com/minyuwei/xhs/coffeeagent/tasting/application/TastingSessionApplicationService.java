@@ -50,7 +50,7 @@ public class TastingSessionApplicationService {
 
     public WorkspaceSnapshot workspace(String sessionId) {
         TastingSession session = find(sessionId);
-        return new WorkspaceSnapshot(session.id(), "今天喝了什么咖啡？", session.orchestrationMode(), session.messages(), session.drafts());
+        return new WorkspaceSnapshot(session.id(), "今天喝了什么咖啡？", session.orchestrationMode(), session.messages(), session.drafts(), session.confirmedFacts());
     }
 
     private TastingSession find(String sessionId) {
@@ -71,7 +71,8 @@ public class TastingSessionApplicationService {
             String heroQuestion,
             OrchestrationMode orchestrationMode,
             List<ConversationMessage> conversation,
-            List<DraftCopy> draftTabs
+            List<DraftCopy> draftTabs,
+            List<String> confirmedFacts
     ) {
     }
 }
