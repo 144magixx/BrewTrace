@@ -1,0 +1,14 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: coffee-agent
+
+coffee-agent:
+  workbench:
+    allowed-origins:
+      - "http://localhost:5173"
+      - "http://127.0.0.1:5173"
+    model-mode: "offline-fake"
+    secrets-note: "API Key、Cookie、Authorization Header 和 Session Token 只允许通过本地私有环境提供，不得写入配置文件。"

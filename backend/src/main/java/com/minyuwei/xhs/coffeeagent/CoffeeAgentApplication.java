@@ -1,10 +1,11 @@
 package com.minyuwei.xhs.coffeeagent;
 
-public final class CoffeeAgentApplication {
-    private CoffeeAgentApplication() {
-    }
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+@SpringBootApplication
+public class CoffeeAgentApplication {
     public static void main(String[] args) {
-        System.out.println("Coffee Agent MVP kernel is ready. Start Spring Boot adapter after dependencies are available.");
+        SpringApplication.run(CoffeeAgentApplication.class, args);
     }
 }

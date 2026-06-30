@@ -1,8 +1,12 @@
 :root {
-  --surface: #fbfcfd;
-  --line: #d9e0e7;
-  --text: #1f2933;
-  --accent: #2f6f73;
+  --surface: #f7f8fa;
+  --panel: #ffffff;
+  --line: #d8dee7;
+  --text: #1f2937;
+  --muted: #667085;
+  --accent: #1f7a6b;
+  --accent-dark: #135f54;
+  --warn: #9f4a16;
   --trace-prompt: #e6f2f0;
   --trace-model: #eef0ff;
   --trace-tool: #fff1d8;
@@ -17,11 +21,254 @@ body {
   font-family: Inter, "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 
+.workbench-shell {
+  display: grid;
+  grid-template-columns: 220px minmax(420px, 1fr) minmax(280px, 340px) minmax(220px, 280px);
+  gap: 1px;
+  min-height: 100vh;
+  background: var(--line);
+}
+
 .left-nav,
+.main-workspace,
+.record-panel,
 .agent-trace {
-  min-width: 248px;
+  background: var(--panel);
+}
+
+.left-nav {
+  padding: 24px 18px;
+}
+
+.brand-lockup {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+}
+
+.brand-mark {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  place-items: center;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 13px;
+}
+
+.left-nav nav {
+  display: grid;
+  gap: 8px;
+  margin-top: 28px;
+}
+
+.left-nav nav span {
+  padding: 10px 12px;
+  border-radius: 6px;
+  color: var(--muted);
+}
+
+.left-nav .nav-active {
+  background: #eaf4f2;
+  color: var(--accent-dark);
+  font-weight: 700;
 }
 
 .main-workspace {
-  min-width: 480px;
+  min-width: 0;
+  padding: 24px;
+}
+
+.conversation-card {
+  display: grid;
+  gap: 18px;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.mode-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.mode-row span,
+.next-actions span {
+  padding: 6px 10px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 32px;
+  line-height: 1.2;
+}
+
+button {
+  min-height: 40px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--text);
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.primary-action,
+.composer button {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+  padding: 0 16px;
+}
+
+.message-thread {
+  display: grid;
+  gap: 12px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.message {
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.message span,
+.message small {
+  color: var(--muted);
+}
+
+.message-user {
+  background: #f4fbf9;
+}
+
+.message-assistant {
+  background: #fbfbfd;
+}
+
+.empty-thread,
+.empty-drafts {
+  color: var(--muted);
+}
+
+.draft-tabs,
+.summary-panel,
+.trace-panel,
+.error-banner {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 16px;
+  background: #fff;
+}
+
+.tab-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tab-row .active {
+  border-color: var(--accent);
+  color: var(--accent-dark);
+  font-weight: 700;
+}
+
+.composer {
+  display: grid;
+  gap: 10px;
+}
+
+.composer textarea {
+  width: 100%;
+  min-height: 112px;
+  box-sizing: border-box;
+  resize: vertical;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px;
+  font: inherit;
+}
+
+.record-panel,
+.agent-trace {
+  padding: 24px 18px;
+}
+
+.summary-panel,
+.trace-panel {
+  display: grid;
+  gap: 14px;
+}
+
+.summary-panel h2,
+.trace-panel h2 {
+  margin: 0;
+}
+
+.summary-block h3 {
+  margin: 0 0 6px;
+  font-size: 14px;
+}
+
+.summary-block ul,
+.trace-panel ol,
+.draft-tabs ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.summary-block p,
+.trace-panel p,
+.draft-status {
+  margin: 0;
+  color: var(--muted);
+}
+
+.error-banner {
+  border-color: #f0c69d;
+  background: #fff8f2;
+  color: var(--warn);
+}
+
+.error-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+@media (max-width: 1180px) {
+  .workbench-shell {
+    grid-template-columns: 180px minmax(380px, 1fr) minmax(260px, 320px);
+  }
+
+  .agent-trace {
+    grid-column: 2 / 4;
+  }
+}
+
+@media (max-width: 860px) {
+  .workbench-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .left-nav nav {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .agent-trace {
+    grid-column: auto;
+  }
 }
