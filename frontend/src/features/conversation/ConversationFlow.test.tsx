@@ -9,7 +9,7 @@ export function conversationFlowFixture(): string {
     { role: "ASSISTANT", content: "还需要确认豆子信息、冲煮参数和你想要的文案风格。" }
   ]);
   const drafts = renderDraftTabs([
-    { style: "RESTRAINED", title: "一杯干净的水洗埃塞", body: "未确认风味只作为联想" }
+    { style: "RESTRAINED", title: "GPT-5.5 克制版标题", body: "未确认风味只作为联想" }
   ]);
   return `${composer.placeholder}\n${thread}\n${drafts}`;
 }

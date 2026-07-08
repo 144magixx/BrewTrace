@@ -1,6 +1,5 @@
 package com.minyuwei.xhs.coffeeagent.shared.config;
 
-import com.minyuwei.xhs.coffeeagent.agent.application.AgentOrchestrator;
 import com.minyuwei.xhs.coffeeagent.tasting.application.TastingSessionApplicationService;
 import com.minyuwei.xhs.coffeeagent.tasting.domain.TastingSessionRepository;
 import com.minyuwei.xhs.coffeeagent.tasting.infrastructure.TastingSessionRepositoryAdapter;
@@ -21,16 +20,10 @@ public class WebWorkbenchConfiguration {
     }
 
     @Bean
-    public AgentOrchestrator agentOrchestrator() {
-        return new AgentOrchestrator();
-    }
-
-    @Bean
     public TastingSessionApplicationService tastingSessionApplicationService(
             TastingSessionRepository repository,
-            CurrentUserProvider currentUserProvider,
-            AgentOrchestrator orchestrator
+            CurrentUserProvider currentUserProvider
     ) {
-        return new TastingSessionApplicationService(repository, currentUserProvider, orchestrator);
+        return new TastingSessionApplicationService(repository, currentUserProvider);
     }
 }

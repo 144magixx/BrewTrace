@@ -1,0 +1,41 @@
+{
+  "createdAt": "2026-06-30 21:41:01",
+  "updatedAt": "2026-07-01T00:24:26+08:00",
+  "accounts": {
+    "captain-orange": {
+      "feedCount": 338,
+      "existingSuccess": 338,
+      "failedAttemptSidecars": 8,
+      "complete": true,
+      "detailDir": "/Users/minyuwei/Documents/xhs/docs/research/xhs-style-samples/details/captain-orange"
+    },
+    "neutral-1169409996-smoothie": {
+      "feedCount": 241,
+      "existingSuccess": 241,
+      "failedAttemptSidecars": 3,
+      "complete": true,
+      "detailDir": "/Users/minyuwei/Documents/xhs/docs/research/xhs-style-samples/details/neutral-1169409996-smoothie"
+    },
+    "neutral-119809953-apple": {
+      "feedCount": 62,
+      "existingSuccess": 62,
+      "failedAttemptSidecars": 0,
+      "complete": true,
+      "detailDir": "/Users/minyuwei/Documents/xhs/docs/research/xhs-style-samples/details/neutral-119809953-apple"
+    },
+    "sharp-5543006937-beiguo": {
+      "feedCount": 18,
+      "existingSuccess": 18,
+      "failedAttemptSidecars": 0,
+      "complete": true,
+      "detailDir": "/Users/minyuwei/Documents/xhs/docs/research/xhs-style-samples/details/sharp-5543006937-beiguo"
+    },
+    "exaggerated-182627410-morpheus": {
+      "feedCount": 61,
+      "existingSuccess": 61,
+      "failedAttemptSidecars": 0,
+      "complete": true,
+      "detailDir": "/Users/minyuwei/Documents/xhs/docs/research/xhs-style-samples/details/exaggerated-182627410-morpheus"
+    }
+  }
+}

@@ -8,7 +8,7 @@ export function runFrontendChecks() {
   assert(composer.includes("今天喝了什么咖啡？"), "首页必须展示对话创作入口");
   assert(app.includes("显式工作流") && app.includes("模型自主工具调用"), "必须展示双 Agent 模式");
   const layout = fs.readFileSync(path.join(root, "src/components/layout/WorkbenchLayout.tsx"), "utf8");
-  assert(layout.includes("leftNav") && layout.includes("agentTrace"), "必须具备三栏工作台布局");
+  assert(layout.includes("left-nav") && layout.includes("right-inspector") && layout.includes("agentTrace"), "必须具备左导航、中间对话和右侧当前记录/Agent 状态三栏工作台布局");
   const styles = fs.readFileSync(path.join(root, "src/app/styles.css"), "utf8");
   assert(styles.includes("--trace-model") && styles.includes("--trace-tool"), "必须定义轨迹类型配色");
   const flow = fs.readFileSync(path.join(root, "src/features/conversation/ConversationFlow.test.tsx"), "utf8");
@@ -21,6 +21,12 @@ export function runFrontendChecks() {
   assert(memoryPanel.includes("可能重复") && memory.includes("CANDIDATE") && memory.includes("相同风味关键词"), "记忆面板测试必须覆盖相似原因、重复提示和偏好候选");
   const trace = fs.readFileSync(path.join(root, "src/features/agent-trace/AgentTracePanel.test.tsx"), "utf8");
   assert(trace.includes("USER_INPUT") && trace.includes("MODEL_CALL") && trace.includes("MEMORY_RECALL") && trace.includes("REVIEW") && trace.includes("promptSnapshot"), "轨迹侧边栏测试必须覆盖至少 5 类轨迹和详情快照");
+  const agentState = fs.readFileSync(path.join(root, "src/features/agent-trace/AgentStateCards.tsx"), "utf8");
+  const modelOutput = fs.readFileSync(path.join(root, "src/features/agent-trace/ModelOutputPanel.tsx"), "utf8");
+  const capabilityBoundary = fs.readFileSync(path.join(root, "src/features/agent-trace/CapabilityBoundaryPanel.tsx"), "utf8");
+  assert(app.includes("<AgentStateCards state={snapshot?.agentState} />") && !app.includes("<main") && layout.includes("recordPanel") && layout.includes("agentTrace"), "AgentStateCards 必须只由右侧当前记录区域引用");
+  assert(agentState.includes("当前没有可发送上下文") && agentState.includes("暂无候选记忆"), "Agent 状态卡片必须展示空上下文和空候选记忆状态");
+  assert(modelOutput.includes("输入后将调用 GPT-5.5") && capabilityBoundary.includes("已配置，等待返回") && capabilityBoundary.includes("未执行小红书动作"), "前端必须包含 GPT-5.5、长期数据库和小红书边界文案");
   const publishing = fs.readFileSync(path.join(root, "src/features/publishing/PublishingFlow.test.tsx"), "utf8");
   const publishDialog = fs.readFileSync(path.join(root, "src/features/publishing/PublishConfirmDialog.tsx"), "utf8");
   const imagePanel = fs.readFileSync(path.join(root, "src/features/publishing/ImageGenerationPanel.tsx"), "utf8");

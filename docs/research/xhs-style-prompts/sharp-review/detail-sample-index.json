@@ -1,0 +1,393 @@
+{
+  "generatedAt": "2026-07-01T00:20:14+08:00",
+  "detailSamples": {
+    "sharp-5543006937-beiguo": {
+      "count": 18,
+      "dateRange": {
+        "start": "2024-03-11",
+        "end": "2026-04-03"
+      },
+      "yearCounts": {
+        "2024": 11,
+        "2025": 4,
+        "2026": 3
+      },
+      "bodyLength": {
+        "avg": 108.6,
+        "median": 103,
+        "shortLe40": 4,
+        "longGe500": 0
+      },
+      "samples": [
+        {
+          "noteId": "69cf6325000000001a033b92",
+          "title": "老一辈说话没轻没重的，锐评buff",
+          "bodyPreview": "害得是老辈子，现场直接锐评LZ的表情太玩味了，说话没轻没重的，沙龙也是不懂事，怎么就把大实话剪进去了",
+          "bodyLength": 50,
+          "tags": [
+            "#buff",
+            "#coffeebuff李震",
+            "#李震"
+          ],
+          "time": "2026-04-03T14:50:13+08:00",
+          "ipLocation": "",
+          "interactInfo": {
+            "liked": false,
+            "likedCount": "5",
+            "collectedCount": "1",
+            "collected": false,
+            "commentCount": "",
+            "sharedCount": ""
+          },
+          "file": "/Users/minyuwei/Documents/xhs/docs/research/xhs-style-samples/details/sharp-5543006937-beiguo/000-69cf6325000000001a033b92.json"
+        },
+        {
+          "noteId": "69aee3a90000000015033538",
+          "title": "玻璃心小周还在骗小白啊？",
+          "bodyPreview": "自己的烘焙差到要死，不如某鹿的出品水平 切小号推荐自己的咖啡，现在又在b站卖烘焙课，自己的烘焙都没学明白呢，就卖上课了",
+          "bodyLength": 59,
+          "tags": [
+            "#周狮虎咖啡",
+            "#周狮虎的咖啡",
+            "#周狮虎"
+          ],
+          "time": "2026-03-09T23:13:45+08:00",
+          "ipLocation": "",
+          "interactInfo": {
+            "liked": false,
+            "likedCount": "4",
+            "collectedCount": "2",
+            "collected": false,
+            "commentCount": "3",
+            "sharedCount": ""
+          },
+          "file": "/Users/minyuwei/Documents/xhs/docs/research/xhs-style-samples/details/sharp-5543006937-beiguo/001-69aee3a90000000015033538.json"
+        },
+        {
+          "noteId": "695daa82000000002102b078",
+          "title": "有鸟人前一套人后一套",
+          "bodyPreview": "也不知去年回京探店的时候，我在讲tcc当口粮还是可以的，吧台里的那位一边表演式冲煮一边猛喷tcc烘焙这几年烂了，takesi瑰夏早就没味啦，布拉布拉。究其原因在于，她正在冲一杯passenger，不愧是表演型咖啡师",
+          "bodyLength": 107,
+          "tags": [
+            "#我的咖啡日记",
+            "#候鸟咖啡",
+            "#coffeecollective"
+          ],
+          "time": "2026-01-07T08:36:18+08:00",
+          "ipLocation": "",
+          "interactInfo": {
+            "liked": false,
+            "likedCount": "1",
+            "collectedCount": "",
+            "collected": false,
+            "commentCount": "1",
+            "sharedCount": ""
+          },
+          "file": "/Users/minyuwei/Documents/xhs/docs/research/xhs-style-samples/details/sharp-5543006937-beiguo/002-695daa82000000002102b078.json"
+        },
+        {
+          "noteId": "68d93878000000001301bd6e",
+          "title": "国内咖啡圈有知识的都还是太少了",
+          "bodyPreview": "baked等烘焙瑕疵已经被严格定义不知道多少年了，单纯是咖啡圈里文化水平低到看不到这些文章 十余年的烘焙水平，也依然没有一文说清楚baked，只是一些中文咖啡圈大杂烩信息的反刍 薯的出现拉低了知识输出的门槛，导致什么阿猫阿狗都能说两句，复读点大杂烩信息就可以当博主了",
+          "bodyLength": 133,
+          "tags": [
+            "#咖啡知识",
+            "#手冲咖啡",
+            "#咖啡从业者",
+            "#我的咖啡日记"
+          ],
+          "time": "2025-09-28T21:30:32+08:00",
+          "ipLocation": "",
+          "interactInfo": {
+            "liked": false,
+            "likedCount": "2",
+            "collectedCount": "",
+            "collected": false,
+            "commentCount": "1",
+            "sharedCount": ""
+          },
+          "file": "/Users/minyuwei/Documents/xhs/docs/research/xhs-style-samples/details/sharp-5543006937-beiguo/003-68d93878000000001301bd6e.json"
+        },
+        {
+          "noteId": "68d7a01a000000001301a3d1",
+          "title": "一边不买增味，一边去买alo",
+          "bodyPreview": "很偶尔能看到这位老哥的文章，每次都能感受到纯粹的无知hhhh 其次，整篇看完后其内容完全够成不了生豆购买建议，纯粹的废话文学，咖啡圈里代购也要试图输出点东西也是服了，好好做好二道贩子，少买一点台湾琉璃那种垃圾瑰夏比什么都强",
+          "bodyLength": 111,
+          "tags": [
+            "#我的咖啡日记",
+            "#coffee365"
+          ],
+          "time": "2025-09-27T16:28:10+08:00",
+          "ipLocation": "",
+          "interactInfo": {
+            "liked": false,
+            "likedCount": "4",
+            "collectedCount": "",
+            "collected": false,
+            "commentCount": "9",
+            "sharedCount": ""
+          },
+          "file": "/Users/minyuwei/Documents/xhs/docs/research/xhs-style-samples/details/sharp-5543006937-beiguo/004-68d7a01a000000001301a3d1.json"
+        },
+        {
+          "noteId": "689360a40000000003025127",
+          "title": "",
+          "bodyPreview": "一个人的感官水平在杯测桌上是藏不住的。 观某位“老师”杯测与烘咖啡，何必呢？",
+          "bodyLength": 38,
+          "tags": [
+            "#咖啡",
+            "#我的咖啡日记",
+            "#精品咖啡",
+            "#竞标瑰夏"
+          ],
+          "time": "2025-08-06T22:03:17+08:00",
+          "ipLocation": "",
+          "interactInfo": {
+            "liked": false,
+            "likedCount": "",
+            "collectedCount": "",
+            "collected": false,
+            "commentCount": "1",
+            "sharedCount": ""
+          },
+          "file": "/Users/minyuwei/Documents/xhs/docs/research/xhs-style-samples/details/sharp-5543006937-beiguo/005-689360a40000000003025127.json"
+        },
+        {
+          "noteId": "67b06922000000001800f140",
+          "title": "玻利维亚PCA又来收割韭菜了",
+          "bodyPreview": "大概是TCC的玻利维亚瑰夏曾经一个产季惊艳了一些朋友，然鹅可惜的是PCA竞拍的豆子只能说风土太差了，发酵带来的品质提高并不能掩盖其严重的生豆品质低下，连续两年测到的都是相同的“独特风土”味，只能说它尽力了。 起拍800人民币的水洗瑰夏测下来大概只能到瑰夏村竞标的守门员。多品种组的java peaberry大概是个不错的新鲜玩意，可惜完全撑不住杯测，起拍价都已经不值了。至于日晒组，什么？还有日晒组啊，建议别随便把💩端上桌，还拍卖？",
+          "bodyLength": 216,
+          "tags": [
+            "#我的咖啡日记",
+            "#瑰夏",
+            "#精品咖啡",
+            "#咖啡豆必修课"
+          ],
+          "time": "2025-02-15T18:14:58+08:00",
+          "ipLocation": "",
+          "interactInfo": {
+            "liked": false,
+            "likedCount": "1",
+            "collectedCount": "",
+            "collected": false,
+            "commentCount": "",
+            "sharedCount": ""
+          },
+          "file": "/Users/minyuwei/Documents/xhs/docs/research/xhs-style-samples/details/sharp-5543006937-beiguo/006-67b06922000000001800f140.json"
+        },
+        {
+          "noteId": "67602826000000000b01621b",
+          "title": "夹生？什么样的小鬼都开始做咖啡科普了？",
+          "bodyPreview": "夹生到底是哪个蠢货发明的词？ 还有人煞有其事地解释？ 无知可以多看点公众号，假装是自己在学习，尤其可以看咖啡公社的林小姐的假科普 审美差可以多喝oma，喝多了自然就觉得这是世界上最好的咖啡烘焙商 半瓶水的知识可以多讲，讲多了自己都会觉得自己的理论很牛逼 没有逻辑可以多多重复自己的话，重复多了就是自己的逻辑了 建议多听tale说话，虽然他也不是科学的，但和愚蠢咖啡小鬼的对线我是真爱看哈哈哈哈哈",
+          "bodyLength": 199,
+          "tags": [],
+          "time": "2024-12-16T21:16:22+08:00",
+          "ipLocation": "",
+          "interactInfo": {
+            "liked": false,
+            "likedCount": "3",
+            "collectedCount": "1",
+            "collected": false,
+            "commentCount": "1",
+            "sharedCount": ""
+          },
+          "file": "/Users/minyuwei/Documents/xhs/docs/research/xhs-style-samples/details/sharp-5543006937-beiguo/007-67602826000000000b01621b.json"
+        },
+        {
+          "noteId": "6745cc61000000000202ea7c",
+          "title": "林小姐十篇有九篇推送都能戳中我的笑点",
+          "bodyPreview": "咖啡圈废话文学大师 咖啡圈假装专业大学士",
+          "bodyLength": 20,
+          "tags": [
+            "#咖啡公社"
+          ],
+          "time": "2024-11-26T21:25:53+08:00",
+          "ipLocation": "",
+          "interactInfo": {
+            "liked": false,
+            "likedCount": "1",
+            "collectedCount": "",
+            "collected": false,
+            "commentCount": "1",
+            "sharedCount": ""
+          },
+          "file": "/Users/minyuwei/Documents/xhs/docs/research/xhs-style-samples/details/sharp-5543006937-beiguo/008-6745cc61000000000202ea7c.json"
+        },
+        {
+          "noteId": "67396f06000000003c01c538",
+          "title": "某些飞机豆代购商或许是最蠢的一帮人？",
+          "bodyPreview": "既没有接受过从业者那样的“从业技能训练” 也没有感官和知识专业到能够客观认识咖啡烘焙和萃取 更没有基本的选品审美和杯测能力 有的是什么？ 基于个人臆想的“浅烘分档” 基于个人私人喜好的选品推荐 基于个人民科水平的萃取和“养豆”理论",
+          "bodyLength": 115,
+          "tags": [
+            "#coffee365"
+          ],
+          "time": "2024-11-17T12:20:22+08:00",
+          "ipLocation": "",
+          "interactInfo": {
+            "liked": false,
+            "likedCount": "9",
+            "collectedCount": "1",
+            "collected": false,
+            "commentCount": "4",
+            "sharedCount": ""
+          },
+          "file": "/Users/minyuwei/Documents/xhs/docs/research/xhs-style-samples/details/sharp-5543006937-beiguo/009-67396f06000000003c01c538.json"
+        },
+        {
+          "noteId": "672cb620000000003c014634",
+          "title": "什么样的生豆商让艾力达庄主老威出来辟谣？",
+          "bodyPreview": "建议您趁早祛魅BOP 啡盈以为可以拿样品包出来营销号 老威希望维持BOP GN1的光辉 实际却是，喝完下来2024BOP值得买的豆子寥寥无几，虽然今年处理的味道已经很克制了，不过 风味小鬼们还是买帐",
+          "bodyLength": 99,
+          "tags": [
+            "#精品咖啡"
+          ],
+          "time": "2024-11-07T20:44:16+08:00",
+          "ipLocation": "",
+          "interactInfo": {
+            "liked": false,
+            "likedCount": "3",
+            "collectedCount": "",
+            "collected": false,
+            "commentCount": "",
+            "sharedCount": ""
+          },
+          "file": "/Users/minyuwei/Documents/xhs/docs/research/xhs-style-samples/details/sharp-5543006937-beiguo/010-672cb620000000003c014634.json"
+        },
+        {
+          "noteId": "671d09c20000000016021e5f",
+          "title": "果然潘锡冠开始卖货了",
+          "bodyPreview": "谁还记得，这个带专哥曾经信誓旦旦表示不会卖这个东西…… 果然咖啡圈的文盲们都逃不过混个冠军然后开店卖货代言卖豆子",
+          "bodyLength": 56,
+          "tags": [],
+          "time": "2024-10-26T23:24:50+08:00",
+          "ipLocation": "",
+          "interactInfo": {
+            "liked": false,
+            "likedCount": "3",
+            "collectedCount": "",
+            "collected": false,
+            "commentCount": "1",
+            "sharedCount": ""
+          },
+          "file": "/Users/minyuwei/Documents/xhs/docs/research/xhs-style-samples/details/sharp-5543006937-beiguo/011-671d09c20000000016021e5f.json"
+        },
+        {
+          "noteId": "66f69d75000000002c02c621",
+          "title": "又被张口就来的咖啡博主们笑到",
+          "bodyPreview": "这稿子上下文有什么联系吗？ 泰摩的滤杯和它推的李金龙，一样的无趣，一样的没有新意，甚至不如部分博主客制化的“创新滤杯” 当然也看不懂山文吹嘘的贴合，我寻思不就是改了一下的冰瞳吗？",
+          "bodyLength": 89,
+          "tags": [],
+          "time": "2024-09-27T19:56:37+08:00",
+          "ipLocation": "",
+          "interactInfo": {
+            "liked": false,
+            "likedCount": "3",
+            "collectedCount": "",
+            "collected": false,
+            "commentCount": "",
+            "sharedCount": ""
+          },
+          "file": "/Users/minyuwei/Documents/xhs/docs/research/xhs-style-samples/details/sharp-5543006937-beiguo/012-66f69d75000000002c02c621.json"
+        },
+        {
+          "noteId": "66a30652000000000a0072ec",
+          "title": "建议这帮小作坊们都去听听组长的博客",
+          "bodyPreview": "CHG多少还拍点没名堂的COE，当个准一手货源的豆商，外包烘焙的熟豆商，问题也在于其过分的营销手段和不够好的产品。 想知道这帮嘴比实力硬的小作坊们，是不是自己去巴拿马或者别的产区cupping room里杯测选出来自己上架的豆子？ 同一个地块的同一个树，今天上面的成熟，明天下面的成熟，也是在不同时间成熟后采摘并处理，今天你去庄园能杯测到的只是目前为止的一些样品，下个月你再去又是会有同一个地块别的样品。拿着一个批次号嚷嚷着独家，就像拿着一...",
+          "bodyLength": 303,
+          "tags": [
+            "#精品咖啡",
+            "#朝氿",
+            "#手多多咖啡有限公司"
+          ],
+          "time": "2024-07-26T10:13:38+08:00",
+          "ipLocation": "",
+          "interactInfo": {
+            "liked": false,
+            "likedCount": "7",
+            "collectedCount": "",
+            "collected": false,
+            "commentCount": "1",
+            "sharedCount": ""
+          },
+          "file": "/Users/minyuwei/Documents/xhs/docs/research/xhs-style-samples/details/sharp-5543006937-beiguo/013-66a30652000000000a0072ec.json"
+        },
+        {
+          "noteId": "6686997a000000000a024dce",
+          "title": "99.9%咖啡圈人和文盲的唯一区别是他们识字",
+          "bodyPreview": "对不起，双潘冠军不愧是诺贝尔咖啡奖获得者！让我们为他们鼓掌，为他们欢呼🎉",
+          "bodyLength": 36,
+          "tags": [],
+          "time": "2024-07-04T20:45:46+08:00",
+          "ipLocation": "",
+          "interactInfo": {
+            "liked": false,
+            "likedCount": "7",
+            "collectedCount": "",
+            "collected": false,
+            "commentCount": "1",
+            "sharedCount": ""
+          },
+          "file": "/Users/minyuwei/Documents/xhs/docs/research/xhs-style-samples/details/sharp-5543006937-beiguo/014-6686997a000000000a024dce.json"
+        },
+        {
+          "noteId": "6607d3b2000000001a015887",
+          "title": "周处除三害，但咖啡版",
+          "bodyPreview": "展会喝完，是什么样离谱的烘焙让abu庄园主都自我怀疑呢？",
+          "bodyLength": 28,
+          "tags": [
+            "#精品咖啡",
+            "#瑰夏",
+            "#coffeebuff"
+          ],
+          "time": "2024-03-30T16:56:18+08:00",
+          "ipLocation": "",
+          "interactInfo": {
+            "liked": false,
+            "likedCount": "40",
+            "collectedCount": "7",
+            "collected": false,
+            "commentCount": "15",
+            "sharedCount": ""
+          },
+          "file": "/Users/minyuwei/Documents/xhs/docs/research/xhs-style-samples/details/sharp-5543006937-beiguo/015-6607d3b2000000001a015887.json"
+        },
+        {
+          "noteId": "65f16675000000000d00c762",
+          "title": "关键你确实买不起阿？",
+          "bodyPreview": "最好的豆子是詹森最入门的水洗口粮豆和90+最入门的生豆，营销却用着BOP的名头？嘴里面过过几口BOP豆子阿？ 7.0这种生豆质量最多90块的“定制日晒”的埃塞，“风味十足”呢，也不知道是真的菜得不明白，还是揣着明白装糊涂。 今年又来争当8.0的小韭菜喽，还在自我感动！！！真棒！！！🤡 @还早・花艺咖啡门市部",
+          "bodyLength": 154,
+          "tags": [],
+          "time": "2024-03-13T16:40:21+08:00",
+          "ipLocation": "",
+          "interactInfo": {
+            "liked": false,
+            "likedCount": "5",
+            "collectedCount": "",
+            "collected": false,
+            "commentCount": "19",
+            "sharedCount": ""
+          },
+          "file": "/Users/minyuwei/Documents/xhs/docs/research/xhs-style-samples/details/sharp-5543006937-beiguo/016-65f16675000000000d00c762.json"
+        },
+        {
+          "noteId": "65ee9b48000000000d00e2e1",
+          "title": "菜就多练@玻璃心的周狮虎咖啡",
+          "bodyPreview": "自己发贴吐槽别人删自己的自吹自擂，结果被评论“原来真有人推荐他家，烘焙审美是国内熟豆商算差的一批”，直接删评哈哈哈哈 🤡 定睛一看原来是小周的小号啊，标榜自己技术流品牌不好做，结果烘出来的豆子和某鱼这种货色一个水平，纯纯糟蹋生豆的烘焙审美，做了这么多年还这样其实可以考虑转行别玩烘焙了",
+          "bodyLength": 142,
+          "tags": [],
+          "time": "2024-03-11T13:48:56+08:00",
+          "ipLocation": "",
+          "interactInfo": {
+            "liked": false,
+            "likedCount": "20",
+            "collectedCount": "",
+            "collected": false,
+            "commentCount": "2",
+            "sharedCount": ""
+          },
+          "file": "/Users/minyuwei/Documents/xhs/docs/research/xhs-style-samples/details/sharp-5543006937-beiguo/017-65ee9b48000000000d00e2e1.json"
+        }
+      ]
+    }
+  }
+}

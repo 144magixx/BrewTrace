@@ -4,11 +4,38 @@ server:
 spring:
   application:
     name: coffee-agent
+  ai:
+    model:
+      chat: openai
+      embedding: none
+      image: none
+      audio:
+        speech: none
+        transcription: none
+      moderation: none
+    openai:
+      api-key: ${OPENAI_API_KEY:}
+      base-url: ${OPENAI_BASE_URL:https://saturday.sankuai.com/v1}
+      chat:
+        model: ${TEXT_MODEL:gpt-5.5}
+        timeout: ${MODEL_TIMEOUT_SECONDS:120s}
+        max-retries: ${MODEL_MAX_RETRIES:2}
 
 coffee-agent:
+  model:
+    mode: ${MODEL_MODE:openai-gpt55}
+    text-model: ${TEXT_MODEL:gpt-5.5}
+    image-model: ${IMAGE_MODEL:gpt-image-2}
+    base-url: ${OPENAI_BASE_URL:https://saturday.sankuai.com/v1}
+    timeout-seconds: ${MODEL_TIMEOUT_SECONDS:120}
+    max-retries: ${MODEL_MAX_RETRIES:2}
+    api-key: ${OPENAI_API_KEY:}
+    secrets-note: "OPENAI_API_KEY 只能从后端进程环境读取，禁止写入配置文件、日志、请求预览或前端页面。"
   workbench:
     allowed-origins:
       - "http://localhost:5173"
       - "http://127.0.0.1:5173"
-    model-mode: "offline-fake"
+      - "http://localhost:5174"
+      - "http://127.0.0.1:5174"
+    model-mode: ${MODEL_MODE:openai-gpt55}
     secrets-note: "API Key、Cookie、Authorization Header 和 Session Token 只允许通过本地私有环境提供，不得写入配置文件。"

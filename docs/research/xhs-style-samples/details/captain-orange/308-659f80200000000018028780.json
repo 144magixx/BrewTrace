@@ -1,0 +1,38 @@
+{
+  "note": {
+    "noteId": "659f80200000000018028780",
+    "title": "Kaffeelix 卡门水洗",
+    "desc": "玫瑰，橙花香气，中等甜感，性价比不错的\n#手冲咖啡[话题]# #瑰夏[话题]# #咖啡豆[话题]# #惬意时光[话题]# #休闲时光[话题]#",
+    "body": "玫瑰，橙花香气，中等甜感，性价比不错的",
+    "tags": [
+      "#手冲咖啡",
+      "#瑰夏",
+      "#咖啡豆",
+      "#惬意时光",
+      "#休闲时光"
+    ],
+    "type": "normal",
+    "time": 1704951840000,
+    "ipLocation": "",
+    "user": {
+      "userId": "614f3653000000001f03e24b",
+      "nickname": "柑橘科科长"
+    },
+    "interactInfo": {
+      "liked": false,
+      "likedCount": "8",
+      "collectedCount": "0",
+      "collected": false,
+      "commentCount": "0",
+      "sharedCount": ""
+    },
+    "imageList": [
+      {
+        "width": 2560,
+        "height": 1920,
+        "urlDefault": "http://sns-webpic-qc.xhscdn.com/202607010017/3737e73285e6be8f0923ba056fd3adde/1040g00830tpek9ld4m005oaf6p9nvoibolh554g!nd_dft_wgth_webp_3"
+      }
+    ]
+  },
+  "comments": []
+}

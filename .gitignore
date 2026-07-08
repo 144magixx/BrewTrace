@@ -18,6 +18,7 @@ node_modules/
 .env.*
 !.env.example
 backend/.env
+backend/.env
 backend/.env.*
 !backend/.env.example
 frontend/.env

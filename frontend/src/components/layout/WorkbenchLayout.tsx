@@ -22,8 +22,10 @@ export function WorkbenchLayout(slots: WorkbenchLayoutSlots) {
         </nav>
       </aside>
       <main className="main-workspace">{slots.main}</main>
-      <aside className="record-panel" aria-label="当前记录摘要">{slots.recordPanel}</aside>
-      <aside className="agent-trace" aria-label="Agent 状态">{slots.agentTrace}</aside>
+      <aside className="right-inspector" aria-label="当前记录与 Agent 状态">
+        <div className="record-panel" aria-label="当前记录摘要">{slots.recordPanel}</div>
+        <div className="agent-trace" aria-label="Agent 状态">{slots.agentTrace}</div>
+      </aside>
     </div>
   );
 }

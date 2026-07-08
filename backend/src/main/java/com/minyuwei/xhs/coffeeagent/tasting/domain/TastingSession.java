@@ -35,14 +35,18 @@ public class TastingSession extends AggregateRoot {
         return new TastingSession(UUID.randomUUID().toString(), userId, orchestrationMode);
     }
 
-    public void addUserMessage(String content) {
-        messages.add(ConversationMessage.user(id, content));
+    public ConversationMessage addUserMessage(String content) {
+        ConversationMessage message = ConversationMessage.user(id, content);
+        messages.add(message);
         updatedAt = Instant.now();
+        return message;
     }
 
-    public void addAssistantMessage(String content) {
-        messages.add(ConversationMessage.assistant(id, content));
+    public ConversationMessage addAssistantMessage(String content) {
+        ConversationMessage message = ConversationMessage.assistant(id, content);
+        messages.add(message);
         updatedAt = Instant.now();
+        return message;
     }
 
     public void addDrafts(List<DraftCopy> generatedDrafts) {

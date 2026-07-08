@@ -1,0 +1,12 @@
+{
+  "success": false,
+  "error": "页面导航失败",
+  "diagnosis": {
+    "root_cause": "xsec_token 验证失败（error_code=300031）→ token 签名验证失败（格式/签名错误）",
+    "cause_category": "token",
+    "detail": "token 前缀=ABgR2Z_rZttkYJTTobNZ… source=pc_feed，error_msg=\"当前笔记暂时无法浏览\"，Sec-Fetch-Site=same-origin",
+    "how_xhs_decides": "webRequest 层实测捕获。XHS 在 CDN/路由层校验 xsec_token 参数存在性（最外层）；通过后进入签名层用 web_session 解密 token 内容；最后核对 {noteId, userId, ipHash, ts, source} 各字段。",
+    "url": "https://www.xiaohongshu.com/explore/65e34963000000000102b3ed?xsec_token=ABgR2Z_rZttkYJTTobNZh8OZ8fPJ6hX_hf2RW8EfXuCiI=&xsec_source=pc_feed",
+    "final_url": null
+  }
+}

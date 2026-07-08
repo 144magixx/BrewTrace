@@ -1,0 +1,229 @@
+{
+  "candidates": [
+    {
+      "desc": "让我来介绍我自己\ndeep talk享受者\n学生（副工级）2008.06-2026.05\n实习生（正工级享副工级待遇）2026.05至今",
+      "nickname": "柑橘科科长",
+      "redId": "Captain_Orange_",
+      "source": "__INITIAL_STATE__.user.userInfo._rawValue",
+      "userId": "614f3653000000001f03e24b"
+    },
+    {
+      "desc": "让我来介绍我自己\ndeep talk享受者\n学生（副工级）2008.06-2026.05\n实习生（正工级享副工级待遇）2026.05至今",
+      "nickname": "柑橘科科长",
+      "redId": "Captain_Orange_",
+      "source": "__INITIAL_STATE__.user.userInfo._value",
+      "userId": "614f3653000000001f03e24b"
+    },
+    {
+      "nickName": "momo",
+      "nickname": "momo",
+      "source": "__INITIAL_STATE__.feed.feeds._rawValue.noteCard.user",
+      "userId": "69a3be1c0000000021011d1b"
+    },
+    {
+      "nickName": "龙岩市融媒体中心",
+      "nickname": "龙岩市融媒体中心",
+      "source": "__INITIAL_STATE__.feed.feeds._rawValue.noteCard.user",
+      "userId": "63ead58700000000270345ae"
+    },
+    {
+      "nickName": "EidosofKitten",
+      "nickname": "EidosofKitten",
+      "source": "__INITIAL_STATE__.feed.feeds._rawValue.noteCard.user",
+      "userId": "589d90cd82ec394d8d81efee"
+    },
+    {
+      "nickName": "龙珠骚年",
+      "nickname": "龙珠骚年",
+      "source": "__INITIAL_STATE__.feed.feeds._rawValue.noteCard.user",
+      "userId": "6015717500000000010041c9"
+    },
+    {
+      "nickName": "智慧树煦川",
+      "nickname": "智慧树煦川",
+      "source": "__INITIAL_STATE__.feed.feeds._rawValue.noteCard.user",
+      "userId": "64b2ab63000000001001eb4d"
+    },
+    {
+      "nickName": "AI车管所",
+      "nickname": "AI车管所",
+      "source": "__INITIAL_STATE__.feed.feeds._rawValue.noteCard.user",
+      "userId": "649820710000000010036d32"
+    },
+    {
+      "nickName": "天天",
+      "nickname": "天天",
+      "source": "__INITIAL_STATE__.feed.feeds._rawValue.noteCard.user",
+      "userId": "67469a90000000001c019d74"
+    },
+    {
+      "nickName": "好多肉",
+      "nickname": "好多肉",
+      "source": "__INITIAL_STATE__.feed.feeds._rawValue.noteCard.user",
+      "userId": "566d1140e00dd8632a70d13b"
+    },
+    {
+      "nickName": "Scyaooo",
+      "nickname": "Scyaooo",
+      "source": "__INITIAL_STATE__.feed.feeds._rawValue.noteCard.user",
+      "userId": "5a7726d24eacab49ebfe2396"
+    },
+    {
+      "nickName": "饿了喵",
+      "nickname": "饿了喵",
+      "source": "__INITIAL_STATE__.feed.feeds._rawValue.noteCard.user",
+      "userId": "657681490000000019011d80"
+    },
+    {
+      "nickName": "指间浮生",
+      "nickname": "指间浮生",
+      "source": "__INITIAL_STATE__.feed.feeds._rawValue.noteCard.user",
+      "userId": "6033cc63000000000100903b"
+    },
+    {
+      "nickName": "Jerome",
+      "nickname": "Jerome",
+      "source": "__INITIAL_STATE__.feed.feeds._rawValue.noteCard.user",
+      "userId": "64f80fe10000000006032caa"
+    },
+    {
+      "nickName": "胶片捕梦",
+      "nickname": "胶片捕梦",
+      "source": "__INITIAL_STATE__.feed.feeds._rawValue.noteCard.user",
+      "userId": "622d57f40000000021025484"
+    },
+    {
+      "nickName": "菲菲飞雪",
+      "nickname": "菲菲飞雪",
+      "source": "__INITIAL_STATE__.feed.feeds._rawValue.noteCard.user",
+      "userId": "6527bc9a000000002a0299d6"
+    },
+    {
+      "nickName": "一个月",
+      "nickname": "一个月",
+      "source": "__INITIAL_STATE__.feed.feeds._rawValue.noteCard.user",
+      "userId": "68156938000000000e012e60"
+    },
+    {
+      "nickName": "kama",
+      "nickname": "kama",
+      "source": "__INITIAL_STATE__.feed.feeds._rawValue.noteCard.user",
+      "userId": "5e66e7f0000000000100614f"
+    },
+    {
+      "nickName": "小愉素材",
+      "nickname": "小愉素材",
+      "source": "__INITIAL_STATE__.feed.feeds._rawValue.noteCard.user",
+      "userId": "6a1bb0070000000002001002"
+    },
+    {
+      "nickName": "无心",
+      "nickname": "无心",
+      "source": "__INITIAL_STATE__.feed.feeds._rawValue.noteCard.user",
+      "userId": "6841caf0000000001b018f9f"
+    },
+    {
+      "nickName": "CS-Yma猫猫",
+      "nickname": "CS-Yma猫猫",
+      "source": "__INITIAL_STATE__.feed.feeds._rawValue.noteCard.user",
+      "userId": "67dae288000000000e010ed9"
+    },
+    {
+      "nickName": "柒博士（Hobby Version）",
+      "nickname": "柒博士（Hobby Version）",
+      "source": "__INITIAL_STATE__.feed.feeds._rawValue.noteCard.user",
+      "userId": "5819c415a9b2ed7893afe624"
+    },
+    {
+      "nickName": "🥕",
+      "nickname": "🥕",
+      "source": "__INITIAL_STATE__.feed.feeds._rawValue.noteCard.user",
+      "userId": "56ded465aed7580b43761896"
+    },
+    {
+      "nickName": "集趣林舍",
+      "nickname": "集趣林舍",
+      "source": "__INITIAL_STATE__.feed.feeds._rawValue.noteCard.user",
+      "userId": "6245a2330000000021020d1d"
+    },
+    {
+      "nickName": "勇哥 AI 实验室",
+      "nickname": "勇哥 AI 实验室",
+      "source": "__INITIAL_STATE__.feed.feeds._rawValue.noteCard.user",
+      "userId": "645878ac000000002a008bff"
+    },
+    {
+      "nickName": "Ming丶nzk",
+      "nickname": "Ming丶nzk",
+      "source": "__INITIAL_STATE__.feed.feeds._rawValue.noteCard.user",
+      "userId": "5ed789de0000000001001ee7"
+    },
+    {
+      "nickName": "Yeew4dM-",
+      "nickname": "Yeew4dM-",
+      "source": "__INITIAL_STATE__.feed.feeds._rawValue.noteCard.user",
+      "userId": "5c7df5ed0000000011034a68"
+    },
+    {
+      "nickName": "无忧贵阳",
+      "nickname": "无忧贵阳",
+      "source": "__INITIAL_STATE__.feed.feeds._rawValue.noteCard.user",
+      "userId": "63e89d7c0000000028018434"
+    },
+    {
+      "nickName": "TT Agency",
+      "nickname": "TT Agency",
+      "source": "__INITIAL_STATE__.feed.feeds._rawValue.noteCard.user",
+      "userId": "65432ecc0000000004008092"
+    },
+    {
+      "nickName": "zzzam",
+      "nickname": "zzzam",
+      "source": "__INITIAL_STATE__.feed.feeds._rawValue.noteCard.user",
+      "userId": "6771737a000000001801745c"
+    },
+    {
+      "nickName": "OG漫谈足球社",
+      "nickname": "OG漫谈足球社",
+      "source": "__INITIAL_STATE__.feed.feeds._rawValue.noteCard.user",
+      "userId": "65014cdd0000000002010a31"
+    },
+    {
+      "nickName": "凉笙",
+      "nickname": "凉笙",
+      "source": "__INITIAL_STATE__.feed.feeds._rawValue.noteCard.user",
+      "userId": "6251cfeb0000000002018608"
+    },
+    {
+      "nickName": "sy_",
+      "nickname": "sy_",
+      "source": "__INITIAL_STATE__.feed.feeds._rawValue.noteCard.user",
+      "userId": "5ef9239c000000000100366f"
+    },
+    {
+      "nickName": "OSakiii-",
+      "nickname": "OSakiii-",
+      "source": "__INITIAL_STATE__.feed.feeds._rawValue.noteCard.user",
+      "userId": "6682e4630000000007007e17"
+    },
+    {
+      "nickName": "unfair",
+      "nickname": "unfair",
+      "source": "__INITIAL_STATE__.feed.feeds._rawValue.noteCard.user",
+      "userId": "5c0786df000000000701e83e"
+    },
+    {
+      "nickName": "Ai全知道",
+      "nickname": "Ai全知道",
+      "source": "__INITIAL_STATE__.feed.feeds._rawValue.noteCard.user",
+      "userId": "6212f9de0000000010004678"
+    },
+    {
+      "nickName": "空城末",
+      "nickname": "空城末",
+      "source": "__INITIAL_STATE__.feed.feeds._rawValue.noteCard.user",
+      "userId": "643e93f500000000100279a1"
+    }
+  ],
+  "href": "https://www.xiaohongshu.com/explore"
+}

@@ -20,4 +20,9 @@ public class TastingSessionRepositoryAdapter implements TastingSessionRepository
     public Optional<TastingSession> findById(String sessionId) {
         return Optional.ofNullable(sessions.get(sessionId));
     }
+
+    @Override
+    public void deleteById(String sessionId) {
+        sessions.remove(sessionId);
+    }
 }

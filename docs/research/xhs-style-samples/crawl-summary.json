@@ -1,0 +1,193 @@
+{
+  "generatedAt": "2026-07-01T00:20:14+08:00",
+  "accounts": {
+    "captain": {
+      "basicInfo": {
+        "nickname": "柑橘科科长",
+        "redId": "Captain_Orange_",
+        "desc": "让我来介绍我自己\ndeep talk享受者\n学生（副工级）2008.06-2026.05\n实习生（正工级享副工级待遇）2026.05至今",
+        "gender": 1,
+        "ipLocation": "北京"
+      },
+      "profileFeedCount": 338,
+      "uniqueFeedCountById": 338,
+      "detailSuccess": 338,
+      "detailStats": {
+        "count": 338,
+        "dateRange": {
+          "start": "2023-09-02",
+          "end": "2026-06-28"
+        },
+        "yearCounts": {
+          "2023": 28,
+          "2024": 165,
+          "2025": 116,
+          "2026": 29
+        },
+        "bodyLength": {
+          "avg": 101.9,
+          "median": 93,
+          "shortLe40": 107,
+          "longGe500": 0
+        }
+      },
+      "titleStats": {
+        "count": 338,
+        "non_empty_titles": 338,
+        "avg_title_len": 18.6,
+        "dash_titles": 57,
+        "question_titles": 1
+      }
+    },
+    "smoothie": {
+      "basicInfo": {
+        "nickname": "斯慕吉Smoothie",
+        "redId": "1169409996",
+        "desc": "花里胡哨手冲咖啡爱好者；\n坚定选择而非被选择；\n爱生活的intj",
+        "gender": 0,
+        "ipLocation": "湖南"
+      },
+      "profileFeedCount": 242,
+      "uniqueFeedCountById": 241,
+      "detailSuccess": 241,
+      "detailStats": {
+        "count": 241,
+        "dateRange": {
+          "start": "2024-06-16",
+          "end": "2026-06-30"
+        },
+        "yearCounts": {
+          "2024": 14,
+          "2025": 149,
+          "2026": 78
+        },
+        "bodyLength": {
+          "avg": 445.5,
+          "median": 439,
+          "shortLe40": 1,
+          "longGe500": 62
+        }
+      },
+      "titleStats": {
+        "count": 242,
+        "non_empty_titles": 242,
+        "avg_title_len": 23.7,
+        "dash_titles": 184,
+        "question_titles": 0
+      }
+    },
+    "apple": {
+      "basicInfo": {
+        "nickname": "Apple",
+        "redId": "119809953",
+        "desc": "🍎2026🍜拉面猎人\n一切从心，道心通透。",
+        "gender": 1,
+        "ipLocation": "广东"
+      },
+      "profileFeedCount": 62,
+      "uniqueFeedCountById": 62,
+      "detailSuccess": 62,
+      "detailStats": {
+        "count": 62,
+        "dateRange": {
+          "start": "2026-04-09",
+          "end": "2026-06-30"
+        },
+        "yearCounts": {
+          "2026": 62
+        },
+        "bodyLength": {
+          "avg": 197.4,
+          "median": 166,
+          "shortLe40": 12,
+          "longGe500": 4
+        }
+      },
+      "titleStats": {
+        "count": 62,
+        "non_empty_titles": 62,
+        "avg_title_len": 22.7,
+        "dash_titles": 1,
+        "question_titles": 0
+      }
+    },
+    "beiguo": {
+      "basicInfo": {
+        "nickname": "北国清韵",
+        "redId": "5543006937",
+        "desc": "我可以笑着和你聊天，但你的咖啡差我照样骂你",
+        "gender": 2,
+        "ipLocation": "上海"
+      },
+      "profileFeedCount": 18,
+      "uniqueFeedCountById": 18,
+      "detailSuccess": 18,
+      "detailStats": {
+        "count": 18,
+        "dateRange": {
+          "start": "2024-03-11",
+          "end": "2026-04-03"
+        },
+        "yearCounts": {
+          "2024": 11,
+          "2025": 4,
+          "2026": 3
+        },
+        "bodyLength": {
+          "avg": 108.6,
+          "median": 103,
+          "shortLe40": 4,
+          "longGe500": 0
+        }
+      },
+      "titleStats": {
+        "count": 18,
+        "non_empty_titles": 18,
+        "avg_title_len": 15.2,
+        "dash_titles": 0,
+        "question_titles": 5
+      }
+    },
+    "morpheus": {
+      "basicInfo": {
+        "nickname": "做作的Morpheus",
+        "redId": "182627410",
+        "desc": "cs博士在读 手冲爱好者 豆子可出分装\n✍️手绘菜单｜☕️咖啡日记｜🫘咖啡豆分享",
+        "gender": 0,
+        "ipLocation": "北京"
+      },
+      "profileFeedCount": 61,
+      "uniqueFeedCountById": 61,
+      "detailSuccess": 61,
+      "detailStats": {
+        "count": 61,
+        "dateRange": {
+          "start": "2023-03-10",
+          "end": "2026-06-30"
+        },
+        "yearCounts": {
+          "2023": 1,
+          "2026": 60
+        },
+        "bodyLength": {
+          "avg": 791.0,
+          "median": 812,
+          "shortLe40": 0,
+          "longGe500": 59
+        }
+      },
+      "titleStats": {
+        "count": 61,
+        "non_empty_titles": 61,
+        "avg_title_len": 25.9,
+        "dash_titles": 10,
+        "question_titles": 0
+      }
+    }
+  },
+  "detailFetch": {
+    "totalSuccess": 720,
+    "note": "详情 JSON 已按当前英文目录保存；所有主页列表中可抓取详情均已补齐。.failed-* 文件是过程中失败的临时返回，对应正文后来均已成功补齐。",
+    "failedAttemptSidecars": 11
+  }
+}

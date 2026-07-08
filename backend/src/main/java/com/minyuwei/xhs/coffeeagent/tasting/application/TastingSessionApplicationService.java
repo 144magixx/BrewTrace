@@ -1,6 +1,5 @@
 package com.minyuwei.xhs.coffeeagent.tasting.application;
 
-import com.minyuwei.xhs.coffeeagent.agent.application.AgentOrchestrator;
 import com.minyuwei.xhs.coffeeagent.agent.application.OrchestrationMode;
 import com.minyuwei.xhs.coffeeagent.copywriting.domain.DraftCopy;
 import com.minyuwei.xhs.coffeeagent.shared.error.ApiError;
@@ -16,12 +15,10 @@ import java.util.List;
 public class TastingSessionApplicationService {
     private final TastingSessionRepository repository;
     private final CurrentUserProvider currentUserProvider;
-    private final AgentOrchestrator orchestrator;
 
-    public TastingSessionApplicationService(TastingSessionRepository repository, CurrentUserProvider currentUserProvider, AgentOrchestrator orchestrator) {
+    public TastingSessionApplicationService(TastingSessionRepository repository, CurrentUserProvider currentUserProvider) {
         this.repository = repository;
         this.currentUserProvider = currentUserProvider;
-        this.orchestrator = orchestrator;
     }
 
     public TastingSession createSession(OrchestrationMode mode) {
@@ -31,26 +28,37 @@ public class TastingSessionApplicationService {
     public MessageResult submitMessage(String sessionId, String content) {
         TastingSession session = find(sessionId);
         session.addUserMessage(content);
-        AgentOrchestrator.TurnResult turn = orchestrator.handleUserTurn(session);
-        session.addAssistantMessage(turn.assistantMessage());
-        if (!turn.drafts().isEmpty()) {
-            session.addDrafts(turn.drafts());
-        }
         repository.save(session);
-        return new MessageResult(turn.assistantMessage(), turn.pendingQuestions(), turn.drafts(), "trace-" + session.id());
+        return new MessageResult("已记录用户输入，将由 GPT-5.5 工作台链路生成草稿。", List.of(), List.of(), "trace-" + session.id());
+    }
+
+    public ConversationMessage recordUserMessage(String sessionId, String content) {
+        TastingSession session = find(sessionId);
+        ConversationMessage message = session.addUserMessage(content);
+        repository.save(session);
+        return message;
+    }
+
+    public ConversationMessage recordAssistantMessage(String sessionId, String content) {
+        TastingSession session = find(sessionId);
+        ConversationMessage message = session.addAssistantMessage(content);
+        repository.save(session);
+        return message;
     }
 
     public List<DraftCopy> generateDrafts(String sessionId) {
-        TastingSession session = find(sessionId);
-        List<DraftCopy> drafts = orchestrator.generateDrafts(session);
-        session.addDrafts(drafts);
-        repository.save(session);
-        return drafts;
+        find(sessionId);
+        return List.of();
     }
 
     public WorkspaceSnapshot workspace(String sessionId) {
         TastingSession session = find(sessionId);
         return new WorkspaceSnapshot(session.id(), "今天喝了什么咖啡？", session.orchestrationMode(), session.messages(), session.drafts(), session.confirmedFacts());
+    }
+
+    public void clearSession(String sessionId) {
+        find(sessionId);
+        repository.deleteById(sessionId);
     }
 
     private TastingSession find(String sessionId) {

@@ -6,20 +6,29 @@ export type LocalResumeState = {
   lastSessionId: string | null;
   draftInput: string;
   lastKnownStatus: WorkbenchStatus | "UNKNOWN";
+  clearedSessionIds: string[];
   savedAt: string;
 };
 
 export function readLocalResume(): LocalResumeState {
-  const fallback: LocalResumeState = { lastSessionId: null, draftInput: "", lastKnownStatus: "UNKNOWN", savedAt: new Date(0).toISOString() };
+  const fallback: LocalResumeState = { lastSessionId: null, draftInput: "", lastKnownStatus: "UNKNOWN", clearedSessionIds: [], savedAt: new Date(0).toISOString() };
   if (typeof localStorage === "undefined") {
     return fallback;
   }
-  const raw = localStorage.getItem(STORAGE_KEY);
+  let raw: string | null;
+  try {
+    raw = localStorage.getItem(STORAGE_KEY);
+  } catch {
+    return fallback;
+  }
   if (!raw) {
     return fallback;
   }
   try {
-    return { ...fallback, ...JSON.parse(raw) } as LocalResumeState;
+    const parsed = { ...fallback, ...JSON.parse(raw) } as LocalResumeState;
+    return parsed.lastSessionId && parsed.clearedSessionIds.includes(parsed.lastSessionId)
+      ? { ...parsed, lastSessionId: null, draftInput: "" }
+      : parsed;
   } catch {
     return fallback;
   }
@@ -31,10 +40,29 @@ export function saveLocalResume(state: Partial<LocalResumeState>): LocalResumeSt
     ...state,
     savedAt: new Date().toISOString()
   };
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+  } catch {
+    return next;
+  }
   return next;
 }
 
 export function clearLocalResume(): void {
-  localStorage.removeItem(STORAGE_KEY);
+  try {
+    localStorage.removeItem(STORAGE_KEY);
+  } catch {
+    // Local resume is best-effort and must not block the workbench.
+  }
+}
+
+export function clearSessionResume(sessionId: string): LocalResumeState {
+  const previous = readLocalResume();
+  const clearedSessionIds = Array.from(new Set([...previous.clearedSessionIds, sessionId]));
+  return saveLocalResume({
+    lastSessionId: previous.lastSessionId === sessionId ? null : previous.lastSessionId,
+    draftInput: "",
+    lastKnownStatus: "EMPTY",
+    clearedSessionIds
+  });
 }

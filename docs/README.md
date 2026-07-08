@@ -17,6 +17,7 @@
 - [Agent 技术架构设计 v0.1](./architecture/agent-architecture-v0.1.md)
 - [长短期记忆设计 v0.1](./architecture/memory-design-v0.1.md)
 - [技术选型决策记录 v0.1](./architecture/technology-decisions-v0.1.md)
+- [Spring AI Agent 能力演进建议 v0.1](./architecture/spring-ai-agent-evolution-plan-v0.1.md)
 - [后端设计 v0.1](./architecture/backend-design-v0.1.md)
 - [前端工作台设计 v0.1](./architecture/frontend-design-v0.1.md)
 - [小红书发布能力调研 v0.1](./research/xiaohongshu-publish-research-v0.1.md)

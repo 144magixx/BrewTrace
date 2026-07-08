@@ -41,11 +41,15 @@ Use descriptive names:
 
 Keep changes focused and avoid broad refactors unless they directly support the current task.
 
+Do not hardcode model prompts in Java, TypeScript, tests, or documentation examples that look like runtime code. Prompt text for Agent behavior, field definitions, fact-boundary rules, tool instructions, and output contracts must live under `backend/src/main/resources/prompts/` with a scenario and versioned filename, and runtime code must load the template through a prompt loader. Only stable resource paths, placeholder names, and enum values may remain in code.
+
 ## Testing Guidelines
 
 Add tests with new behavior. Place Java tests under `src/test/java/` and name them after the unit under test, for example `MemoryRetrieverTest`.
 
 For Agent behavior, test structured inputs, tool outputs, memory retrieval, and prompt constraints. If external APIs block full testing, document the gap and provide a local verification path.
+
+When adding or changing a prompt template, add tests that prove the template is loaded, dynamic placeholders are replaced, and no runtime request depends on duplicated hardcoded prompt text.
 
 ## Commit & Pull Request Guidelines
 
@@ -68,5 +72,5 @@ All generated project documentation must use Simplified Chinese by default, exce
 <!-- SPECKIT START -->
 For additional context about technologies to be used, project structure,
 shell commands, and other important information, read the current plan
-at specs/002-real-web-app/plan.md
+at specs/005-model-message-routing/plan.md
 <!-- SPECKIT END -->

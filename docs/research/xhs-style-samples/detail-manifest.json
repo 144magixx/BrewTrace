@@ -1,0 +1,793 @@
+{
+  "captain-orange": {
+    "source_profile": "/Users/minyuwei/Documents/xhs/docs/research/xhs-style-samples/raw/profile-captain-orange-scroll.json",
+    "available_feeds": 338,
+    "target_details": 42,
+    "selected_feeds": [
+      {
+        "id": "6a40cb68000000002103ce4c",
+        "title": "䇚满 Alo Safo处理站 零发酵水洗",
+        "index": 0,
+        "xsecToken": "AB0rYML0rJqRNMrLplI9su1jVnJHgIXVheHcOtXq0OiAA="
+      },
+      {
+        "id": "6a245d1a000000000702754a",
+        "title": "Sey Edgardo Cruz Meza 瑰夏 水洗",
+        "index": 8,
+        "xsecToken": "ABQx18pBFVHnFqixQuYtcD3KYIyQ-xDgw-Zxspw5F_ZZE="
+      },
+      {
+        "id": "69fb35a20000000023016bc9",
+        "title": "大井咖啡店 ",
+        "index": 16,
+        "xsecToken": "ABHDPbMvV_RjcRrWJTEpydlp5JS9U4_WqQMnYtABeBDks="
+      },
+      {
+        "id": "699e904f000000001a035260",
+        "title": "江从明巴适蒸笼 ",
+        "index": 25,
+        "xsecToken": "AB378AGKRLmhqawIH_zQjZH3VZMLRAwsSltapIKpanisM="
+      },
+      {
+        "id": "693c258f000000001e025d35",
+        "title": "当顶级迈柔踏在初雪上❄️",
+        "index": 33,
+        "xsecToken": "ABvI_OlXwqmKL8HtjKhyzYnAR3QQ86ZeYwOtMBB-ZoMwY="
+      },
+      {
+        "id": "690f3eee000000000503a715",
+        "title": "酒后跑步有感🦩 ",
+        "index": 41,
+        "xsecToken": "AB8QQ9KLoICdTx5AAue5-OZ0vClWHDLaNJUqtVkjfQMUA="
+      },
+      {
+        "id": "68f76cff00000000040072c8",
+        "title": "Joe Coffee 索菲亚水洗 传承FS10210425",
+        "index": 49,
+        "xsecToken": "ABsZTvaY0iRBpBgYuml2gYZHEkYnj64cTC_VKRoh0GKSo="
+      },
+      {
+        "id": "68e35ace000000000503816b",
+        "title": "Azul ",
+        "index": 58,
+        "xsecToken": "ABYW68mOsUdOlikgEJF0mTdjYM6W3v8F8c_NYVJIHlp2A="
+      },
+      {
+        "id": "68d9447f0000000011017ce9",
+        "title": "MEOW COFFEE 翡翠黑标 Nido 9FB",
+        "index": 66,
+        "xsecToken": "ABj0HjXzROy-ckAQSPf7Rig8T_tqeFM2AYjEAV-I72dNk="
+      },
+      {
+        "id": "68ced560000000000e00d383",
+        "title": "MEOW COFFEE 努果厌氧日晒 662-N-NF",
+        "index": 74,
+        "xsecToken": "ABDFTAzrgtG1tpOEbHropl_yL31rvkUiXUez9m1L_WTzU="
+      },
+      {
+        "id": "68ca6a43000000001003e094",
+        "title": "饮食有度 ",
+        "index": 82,
+        "xsecToken": "ABDGZDrrG5iLfphWOO_bopesJhaNsBghA_PY4dBveqEYg="
+      },
+      {
+        "id": "68b87bca000000001c00f558",
+        "title": "YELEI 阿尔铁里 Coquito 冷发酵日晒 040325",
+        "index": 90,
+        "xsecToken": "AB0bd-KCCWNNTdSTcZQTNnwzh5STdJJ4_x5jkCO1Lf6eU="
+      },
+      {
+        "id": "688dd5a30000000023021422",
+        "title": "BOP GN-20 Janson Los Alpes",
+        "index": 99,
+        "xsecToken": "AB6DAK20JHaf5CSqSg0lySaaasdra62oRcEoM6B51M1A4="
+      },
+      {
+        "id": "6888edc30000000023027d00",
+        "title": "oma 命运庄园 冷发酵日晒 lot 5",
+        "index": 107,
+        "xsecToken": "ABqUmgMiVeo58T8cXHegwXCZ0kizVowXCZ7qfyo-f2QBc="
+      },
+      {
+        "id": "68823a470000000024009f68",
+        "title": "鹅卵石 TNT Flower Cloud",
+        "index": 115,
+        "xsecToken": "ABgbDdi_imQEsySjRVZKa-ZddB234_hDL0EqvsJqRGgsw="
+      },
+      {
+        "id": "687f770c000000001d00f50a",
+        "title": "Joe Coffee 翡翠黑标 Gigante 8FB",
+        "index": 123,
+        "xsecToken": "AB5iaVlBwchn7M3EIU8P5BBCv-HqwlI38FOuraWzYXAUc="
+      },
+      {
+        "id": "681f65a4000000002100758a",
+        "title": "流水席 No.3 ",
+        "index": 132,
+        "xsecToken": "AB_FtBrsxXLwze9WdLOHSUo_XezQTq3DSC9zoByfxKqxs="
+      },
+      {
+        "id": "6815efa3000000002100f6cd",
+        "title": "AROMA.ESP ",
+        "index": 140,
+        "xsecToken": "ABUblVhrL2o5YIHEGmcizMjZ4PyA9fwuS3UBfVxMxvwes="
+      },
+      {
+        "id": "67248ff9000000001a01eb94",
+        "title": "bopomofo 栀子酸奶冰淇淋",
+        "index": 148,
+        "xsecToken": "ABkSyUA9b1bqfpgp3I_kTpzo-2eEfPZdXau93YLZrF6Ic="
+      },
+      {
+        "id": "670d03e400000000240169dc",
+        "title": "oma Iris Lucent 厌氧日晒DRD",
+        "index": 156,
+        "xsecToken": "ABBU0k17OwCd_E8bsib5LBxmYNSBfak-hravQjZPppY80="
+      },
+      {
+        "id": "66dfd2700000000012012d19",
+        "title": "六月花园 El Burro lot 17 2501-170224",
+        "index": 164,
+        "xsecToken": "ABwGcVm0MFXhcRkPUAnaJviqYtF9SNhksgsatsGoOxLcw="
+      },
+      {
+        "id": "66d49862000000001d018a60",
+        "title": "晴开咖啡 小庄园甄选 甜蜜水洗",
+        "index": 173,
+        "xsecToken": "AB_AZ7xkBE4UOUzIoNEk5FKCndohWkZlWdgtcueO6blrc="
+      },
+      {
+        "id": "66c4502b000000001d038c99",
+        "title": "Aries Coffee 圣妮佐日晒",
+        "index": 181,
+        "xsecToken": "AB85s6b3ztKQiaKj3XRvwT1noHmZTMAMtaJW-hKhc_ovw="
+      },
+      {
+        "id": "66b89ef9000000001e018fbf",
+        "title": "山羊无限 Totumas Rosas Azules",
+        "index": 189,
+        "xsecToken": "ABBamLcMOr_PEfWhw8seuPAJj8imI8A6rXXRd_gGjuQjQ="
+      },
+      {
+        "id": "66b078df000000001e01ec39",
+        "title": "oma 圣妮佐 GWS008",
+        "index": 197,
+        "xsecToken": "ABygQgca3kz3KAfY7ZvRfoJHqcYKjguH0K0ZJwlbyc7uw="
+      },
+      {
+        "id": "669bd6630000000025006e50",
+        "title": "caldera 努果庄园 Lot 500-N-WS",
+        "index": 205,
+        "xsecToken": "AB2brkrXb3LReuDtG2yMibVYxIUYEoKGvFWtpI-OqXsU8="
+      },
+      {
+        "id": "6693ef100000000025004583",
+        "title": "Three 斑比托水洗",
+        "index": 214,
+        "xsecToken": "AB5TZlocgIxYituFrra8QNR_4efOOuTGmkLt-n6EHO0mY="
+      },
+      {
+        "id": "6686c92b000000001c0250f6",
+        "title": "substance 索菲亚日晒 lot 07",
+        "index": 222,
+        "xsecToken": "ABvlEbgrqtjZ9hQwjbG8trwIizbCI7QIsygjrlUVITy48="
+      },
+      {
+        "id": "666b21a1000000000e032ab7",
+        "title": "Nam✖️合 詹森竞赛批次X-III",
+        "index": 230,
+        "xsecToken": "AB7sYdiln82oHMz-1L23y2Ices5iQz3-VdknkPBIf8Q-U="
+      },
+      {
+        "id": "66541bd40000000016010c7b",
+        "title": "19CRL 努果水洗 lot523",
+        "index": 238,
+        "xsecToken": "ABulqUYUFWIx5jhQ0QdzbzGQvL-YNIEfQNEbVyDgSTk7g="
+      },
+      {
+        "id": "6633be1d000000001e031cc7",
+        "title": "自在心 阿尔铁里蜜处理",
+        "index": 247,
+        "xsecToken": "ABi8NZPCdIlIsgDHFKf0QoaQsSRzS16q7BezJoMI1ZZPQ="
+      },
+      {
+        "id": "6617ed3b000000001a00d95e",
+        "title": "Sheep&Raven 翡翠庄园 Trapiche 7n",
+        "index": 255,
+        "xsecToken": "AB8gGRbNK7YQqECEYUQAG9OJVaeO6WV384PMcq_Q9bzBQ="
+      },
+      {
+        "id": "66094081000000001a00c811",
+        "title": "晴开咖啡 冲浪板mmgn9",
+        "index": 263,
+        "xsecToken": "AB_Lat6hmHBM6P_L0Dicl_ZSFIi5oI0PWP1zIiaEfVIis="
+      },
+      {
+        "id": "65f87fbc0000000012023b11",
+        "title": "晴开咖啡 Alo Sky Project",
+        "index": 271,
+        "xsecToken": "AB0mFR1SXFVzNr5h3RmPhZBTrHj_0AeRxFqgeHMTm-Ad0="
+      },
+      {
+        "id": "65e8418a000000000400075d",
+        "title": "山羊无限 黛博拉晚霞",
+        "index": 279,
+        "xsecToken": "ABb05W_uH07heTs0W9xz4Oaa0Zmt2EXTdtQgRZMJ2T57I="
+      },
+      {
+        "id": "65d854420000000007025f54",
+        "title": "oma 托托马斯日晒冷发酵",
+        "index": 288,
+        "xsecToken": "ABcUqSGDQe0VvCXS6Nj1x6AVjI_x-2N2JDiG-V2WWXX6o="
+      },
+      {
+        "id": "65b7b319000000002c015756",
+        "title": "问个问题🙋 ",
+        "index": 296,
+        "xsecToken": "ABNXHB02IvwL9RTyNSkE4WjDmBP7s1Ck5WVzpn5MZayKE="
+      },
+      {
+        "id": "65abe59e000000002c013f07",
+        "title": "oma 努果319-n-nf",
+        "index": 304,
+        "xsecToken": "ABkev05sl3Oi1yX59E8Uf8jY4P8RTXXP9LCkzVPoAFLQE="
+      },
+      {
+        "id": "657dc6b4000000003801430d",
+        "title": "唐佩佩庄园 gn12同庄园",
+        "index": 312,
+        "xsecToken": "AB1KrlUK4ZT5aq4uZ6Y2UBU6CS2k-Btx2hB7ElJuqF4X0="
+      },
+      {
+        "id": "6551ad34000000003202751e",
+        "title": "Totumas 水洗瑰夏",
+        "index": 321,
+        "xsecToken": "AByhO1on8SbnApM_r49eOGmqV1e-QIRg3ORT2CezGKoKw="
+      },
+      {
+        "id": "654a4ed7000000001f0364ad",
+        "title": "石墙庄园 日晒 ",
+        "index": 329,
+        "xsecToken": "ABzoM3giL6rjjPyx9_CWhzfI7lFUATSTNmlKLo7QFyG54="
+      },
+      {
+        "id": "64f35b6b000000001e03f14c",
+        "title": "翡翠红标 摩天轮 ",
+        "index": 337,
+        "xsecToken": "AB-KP_fskOHOG4x18gz8wC89XhxjNZCVColch0hQviDZo="
+      }
+    ]
+  },
+  "neutral-1169409996-smoothie": {
+    "source_profile": "/Users/minyuwei/Documents/xhs/docs/research/xhs-style-samples/raw/profile-1169409996-smoothie.json",
+    "available_feeds": 241,
+    "target_details": 22,
+    "selected_feeds": [
+      {
+        "id": "666e8b0c000000000600717f",
+        "title": "完整的搅拌法视频来啦！",
+        "index": 0,
+        "xsecToken": "ABCIo4OP6tc0gXCEjNyYIEUHvp4J2DoyPuBohf770kneA="
+      },
+      {
+        "id": "6a2cfd810000000007026bb4",
+        "title": "黑加仑香草-洪都拉斯圣塔芭芭拉水洗帕卡斯",
+        "index": 11,
+        "xsecToken": "ABYJQNRzjqJieXtrmwoNmj7oimqdReuv6NwRGrj8DC_yE="
+      },
+      {
+        "id": "6a0556ef000000000702f01f",
+        "title": "有马“防火女”-巴拿马索菲亚庄园FS9525水洗",
+        "index": 23,
+        "xsecToken": "ABrGtJ9Pt4TOwsN32ToBtJaK-cwSo7Z_icuKcAqm5OhW4="
+      },
+      {
+        "id": "69e614e8000000001a02e1b5",
+        "title": "秘鲁连击一-KW自在心红岩庄园水洗SL9",
+        "index": 34,
+        "xsecToken": "ABBF7vyyWRPFbjGq1XBGJvve57EZ1ZBE-PixlYQzTjGWk="
+      },
+      {
+        "id": "69c4e4b100000000200387e3",
+        "title": "迟来的索菲亚晚收-KW自在心FS139A25日晒",
+        "index": 46,
+        "xsecToken": "ABJlx-G3wCd3PlUD9wvuqEWha1JFM54zKjuD2I4tyYKJA="
+      },
+      {
+        "id": "69a5786b000000001a03152e",
+        "title": "新产季秘鲁新贵-RightPaw新希望庄园SL9",
+        "index": 57,
+        "xsecToken": "ABmgrLQxcHyBTRmabYvbcsc1O7gRaWn1jVUiYgGvpQq34="
+      },
+      {
+        "id": "6975c299000000002800a61e",
+        "title": "2025巴拿马娜哈莉亚庄园蜜处理-Archers射手",
+        "index": 69,
+        "xsecToken": "AB0JV3_lKOOvNuLFwUjxSJK4C7YPlOuLlbBK3ImFatvDg="
+      },
+      {
+        "id": "6951f5c5000000001e020596",
+        "title": "2025秘鲁赏花庄园Lot140-泉水冷发酵水洗",
+        "index": 81,
+        "xsecToken": "ABiOfDY4x5wSs7VMWgaHinBjCDlrsSJ1cahFnVdD8jW6w="
+      },
+      {
+        "id": "6935284f000000001e024a9a",
+        "title": "2025巴拿马圣妮佐庄园GW179泉水水洗瑰夏",
+        "index": 92,
+        "xsecToken": "ABDFHky7Q_RdlPw0-94_J4S_5_06YmBnrDzxUjcuBy2X0="
+      },
+      {
+        "id": "691477670000000005010d43",
+        "title": "2025托托马斯庄园lot192经典日晒瑰夏-磊汁",
+        "index": 104,
+        "xsecToken": "ABIAXysP-Ju8mVj5KCc0d007RkuL7N14-mS45Nm9c5Cgc="
+      },
+      {
+        "id": "68f487a40000000004015fa8",
+        "title": "2025危地马拉圣菲丽莎庄园竞拍批次日晒",
+        "index": 115,
+        "xsecToken": "AB9nolZHjeDmu0XsaV55lL6LQyqXruvx2f4OPCJomIURE="
+      },
+      {
+        "id": "68bd252e000000001b034f49",
+        "title": "2025秘鲁Palestina水洗SL9-加拿大Subtext",
+        "index": 127,
+        "xsecToken": "ABp6gb7bdke1xmeGCaFGP4u0zsS8bSXtOo7PMa8snOm_I="
+      },
+      {
+        "id": "688f04c70000000022039bc4",
+        "title": "2025巴拿马极光庄园火石水洗瑰夏-Perii",
+        "index": 138,
+        "xsecToken": "ABtOWMfgZWvQKJ0YfFhYm9yMHxA9IYRM4caNc5YXe4DgA="
+      },
+      {
+        "id": "686a1d11000000002400f474",
+        "title": "2025巴拿马Tierra Blanca庄园日晒瑰夏",
+        "index": 150,
+        "xsecToken": "AByY_35UgGgnavDrP-3zRorjbVDn-lwuRv24tBxNmJLXg="
+      },
+      {
+        "id": "684531ab000000002001f4aa",
+        "title": "2025巴拿马黛博拉庄园Interstellar酵母日晒",
+        "index": 161,
+        "xsecToken": "ABtiAg4v9Sw_ZNoqu9HnF_1cDw6ygUXLG9f90-ATT1lNM="
+      },
+      {
+        "id": "6809f5d7000000001d01b921",
+        "title": "SEY秘鲁SL9继续-Marlene Rojas水洗",
+        "index": 172,
+        "xsecToken": "ABkGLkMts_eNcI2AAPBH9zcqe-XmXumT4lTIHcS7gy_nw="
+      },
+      {
+        "id": "67d14691000000002903aece",
+        "title": "对奥水的执着-oma奥博拉赫水洗lot901",
+        "index": 184,
+        "xsecToken": "AB5fQcrq7oR6VLm6L3E5ATJw5Cp8YKLTx0xl45Ww4vgxs="
+      },
+      {
+        "id": "67b18f4e000000002a003cc3",
+        "title": "KW自在心-巴拿马索菲亚庄园晚收lot40水洗",
+        "index": 195,
+        "xsecToken": "AB0itK2sPmq_aKqTWyJ_e8_DuxcykT8EzUB9raOiWaWbg="
+      },
+      {
+        "id": "679a0d820000000029032b08",
+        "title": "大年初一-双福索菲亚晚收合集之十-lot36",
+        "index": 207,
+        "xsecToken": "AB_8v0HM3FZgMLkJLpqpzspWcqFPDYjPS4KCS8Mr2pl3A="
+      },
+      {
+        "id": "678a585700000000180367cc",
+        "title": "Apollon索莱德庄园纯血希爪Syoxidator处理",
+        "index": 218,
+        "xsecToken": "ABsOJ_rtbv8N_PJtbl5-_5cDU20RcE4_AWR7uQuD_gzRM="
+      },
+      {
+        "id": "677299ab000000001300da22",
+        "title": "2024收尾-艾尔丽莎日晒希爪-莓果果汁",
+        "index": 230,
+        "xsecToken": "ABHsB2Qwt2q9Wer9nONyzdajI18z059XxrbxCLGf64w_s="
+      },
+      {
+        "id": "6756d8e20000000007009cc5",
+        "title": "好起来了！oma索菲亚庄园lot24日晒瑰夏",
+        "index": 241,
+        "xsecToken": "ABpYsB7VzI4uN8IBy_DsXSMT0QAxYda27yFTRayPURYAA="
+      }
+    ]
+  },
+  "neutral-119809953-apple": {
+    "source_profile": "/Users/minyuwei/Documents/xhs/docs/research/xhs-style-samples/raw/profile-119809953-apple.json",
+    "available_feeds": 62,
+    "target_details": 22,
+    "selected_feeds": [
+      {
+        "id": "69fb205c000000001a035271",
+        "title": "2026年🍎第一季度☕️封神榜｜修订版",
+        "index": 0,
+        "xsecToken": "ABHDPbMvV_RjcRrWJTEpydluTwqS4WjTUzAo_UXVexgqk="
+      },
+      {
+        "id": "6a41fdea00000000210144cc",
+        "title": "🇨🇳June埃塞俄比亞 瑰夏村 紅標069 蜜处理",
+        "index": 3,
+        "xsecToken": "ABQ796XXLFDNyoHq32Nl8geGOPnWg0fIdMHdObdnnaZEY="
+      },
+      {
+        "id": "6a3f92d80000000008033092",
+        "title": "严格挑豆🫘只取前段⬆️成本💰8毛后就好喝了",
+        "index": 6,
+        "xsecToken": "ABklgmVfNv3WsBIWbAu3M6_h8Dr2rpdEZ2nVh-W0u0o_U="
+      },
+      {
+        "id": "6a3df74d00000000210181ae",
+        "title": "COFFEE COLLECTIVE秘鲁 有机瑰夏水洗处理",
+        "index": 9,
+        "xsecToken": "ABDM5eFASvSr3NCD_-uWEdOA_D_5z3fzwsgG0HbI_tB98="
+      },
+      {
+        "id": "6a3d086e0000000008031278",
+        "title": "每天一面🍜 ",
+        "index": 12,
+        "xsecToken": "ABDM5eFASvSr3NCD_-uWEdOBPeRCLvmf25m8yRvLXbw80="
+      },
+      {
+        "id": "6a3aa0d50000000006031648",
+        "title": "合味道 浓郁鱼介豚骨面🍜85克",
+        "index": 15,
+        "xsecToken": "ABrE3zJQfJYh1D2NWHrU81NL1AB-zZUSAdJtVtm84vS8g="
+      },
+      {
+        "id": "6a38db410000000020038a42",
+        "title": "朝花夕拾Blendin巴拿马Adaura ASD 日晒瑰夏",
+        "index": 17,
+        "xsecToken": "ABx-1NdE3sqhRDnuf_r8TdJpwRtx9aJuvHNgIcX3l69Tk="
+      },
+      {
+        "id": "6a379a09000000002003ae00",
+        "title": "巴拿马🇵🇦阿尔铁里 Ale干发酵 日晒瑰夏",
+        "index": 20,
+        "xsecToken": "ABkjYFSKWsPBHZy2IdDM9dBCZm9sESsMB_9mW2e_hYLZE="
+      },
+      {
+        "id": "6a35636e000000002103d563",
+        "title": "中国胃还是喜欢吃熟食🍲",
+        "index": 23,
+        "xsecToken": "ABADNB-eYsjQv76gkVTGSBEQuPH8K2CQmMMToKouOeq_Q="
+      },
+      {
+        "id": "6a33c6230000000007022044",
+        "title": "Rightpaw秘鲁 烟草坡地庄园 SL09 水洗",
+        "index": 26,
+        "xsecToken": "ABdyajr7JcRSPE7KcUfZzGa_amL3yM0-v6HyOC59yoR0U="
+      },
+      {
+        "id": "6a30dc4c00000000060364d2",
+        "title": "Laners京秋 肯尼亚恩布 Ngarotua 水洗SL28",
+        "index": 29,
+        "xsecToken": "ABpJT0oyGfhFqQu5LAfv2t66eeEIy7nO2ehu87DZcYPJE="
+      },
+      {
+        "id": "6a2e2826000000002103dd39",
+        "title": "LANERS 四月 肯尼亚日晒SL28 Gathaithi浸泡",
+        "index": 32,
+        "xsecToken": "ABDAlidGL2yPY3ezcNKX8aV-flO98u4nS7vY-7c69NTEw="
+      },
+      {
+        "id": "6a2bc49300000000210168ce",
+        "title": "LANERS 彼岸朱眼 2600的旱贝拉原生种 日晒",
+        "index": 35,
+        "xsecToken": "ABPDt5Df2hTMGZhKMLoSl6v1ylI1e1APzssfxvv85XUm8="
+      },
+      {
+        "id": "6a2a37810000000007026c15",
+        "title": "朝花夕拾Panama Altieri Ale Geisha Washed",
+        "index": 38,
+        "xsecToken": "ABLn0a7PVZVw-6_AbJE-gNhyKNCJdeYMbFzovfIj7AU3A="
+      },
+      {
+        "id": "6a27f1d20000000008031676",
+        "title": "农夫山猫和愤怒的小鸟",
+        "index": 41,
+        "xsecToken": "AB_8GRuoqy24BDnvtnsIzCdi6fpqc862gab4YUTYSSKnk="
+      },
+      {
+        "id": "6a26c44c00000000060312cc",
+        "title": "朝花夕拾｜哥伦比亚 奥博拉赫水洗瑰夏2300m",
+        "index": 44,
+        "xsecToken": "AB0oIPMm5dtuHpA9oSrH3H3cSOs_TDCIFPE64wXEAZWsg="
+      },
+      {
+        "id": "6a26c16b000000002101b12e",
+        "title": "🇭🇰oma云南 云顶筑巢庄园Syrina 暗房水洗",
+        "index": 46,
+        "xsecToken": "AB0oIPMm5dtuHpA9oSrH3H3dztUvlPhtIpR0gT9mjoHUg="
+      },
+      {
+        "id": "6a23b498000000000702d9a0",
+        "title": "Carlos A. Franceschi Lot 214 Geisha Wash",
+        "index": 49,
+        "xsecToken": "ABi4_5LvBZlvGNwHsSBkPR3n-kWcSyMTTNa1lhdgFerH4="
+      },
+      {
+        "id": "6a2150f50000000021009782",
+        "title": "去寿司郎就为了这一杯",
+        "index": 52,
+        "xsecToken": "ABdsTE236FGKiZUcWRJj6znNLy_xwntJN9xzownJDKC68="
+      },
+      {
+        "id": "6a2044fe0000000007021b5f",
+        "title": "🇯🇵LEAVES萨尔瓦多 奥斯卡 日晒瑰夏",
+        "index": 55,
+        "xsecToken": "ABI5KdCxTodp4ElskK8DINDQKtbSuYp2OW99INngpq-9M="
+      },
+      {
+        "id": "6a1eeb9b000000000603099b",
+        "title": "琮咖啡｜哥伦El Porvenir前景庄园 日晒瑰夏",
+        "index": 58,
+        "xsecToken": "AB6MOejtG5_esQCkG0OUqcTQkTe4eWaN995EN02XVprh4="
+      },
+      {
+        "id": "6a1d159d0000000007010619",
+        "title": "琮咖啡哥伦比亚El Porvenir前景庄园水洗瑰",
+        "index": 61,
+        "xsecToken": "ABJlqRgBB_NmDAIFz4g_UOgtaVumrn-7fbN15YNKRE7sQ="
+      }
+    ]
+  },
+  "sharp-5543006937-beiguo": {
+    "source_profile": "/Users/minyuwei/Documents/xhs/docs/research/xhs-style-samples/raw/profile-5543006937-beiguo.json",
+    "available_feeds": 18,
+    "target_details": 18,
+    "selected_feeds": [
+      {
+        "id": "69cf6325000000001a033b92",
+        "title": "老一辈说话没轻没重的，锐评buff",
+        "index": 0,
+        "xsecToken": "ABi-xedFbXy0P5PFmsNbGBXzZTHFAJxlaRDTe6KMBIx_8="
+      },
+      {
+        "id": "69aee3a90000000015033538",
+        "title": "玻璃心小周还在骗小白啊？",
+        "index": 1,
+        "xsecToken": "ABusuz8T3TEZoBrJW8h6f0YMGQGZ6dEYs1wVp-66PXbSs="
+      },
+      {
+        "id": "695daa82000000002102b078",
+        "title": "有鸟人前一套人后一套",
+        "index": 2,
+        "xsecToken": "ABLW1ogz6T5zu0iXFvQlRWv_2_CukjHA3iK3liUv9tXrg="
+      },
+      {
+        "id": "68d93878000000001301bd6e",
+        "title": "国内咖啡圈有知识的都还是太少了",
+        "index": 3,
+        "xsecToken": "ABj0HjXzROy-ckAQSPf7Rig6WiNLk0fItbqylij1nbevQ="
+      },
+      {
+        "id": "68d7a01a000000001301a3d1",
+        "title": "一边不买增味，一边去买alo",
+        "index": 4,
+        "xsecToken": "AB8gd26PttfbepqLyDnHKkrSba0qojraUYZN1gos3f33M="
+      },
+      {
+        "id": "689360a40000000003025127",
+        "title": "一个人的感官水平在杯测桌上是藏不住的。",
+        "index": 5,
+        "xsecToken": "ABjDwhpdO91bx_NKLKs6keLq8oHwjqLOXupJFnIlyRX00="
+      },
+      {
+        "id": "67b06922000000001800f140",
+        "title": "玻利维亚PCA又来收割韭菜了",
+        "index": 6,
+        "xsecToken": "ABQCZ3HVc9zBvsljIianNfxEYek_UWHB2MJSYz9T2Jr2w="
+      },
+      {
+        "id": "67602826000000000b01621b",
+        "title": "夹生？什么样的小鬼都开始做咖啡科普了？",
+        "index": 7,
+        "xsecToken": "ABzdgivotA-SGTi-TiflpH455OKMHBU5If9JYqa6CVE2M="
+      },
+      {
+        "id": "6745cc61000000000202ea7c",
+        "title": "林小姐十篇有九篇推送都能戳中我的笑点",
+        "index": 8,
+        "xsecToken": "ABQNCKgkDb782hfeZckq7S_aPN0sujmtNxN9AcyMuCdO0="
+      },
+      {
+        "id": "67396f06000000003c01c538",
+        "title": "某些飞机豆代购商或许是最蠢的一帮人？",
+        "index": 9,
+        "xsecToken": "ABSTF9X6xVZyP4u1BVRaKpRXb5jZOhvedicShaoAs-j-E="
+      },
+      {
+        "id": "672cb620000000003c014634",
+        "title": "什么样的生豆商让艾力达庄主老威出来辟谣？",
+        "index": 10,
+        "xsecToken": "ABkmpmcRrzuoZO6YswEYrm112saEihYGyo3G9LHdE8aO4="
+      },
+      {
+        "id": "671d09c20000000016021e5f",
+        "title": "果然潘锡冠开始卖货了",
+        "index": 11,
+        "xsecToken": "ABPM9yjBvQsD1sJVc0O2_tJpySZPuv0Gc1XibosfG854c="
+      },
+      {
+        "id": "66f69d75000000002c02c621",
+        "title": "又被张口就来的咖啡博主们笑到",
+        "index": 12,
+        "xsecToken": "AB60WJgRVjQH4NLqRKSwT0pZHLqSpue_9jTYg6EgFmhZE="
+      },
+      {
+        "id": "66a30652000000000a0072ec",
+        "title": "建议这帮小作坊们都去听听组长的博客",
+        "index": 13,
+        "xsecToken": "AB3-SLM_WrDCCaUwB_ekxMhDd88RQfdjbhLKiqF1TmDOs="
+      },
+      {
+        "id": "6686997a000000000a024dce",
+        "title": "99.9%咖啡圈人和文盲的唯一区别是他们识字",
+        "index": 14,
+        "xsecToken": "ABvlEbgrqtjZ9hQwjbG8trwNDFY8tPjGGWvTCrfsRKhBM="
+      },
+      {
+        "id": "6607d3b2000000001a015887",
+        "title": "周处除三害，但咖啡版",
+        "index": 15,
+        "xsecToken": "ABO_IHKQXH4zuO41FH-4IWo5RHB_-OLRE7qwJheFtF_pA="
+      },
+      {
+        "id": "65f16675000000000d00c762",
+        "title": "关键你确实买不起阿？",
+        "index": 16,
+        "xsecToken": "ABeoybiXUwxM8wQpvPrOy-vcJWGvxJMbSpSN6wFnep_Co="
+      },
+      {
+        "id": "65ee9b48000000000d00e2e1",
+        "title": "菜就多练@玻璃心的周狮虎咖啡",
+        "index": 17,
+        "xsecToken": "ABQRguVDCqJSkRxQRSyQJAdNSETRK_lb9-8C-_b4zDuww="
+      }
+    ]
+  },
+  "exaggerated-182627410-morpheus": {
+    "source_profile": "/Users/minyuwei/Documents/xhs/docs/research/xhs-style-samples/raw/profile-182627410-morpheus.json",
+    "available_feeds": 61,
+    "target_details": 22,
+    "selected_feeds": [
+      {
+        "id": "640aee320000000013012ac9",
+        "title": "♻️桌面改造计划｜手冲人的摸鱼角落",
+        "index": 0,
+        "xsecToken": "ABYHNDJHGfz5Di4ZpPom12-Ddvx98SsfvZLAOmy5aDzQ4="
+      },
+      {
+        "id": "6a3a26a70000000015026c0f",
+        "title": "🇵🇦Kent & Kristopher Lot 05日晒瑰夏",
+        "index": 3,
+        "xsecToken": "ABrE3zJQfJYh1D2NWHrU81NH8Zf-OXwp8AZfaSlSz2M6A="
+      },
+      {
+        "id": "6a33a5ee0000000015026376",
+        "title": "🇵🇦石墙庄园Bambu cama 8721水洗瑰夏",
+        "index": 6,
+        "xsecToken": "ABdyajr7JcRSPE7KcUfZzGazwNtBSMtOte_4Cm0S77qaA="
+      },
+      {
+        "id": "6a2fa5db000000001503d7e1",
+        "title": "🇪🇹埃塞瑰夏村Oma #120日晒瑰夏1931",
+        "index": 9,
+        "xsecToken": "ABvjC-Cpu0xhl7hPwu6lIW0Eb_Q7yjI3o0qJe4gkoVH1k="
+      },
+      {
+        "id": "6a27b1fc0000000015025d75",
+        "title": "🇵🇦Bambito Estate芭比朵庄园水洗瑰夏",
+        "index": 11,
+        "xsecToken": "AB_8GRuoqy24BDnvtnsIzCdqIUzfZHeTWyCcFmFnmxz1A="
+      },
+      {
+        "id": "6a1ca5c10000000037035eb4",
+        "title": "🇵🇦Nuguo努果庄园1030-N-NF日晒瑰夏",
+        "index": 14,
+        "xsecToken": "ABNpV7TG2rqG4XJWtDTbgmEM4BVahqc6n2kw3Gjqq5FBw="
+      },
+      {
+        "id": "6a164ae2000000003700e1bc",
+        "title": "🇪🇹埃塞瑰夏村Narsha #068日晒瑰夏1931",
+        "index": 17,
+        "xsecToken": "ABA45tFr_KPYrvFlUbIW-T1r0Z6tS5Lb2OfMuSPyJnX2k="
+      },
+      {
+        "id": "6a0f69c0000000003601c4f3",
+        "title": "🇵🇦Elida艾丽达Vuelta冷房干燥水洗瑰夏",
+        "index": 20,
+        "xsecToken": "ABVMsq_4VYqdknJzhXVKHfDjK_tyK2umbMLrOK6Nrv5V8="
+      },
+      {
+        "id": "6a0c2aed000000003601b891",
+        "title": "🇵🇦Elida艾丽达Aguacate DRD日晒绿顶瑰夏",
+        "index": 23,
+        "xsecToken": "ABGdszttN3uHD1i573J_6-YJewandK0LuvcweTED_WC68="
+      },
+      {
+        "id": "6a084cac000000003601c647",
+        "title": "🇵🇦Elida Loma Centro地块DRD日晒绿顶瑰夏",
+        "index": 26,
+        "xsecToken": "ABH6O5IXCTkO1De3jHO0PddvFdeQA4cJUBgrpiXutU5wg="
+      },
+      {
+        "id": "69fb95c7000000003601d8ef",
+        "title": "😈 Morpheus Blend",
+        "index": 29,
+        "xsecToken": "ABHDPbMvV_RjcRrWJTEpydlkYyPO_jwYaqMtNOTJfYLOY="
+      },
+      {
+        "id": "69f90da400000000380368f2",
+        "title": "🇳🇮尼加拉瓜Las Delicias日晒瑰夏",
+        "index": 31,
+        "xsecToken": "ABxB9OXQSV0JFPUMnkWdIwPDkAe26dGIND6BYT9c1o2iA="
+      },
+      {
+        "id": "69f512a1000000003601fc6e",
+        "title": "🇵🇦Mount Totumas托托马斯日晒瑰夏",
+        "index": 34,
+        "xsecToken": "ABcNrhKJqQS8O1g-xXQNJAnYwGb6zaUv_e3dl3gmURQos="
+      },
+      {
+        "id": "69f119010000000038023ff0",
+        "title": "🇵🇦翡翠庄园莱昂地块León 3NB日晒瑰夏",
+        "index": 37,
+        "xsecToken": "ABQKI-XvngU29ns_Y4FUEqcwsAtb6BgIJnP9pOrXXw88Q="
+      },
+      {
+        "id": "69ed2210000000003601f188",
+        "title": "🇰🇪Maguta Estate Amber CM日晒SL28/SL34",
+        "index": 40,
+        "xsecToken": "AB2tLKMjwa_an35ci29PUxmoGdoRLoDGstxx6vTnFrsdc="
+      },
+      {
+        "id": "69e93653000000001a02b463",
+        "title": "🇵🇦Altieri阿尔铁里庄园Dilgo发酵水洗瑰夏",
+        "index": 43,
+        "xsecToken": "ABseRnNYX57ULtrRQvqW5FgEvFr68iFyTRvMtp5t4KFQM="
+      },
+      {
+        "id": "69e28e3d000000002103a5f5",
+        "title": "🇵🇦Magma Plantations Heavenly水洗瑰夏",
+        "index": 46,
+        "xsecToken": "ABOP579mN5mhu4c938vIlGKtRU5M4sI4X037rx9PVITfs="
+      },
+      {
+        "id": "69dffa04000000001a0281f6",
+        "title": "🇬🇹绝色庄园竞拍批次日晒坦桑尼亚种瑰夏",
+        "index": 49,
+        "xsecToken": "ABbNs8CSEP1XYdW627AwJlOFap_13m2jCloJhzT0q-8SE="
+      },
+      {
+        "id": "69dd534800000000210117d2",
+        "title": "🇨🇴Inmaculada圣洁庄园追光者水洗瑰夏",
+        "index": 51,
+        "xsecToken": "ABrpMW-7Tf9Ae5U5S1nmJ0UxJhhxh1wpAksizYx6-HuQs="
+      },
+      {
+        "id": "69dabbcc000000001a033050",
+        "title": "🇵🇦詹森庄园Los Alpes Lot 879水洗瑰夏",
+        "index": 54,
+        "xsecToken": "AB82PB8X1b5m1XitnN40d5cvck1dPRd77e01i2hpFxKvI="
+      },
+      {
+        "id": "69d6b060000000001a0293ce",
+        "title": "🇵🇦Abu阿布庄园GN-3345日晒瑰夏",
+        "index": 57,
+        "xsecToken": "ABz-chQ_aedL97OIebcegPzkX5cYAwqUmSvSWupJ-pau0="
+      },
+      {
+        "id": "69d2bee40000000021038a94",
+        "title": "🇵🇦TNT圣塔玛利亚Flower Machine水洗瑰夏",
+        "index": 60,
+        "xsecToken": "ABosjxl8k4aiH-wOkY2IXlPS8zcghDurOcA1VTXQqRXOM="
+      }
+    ]
+  }
+}

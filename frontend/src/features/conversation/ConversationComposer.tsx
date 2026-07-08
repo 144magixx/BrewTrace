@@ -6,7 +6,6 @@ export type ConversationComposerState = {
 type ConversationComposerProps = {
   value: string;
   disabled: boolean;
-  isSubmitting: boolean;
   onChange: (value: string) => void;
   onSubmit: () => void;
 };
@@ -14,16 +13,20 @@ type ConversationComposerProps = {
 export function ConversationComposer(props: ConversationComposerProps) {
   return (
     <form className="composer" onSubmit={(event) => { event.preventDefault(); props.onSubmit(); }}>
-      <label htmlFor="coffee-input">今天喝了什么咖啡？</label>
-      <textarea
+      <label className="sr-only" htmlFor="coffee-input">今天喝了什么咖啡？</label>
+      <input
         id="coffee-input"
         value={props.value}
         disabled={props.disabled}
-        placeholder="例如：今天喝了一支水洗埃塞，有柑橘和红茶感"
+        placeholder="输入今天这杯的体验"
         onChange={(event) => props.onChange(event.target.value)}
       />
-      <button type="submit" disabled={props.disabled || props.isSubmitting || props.value.trim().length === 0}>
-        {props.isSubmitting ? "提交中" : "发送"}
+      <button type="submit" disabled={props.disabled || props.value.trim().length === 0}>
+        <span>发送</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M5 12h12" />
+          <path d="M13 6l6 6-6 6" />
+        </svg>
       </button>
     </form>
   );

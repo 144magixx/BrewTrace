@@ -6,4 +6,6 @@ public interface TastingSessionRepository {
     TastingSession save(TastingSession session);
 
     Optional<TastingSession> findById(String sessionId);
+
+    void deleteById(String sessionId);
 }

@@ -1,0 +1,161 @@
+{
+  "accounts": {
+    "beiguo": {
+      "basicInfo": {
+        "nickname": "北国清韵",
+        "redId": "5543006937",
+        "desc": "我可以笑着和你聊天，但你的咖啡差我照样骂你",
+        "gender": 2,
+        "ipLocation": "上海"
+      },
+      "uniqueFeedCount": 18,
+      "samples": [
+        {
+          "index": 0,
+          "id": "69cf6325000000001a033b92",
+          "title": "老一辈说话没轻没重的，锐评buff",
+          "type": "normal",
+          "likedCount": "5",
+          "xsecToken": "ABi-xedFbXy0P5PFmsNbGBXzZTHFAJxlaRDTe6KMBIx_8="
+        },
+        {
+          "index": 1,
+          "id": "69aee3a90000000015033538",
+          "title": "玻璃心小周还在骗小白啊？",
+          "type": "normal",
+          "likedCount": "4",
+          "xsecToken": "ABusuz8T3TEZoBrJW8h6f0YMGQGZ6dEYs1wVp-66PXbSs="
+        },
+        {
+          "index": 2,
+          "id": "695daa82000000002102b078",
+          "title": "有鸟人前一套人后一套",
+          "type": "normal",
+          "likedCount": "1",
+          "xsecToken": "ABLW1ogz6T5zu0iXFvQlRWv_2_CukjHA3iK3liUv9tXrg="
+        },
+        {
+          "index": 3,
+          "id": "68d93878000000001301bd6e",
+          "title": "国内咖啡圈有知识的都还是太少了",
+          "type": "normal",
+          "likedCount": "2",
+          "xsecToken": "ABj0HjXzROy-ckAQSPf7Rig6WiNLk0fItbqylij1nbevQ="
+        },
+        {
+          "index": 4,
+          "id": "68d7a01a000000001301a3d1",
+          "title": "一边不买增味，一边去买alo",
+          "type": "normal",
+          "likedCount": "4",
+          "xsecToken": "AB8gd26PttfbepqLyDnHKkrSba0qojraUYZN1gos3f33M="
+        },
+        {
+          "index": 5,
+          "id": "689360a40000000003025127",
+          "title": "一个人的感官水平在杯测桌上是藏不住的。",
+          "type": "normal",
+          "likedCount": "",
+          "xsecToken": "ABjDwhpdO91bx_NKLKs6keLq8oHwjqLOXupJFnIlyRX00="
+        },
+        {
+          "index": 6,
+          "id": "67b06922000000001800f140",
+          "title": "玻利维亚PCA又来收割韭菜了",
+          "type": "normal",
+          "likedCount": "1",
+          "xsecToken": "ABQCZ3HVc9zBvsljIianNfxEYek_UWHB2MJSYz9T2Jr2w="
+        },
+        {
+          "index": 7,
+          "id": "67602826000000000b01621b",
+          "title": "夹生？什么样的小鬼都开始做咖啡科普了？",
+          "type": "normal",
+          "likedCount": "3",
+          "xsecToken": "ABzdgivotA-SGTi-TiflpH455OKMHBU5If9JYqa6CVE2M="
+        },
+        {
+          "index": 8,
+          "id": "6745cc61000000000202ea7c",
+          "title": "林小姐十篇有九篇推送都能戳中我的笑点",
+          "type": "normal",
+          "likedCount": "1",
+          "xsecToken": "ABQNCKgkDb782hfeZckq7S_aPN0sujmtNxN9AcyMuCdO0="
+        },
+        {
+          "index": 9,
+          "id": "67396f06000000003c01c538",
+          "title": "某些飞机豆代购商或许是最蠢的一帮人？",
+          "type": "normal",
+          "likedCount": "9",
+          "xsecToken": "ABSTF9X6xVZyP4u1BVRaKpRXb5jZOhvedicShaoAs-j-E="
+        },
+        {
+          "index": 10,
+          "id": "672cb620000000003c014634",
+          "title": "什么样的生豆商让艾力达庄主老威出来辟谣？",
+          "type": "normal",
+          "likedCount": "3",
+          "xsecToken": "ABkmpmcRrzuoZO6YswEYrm112saEihYGyo3G9LHdE8aO4="
+        },
+        {
+          "index": 11,
+          "id": "671d09c20000000016021e5f",
+          "title": "果然潘锡冠开始卖货了",
+          "type": "normal",
+          "likedCount": "3",
+          "xsecToken": "ABPM9yjBvQsD1sJVc0O2_tJpySZPuv0Gc1XibosfG854c="
+        },
+        {
+          "index": 12,
+          "id": "66f69d75000000002c02c621",
+          "title": "又被张口就来的咖啡博主们笑到",
+          "type": "normal",
+          "likedCount": "3",
+          "xsecToken": "AB60WJgRVjQH4NLqRKSwT0pZHLqSpue_9jTYg6EgFmhZE="
+        },
+        {
+          "index": 13,
+          "id": "66a30652000000000a0072ec",
+          "title": "建议这帮小作坊们都去听听组长的博客",
+          "type": "normal",
+          "likedCount": "7",
+          "xsecToken": "AB3-SLM_WrDCCaUwB_ekxMhDd88RQfdjbhLKiqF1TmDOs="
+        },
+        {
+          "index": 14,
+          "id": "6686997a000000000a024dce",
+          "title": "99.9%咖啡圈人和文盲的唯一区别是他们识字",
+          "type": "normal",
+          "likedCount": "7",
+          "xsecToken": "ABvlEbgrqtjZ9hQwjbG8trwNDFY8tPjGGWvTCrfsRKhBM="
+        },
+        {
+          "index": 15,
+          "id": "6607d3b2000000001a015887",
+          "title": "周处除三害，但咖啡版",
+          "type": "video",
+          "likedCount": "40",
+          "xsecToken": "ABO_IHKQXH4zuO41FH-4IWo5RHB_-OLRE7qwJheFtF_pA="
+        },
+        {
+          "index": 16,
+          "id": "65f16675000000000d00c762",
+          "title": "关键你确实买不起阿？",
+          "type": "normal",
+          "likedCount": "5",
+          "xsecToken": "ABeoybiXUwxM8wQpvPrOy-vcJWGvxJMbSpSN6wFnep_Co="
+        },
+        {
+          "index": 17,
+          "id": "65ee9b48000000000d00e2e1",
+          "title": "菜就多练@玻璃心的周狮虎咖啡",
+          "type": "normal",
+          "likedCount": "20",
+          "xsecToken": "ABQRguVDCqJSkRxQRSyQJAdNSETRK_lb9-8C-_b4zDuww="
+        }
+      ]
+    }
+  },
+  "samplePolicy": "主页列表全量保留在 raw；此索引用均匀抽样展示代表性标题，xsecToken 保留用于后续复核。"
+}

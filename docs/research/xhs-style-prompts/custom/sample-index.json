@@ -1,0 +1,337 @@
+{
+  "accounts": {
+    "captain": {
+      "basicInfo": {
+        "nickname": "柑橘科科长",
+        "redId": "Captain_Orange_",
+        "desc": "让我来介绍我自己\ndeep talk享受者\n学生（副工级）2008.06-2026.05\n实习生（正工级享副工级待遇）2026.05至今",
+        "gender": 1,
+        "ipLocation": "北京"
+      },
+      "uniqueFeedCount": 338,
+      "samples": [
+        {
+          "index": 0,
+          "id": "6a40cb68000000002103ce4c",
+          "title": "䇚满 Alo Safo处理站 零发酵水洗",
+          "type": "normal",
+          "likedCount": "11",
+          "xsecToken": "AB0rYML0rJqRNMrLplI9su1jVnJHgIXVheHcOtXq0OiAA="
+        },
+        {
+          "index": 9,
+          "id": "6a21066b0000000007029e5c",
+          "title": "团团奇遇集章 ",
+          "type": "normal",
+          "likedCount": "2",
+          "xsecToken": "ABdsTE236FGKiZUcWRJj6znLMDQcaLufFxXShqLciq7jI="
+        },
+        {
+          "index": 17,
+          "id": "69dde934000000001a0375ff",
+          "title": "Areis Coffee Elto Bona 水洗 74158",
+          "type": "normal",
+          "likedCount": "10",
+          "xsecToken": "ABrpMW-7Tf9Ae5U5S1nmJ0U2YS-HjQ2-zmQKzKHyg7PMw="
+        },
+        {
+          "index": 26,
+          "id": "69735ab8000000001a02c922",
+          "title": "绵实真乃我福地也🧑‍🎓",
+          "type": "normal",
+          "likedCount": "6",
+          "xsecToken": "ABC1ZwTPEQX8j8u44Od_x-2PC8fKIHFebpGwf1zwDey1w="
+        },
+        {
+          "index": 35,
+          "id": "6924548c000000001e0326b4",
+          "title": "风可往，吾亦可往🦩",
+          "type": "normal",
+          "likedCount": "13",
+          "xsecToken": "ABxvXI9eRfR5f6ZITjYp8B2kuDoiSF6E411bCRVh69s10="
+        },
+        {
+          "index": 43,
+          "id": "6904ab04000000000400515c",
+          "title": "ora ",
+          "type": "normal",
+          "likedCount": "6",
+          "xsecToken": "ABBg7y886ycCrp1HdHWc_RHi9q265XshA-h6pTS2RRi0E="
+        },
+        {
+          "index": 52,
+          "id": "68f3d23c0000000004005a5d",
+          "title": "oma Totumas 森林日晒",
+          "type": "normal",
+          "likedCount": "8",
+          "xsecToken": "ABjUUlCoQUSl2EQjh345Lp_wa0-25e9gymVwEP5UMtOtg="
+        },
+        {
+          "index": 60,
+          "id": "68e15fe400000000040221ce",
+          "title": "oma 阿尔铁里 DF日晒 Coquito 0503",
+          "type": "normal",
+          "likedCount": "10",
+          "xsecToken": "ABuUvBnmn7kXBX-VKdWtBOwOSUUNIrhuF7gytAujxUg9s="
+        },
+        {
+          "index": 69,
+          "id": "68d6be1e00000000110174ca",
+          "title": "牙生 ",
+          "type": "normal",
+          "likedCount": "6",
+          "xsecToken": "AB48QwF3mlr7K1Mz1QfPrrL70-uQ9HsBkajJSJs4XX82g="
+        },
+        {
+          "index": 78,
+          "id": "68cbb920000000001101ec1c",
+          "title": "BOP GW-04 Mount Totumas",
+          "type": "normal",
+          "likedCount": "6",
+          "xsecToken": "ABqKwxq0hWNtra_ANyVAwC90CeXoFkYkiadjNJIJQ1f3Y="
+        },
+        {
+          "index": 86,
+          "id": "68bae92e000000001b01c1f8",
+          "title": "BOP GN-01 Hacienda La Esmeralda",
+          "type": "normal",
+          "likedCount": "19",
+          "xsecToken": "AB9JnQpKQ21Wy0Og6KZf_PDlIMjnWplmK-lPjcAW8-308="
+        },
+        {
+          "index": 95,
+          "id": "68907829000000002203b788",
+          "title": "BOP GW-13 Aventura Coffee Estates",
+          "type": "normal",
+          "likedCount": "6",
+          "xsecToken": "ABYBDvkUZege1trbXNnNLGvqpU6XG-yvpJv5FANZ3tljA="
+        },
+        {
+          "index": 104,
+          "id": "688b573c0000000023036811",
+          "title": "BOP GN-16 Aventura Coffee Estates",
+          "type": "normal",
+          "likedCount": "14",
+          "xsecToken": "ABj1DNtH1oMRuzVdniO4bSR1hCjgFLQ4uMvnUAaFnbKIc="
+        },
+        {
+          "index": 112,
+          "id": "6883d3c80000000023005770",
+          "title": "鹅卵石 TNT✖️Bambito Verde Guarapo",
+          "type": "normal",
+          "likedCount": "6",
+          "xsecToken": "ABltRHtINod7thqmDVxtPiirdR2eBbDmXjljfw-ORdYdU="
+        },
+        {
+          "index": 121,
+          "id": "68804b45000000001c031dd5",
+          "title": "19CRL 羊皮纸 水洗",
+          "type": "normal",
+          "likedCount": "10",
+          "xsecToken": "AB4swqrEoE2a5X4SQcICHNRcEyKEk7DifPVYiqv6j0xyY="
+        },
+        {
+          "index": 130,
+          "id": "683117d9000000002001f944",
+          "title": "贡井 青杠林溢香面 ",
+          "type": "normal",
+          "likedCount": "11",
+          "xsecToken": "ABYeDXc_vav9xh54_Et2GFcl1Y1_VaZBPNFkjngFGsMtE="
+        },
+        {
+          "index": 138,
+          "id": "6815f1730000000022005b7b",
+          "title": "Mondoli ",
+          "type": "normal",
+          "likedCount": "5",
+          "xsecToken": "ABUblVhrL2o5YIHEGmcizMjdHnseodzo4d5QM3r6pGjvw="
+        },
+        {
+          "index": 147,
+          "id": "6724f2cb000000001a01ff1a",
+          "title": "YELEI 托托马斯水洗",
+          "type": "normal",
+          "likedCount": "8",
+          "xsecToken": "ABkSyUA9b1bqfpgp3I_kTpznRzlGX1S51HXY1BCykes1Y="
+        },
+        {
+          "index": 156,
+          "id": "670d03e400000000240169dc",
+          "title": "oma Iris Lucent 厌氧日晒DRD",
+          "type": "normal",
+          "likedCount": "5",
+          "xsecToken": "ABBU0k17OwCd_E8bsib5LBxmYNSBfak-hravQjZPppY80="
+        },
+        {
+          "index": 164,
+          "id": "66dfd2700000000012012d19",
+          "title": "六月花园 El Burro lot 17 2501-170224",
+          "type": "normal",
+          "likedCount": "6",
+          "xsecToken": "ABwGcVm0MFXhcRkPUAnaJviqYtF9SNhksgsatsGoOxLcw="
+        },
+        {
+          "index": 173,
+          "id": "66d49862000000001d018a60",
+          "title": "晴开咖啡 小庄园甄选 甜蜜水洗",
+          "type": "normal",
+          "likedCount": "4",
+          "xsecToken": "AB_AZ7xkBE4UOUzIoNEk5FKCndohWkZlWdgtcueO6blrc="
+        },
+        {
+          "index": 181,
+          "id": "66c4502b000000001d038c99",
+          "title": "Aries Coffee 圣妮佐日晒",
+          "type": "normal",
+          "likedCount": "7",
+          "xsecToken": "AB85s6b3ztKQiaKj3XRvwT1noHmZTMAMtaJW-hKhc_ovw="
+        },
+        {
+          "index": 190,
+          "id": "66b7927b0000000025030a04",
+          "title": "red meow 圣妮佐 GW-072",
+          "type": "normal",
+          "likedCount": "7",
+          "xsecToken": "ABO_KxYW7BCtFPdfMEcZv7dH-yQ3T816JmxxcB3wh2eM4="
+        },
+        {
+          "index": 199,
+          "id": "66a3563800000000270137e3",
+          "title": "Aries Coffee 羊皮纸庄园 日晒",
+          "type": "normal",
+          "likedCount": "5",
+          "xsecToken": "AB3-SLM_WrDCCaUwB_ekxMhDh9MzE3YS6o34AOnnKDP6U="
+        },
+        {
+          "index": 207,
+          "id": "6699d6830000000025017f2d",
+          "title": "oma 女巫庄园日晒 lot 2095-T2",
+          "type": "normal",
+          "likedCount": "9",
+          "xsecToken": "ABGaVmDZjMpJmkztOCbrMeV29Z6mQGQQw_fvNAe0XtbMc="
+        },
+        {
+          "index": 216,
+          "id": "6693753d00000000250142f1",
+          "title": "kw自在心 唐佩佩精致水洗",
+          "type": "normal",
+          "likedCount": "7",
+          "xsecToken": "AB5TZlocgIxYituFrra8QNR-jASi0tBmzVt7JENkGmw6g="
+        },
+        {
+          "index": 225,
+          "id": "66799f6b000000001e0120b2",
+          "title": "自在心 翡翠庄园Buena Vista 2NB",
+          "type": "normal",
+          "likedCount": "10",
+          "xsecToken": "ABoSYRESHgZ2okFle5D-nxcnPwrHeEcd_7DJedoa7ohuE="
+        },
+        {
+          "index": 233,
+          "id": "6668045c000000000e031170",
+          "title": "晴开咖啡 艾丽达Torre水洗",
+          "type": "normal",
+          "likedCount": "8",
+          "xsecToken": "ABznsI7GQu0511xkJBvaPEX3okBeJjxqf0gAG3IYtbDKQ="
+        },
+        {
+          "index": 242,
+          "id": "664eabe600000000160110e2",
+          "title": "来喝来闹✖️red meow 飞豹庄园厌氧日晒",
+          "type": "normal",
+          "likedCount": "10",
+          "xsecToken": "AB7rplfdBKovgYo0-dFd2Lj4DOBjoGz90VsL813NSJLkg="
+        },
+        {
+          "index": 251,
+          "id": "6624886e00000000010072ee",
+          "title": "oma 阿尔铁里Coquito DFS",
+          "type": "normal",
+          "likedCount": "17",
+          "xsecToken": "ABrGwLyyWU-AefhXgoPQANIgXF06Nfh3VwhQYUW8E6b30="
+        },
+        {
+          "index": 259,
+          "id": "661384a3000000001a0173ae",
+          "title": "山羊无限 努果418-N-NF",
+          "type": "normal",
+          "likedCount": "5",
+          "xsecToken": "ABVOveJYeZxSvtMuH12GrckbrnAYqG1vFQ4a5K6AVAYoQ="
+        },
+        {
+          "index": 268,
+          "id": "65fc346100000000120205cd",
+          "title": "晴开咖啡 翡翠庄园赛级红标Mario 1 ANC",
+          "type": "normal",
+          "likedCount": "10",
+          "xsecToken": "AB5WGMWmtvwAPFv5UU__BFufWeHs8qkjR06oPis5C63HY="
+        },
+        {
+          "index": 277,
+          "id": "65e94d600000000003036286",
+          "title": "mazelab totumas日晒",
+          "type": "normal",
+          "likedCount": "12",
+          "xsecToken": "AB_p1hnwf5pdwMeYvNoUS0AXCrCA74wYeMWrMNUT0KxjA="
+        },
+        {
+          "index": 285,
+          "id": "65dc472c0000000001028964",
+          "title": "啊？ ",
+          "type": "normal",
+          "likedCount": "9",
+          "xsecToken": "ABMY4wnWYwKmDFsa9pm6wJ39M9UFPzIqrsFtsgoiv6fNU="
+        },
+        {
+          "index": 294,
+          "id": "65c1f773000000002c010979",
+          "title": "六月花园 翡翠竞标N9",
+          "type": "normal",
+          "likedCount": "8",
+          "xsecToken": "ABxmjS4C1wBPuZHMOo4og6cihSjdgjM2mYUUIja0Th4cM="
+        },
+        {
+          "index": 302,
+          "id": "65b0da84000000002d001ccf",
+          "title": "oma Chevas Estate mamacoco批次",
+          "type": "normal",
+          "likedCount": "7",
+          "xsecToken": "ABVUOHSZJzoAWXbeSY-NUzTwJiTNHtrdvpeprhFU5zjeY="
+        },
+        {
+          "index": 311,
+          "id": "658ad536000000001d02b921",
+          "title": "Takesi 水洗 ",
+          "type": "normal",
+          "likedCount": "10",
+          "xsecToken": "AB9HcME4TRKMk7QABKVEYxYD-N_9iKjw7gdL1ncTzMS7I="
+        },
+        {
+          "index": 320,
+          "id": "655c8d8c000000001f02f4bc",
+          "title": "Mount Totumas 15 Day PCF Nature",
+          "type": "normal",
+          "likedCount": "10",
+          "xsecToken": "ABR_elRRUhVJBxQwhyJszLBuj1tNyg9ycSnE487Foe4RE="
+        },
+        {
+          "index": 328,
+          "id": "654ca38a0000000017037fd6",
+          "title": "石墙庄园 水洗 ",
+          "type": "normal",
+          "likedCount": "6",
+          "xsecToken": "ABzsuFmwtKDmLgZPEI1m1aHJX0QrCl6ZITsSekHZDNY6c="
+        },
+        {
+          "index": 337,
+          "id": "64f35b6b000000001e03f14c",
+          "title": "翡翠红标 摩天轮 ",
+          "type": "normal",
+          "likedCount": "8",
+          "xsecToken": "AB-KP_fskOHOG4x18gz8wC89XhxjNZCVColch0hQviDZo="
+        }
+      ]
+    }
+  },
+  "samplePolicy": "主页列表全量保留在 raw；此索引用均匀抽样展示代表性标题，xsecToken 保留用于后续复核。"
+}
