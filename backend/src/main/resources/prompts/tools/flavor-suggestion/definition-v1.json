@@ -5,7 +5,10 @@
     "additionalProperties": false,
     "required": [
       "sessionId",
-      "inputTerm"
+      "inputTerm",
+      "temperatureStage",
+      "senseType",
+      "limit"
     ],
     "properties": {
       "sessionId": {

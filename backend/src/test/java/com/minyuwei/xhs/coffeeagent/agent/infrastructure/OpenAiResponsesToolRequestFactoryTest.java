@@ -1,5 +1,7 @@
 package com.minyuwei.xhs.coffeeagent.agent.infrastructure;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.minyuwei.xhs.coffeeagent.agent.application.ModelContextPackage;
 import com.minyuwei.xhs.coffeeagent.agent.application.ModelMode;
 import com.minyuwei.xhs.coffeeagent.agent.infrastructure.prompt.PromptTemplateLoader;
@@ -17,13 +19,18 @@ import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.model.tool.ToolCallingChatOptions;
 
 import java.time.Instant;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class OpenAiResponsesToolRequestFactoryTest {
+    private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
+
     @Test
-    void serializesFlavorSuggestionToolSchemaIntoResponsesBody() {
+    void serializesFlavorSuggestionToolSchemaIntoResponsesBody() throws Exception {
         OpenAiResponsesRequestFactory requestFactory = new OpenAiResponsesRequestFactory(new PromptTemplateLoader());
         Prompt prompt = requestFactory.createPrompt(contextPackage()).mutate()
                 .chatOptions(ToolCallingChatOptions.builder()
@@ -38,6 +45,13 @@ class OpenAiResponsesToolRequestFactoryTest {
         assertTrue(body.contains("\"tool_choice\" : \"auto\""));
         assertTrue(body.contains("\"inputTerm\""));
         assertTrue(body.contains("待用户确认的具体风味联想候选"));
+
+        JsonNode parameters = OBJECT_MAPPER.readTree(body).path("tools").path(0).path("parameters");
+        Set<String> propertyNames = new HashSet<>();
+        parameters.path("properties").fieldNames().forEachRemaining(propertyNames::add);
+        Set<String> requiredNames = new HashSet<>();
+        parameters.path("required").forEach(item -> requiredNames.add(item.asText()));
+        assertEquals(propertyNames, requiredNames, "strict function schema 必须将全部 properties 声明为 required");
     }
 
     private SpringAiToolCallbackAdapter flavorSuggestionCallback() {
