@@ -9,20 +9,31 @@ import com.minyuwei.xhs.coffeeagent.agent.infrastructure.advisor.ContextPreviewA
 import com.minyuwei.xhs.coffeeagent.agent.infrastructure.advisor.FactBoundaryAdvisor;
 import com.minyuwei.xhs.coffeeagent.agent.infrastructure.fixtures.ModelResponseFixtures;
 import com.minyuwei.xhs.coffeeagent.agent.infrastructure.prompt.PromptTemplateLoader;
+import com.minyuwei.xhs.coffeeagent.flavor.application.FlavorSuggestionService;
+import com.minyuwei.xhs.coffeeagent.tools.application.ToolCallPolicy;
+import com.minyuwei.xhs.coffeeagent.tools.application.ToolCallRecorder;
+import com.minyuwei.xhs.coffeeagent.tools.application.ToolRegistry;
+import com.minyuwei.xhs.coffeeagent.tools.infrastructure.FlavorSuggestionToolAdapter;
+import com.minyuwei.xhs.coffeeagent.tools.infrastructure.FlavorSuggestionToolRegistrar;
+import com.minyuwei.xhs.coffeeagent.tools.infrastructure.SpringAiToolCallbackAdapter;
 import com.minyuwei.xhs.coffeeagent.trace.application.AgentTraceRecorder;
 import com.minyuwei.xhs.coffeeagent.trace.application.AgentTraceService;
 import com.minyuwei.xhs.coffeeagent.trace.infrastructure.AgentTraceRepositoryAdapter;
 import org.junit.jupiter.api.Test;
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.client.advisor.ToolCallingAdvisor;
 import org.springframework.ai.chat.messages.AssistantMessage;
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.ai.chat.model.Generation;
 import org.springframework.ai.chat.prompt.ChatOptions;
 import org.springframework.ai.chat.prompt.Prompt;
+import org.springframework.ai.model.tool.DefaultToolCallingManager;
+import org.springframework.ai.tool.resolution.StaticToolCallbackResolver;
 import reactor.core.publisher.Flux;
 
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -42,7 +53,7 @@ class SpringAiModelGatewayTest {
         var result = gateway.complete(contextPackage());
 
         assertEquals("REAL_MODEL", result.outputType());
-        assertEquals(ModelMessageType.CONVERSATION, result.messageType());
+        assertEquals(ModelMessageType.CONVERSATION, result.messageType(), () -> "recoverableError=" + result.recoverableError() + ", responsePreview=" + result.responsePreview().rawJson());
         assertTrue(result.talk().contains("最明显的风味"));
         assertTrue(result.requestPreview().label().contains("Spring AI"));
         assertTrue(chatModel.lastPrompt().getContents().contains("currentSession"));
@@ -90,6 +101,52 @@ class SpringAiModelGatewayTest {
         assertTrue(result.requestPreview().label().contains("Advisor"));
         assertTrue(result.responsePreview().rawJson().contains("advisorTraceRecorded"));
         assertEquals(1, repository.findBySessionId("s1").size());
+    }
+
+    @Test
+    void executesFlavorSuggestionToolCallThroughSpringAiToolCallback() {
+        ToolRegistry registry = new ToolRegistry();
+        new FlavorSuggestionToolRegistrar().register(registry, new FlavorSuggestionService());
+        ToolCallRecorder recorder = new ToolCallRecorder();
+        SpringAiToolCallbackAdapter callback = new SpringAiToolCallbackAdapter(
+                registry,
+                new ToolCallPolicy(),
+                recorder,
+                FlavorSuggestionToolAdapter.TOOL_NAME
+        );
+        CapturingResponsesClient client = new CapturingResponsesClient(List.of(
+                """
+                        {
+                          "output": [
+                            {
+                              "type": "function_call",
+                              "call_id": "call_1",
+                              "name": "flavor_suggestion",
+                              "arguments": "{\\"sessionId\\":\\"s1\\",\\"inputTerm\\":\\"柑橘\\",\\"temperatureStage\\":\\"HOT\\",\\"senseType\\":\\"TASTE\\",\\"limit\\":2}"
+                            }
+                          ]
+                        }
+                        """,
+                ModelResponseFixtures.conversation()
+        ));
+        ResponsesApiChatModel chatModel = new ResponsesApiChatModel(client, requestFactory, "https://example.test/v1", "gpt-5.5", 10, "test-key", List.of(callback));
+        ChatClient chatClient = ChatClient.builder(chatModel)
+                .defaultAdvisors(ToolCallingAdvisor.builder()
+                        .toolCallingManager(DefaultToolCallingManager.builder()
+                                .toolCallbackResolver(new StaticToolCallbackResolver(List.of(callback)))
+                                .build())
+                        .build())
+                .build();
+        SpringAiModelGateway gateway = new SpringAiModelGateway(chatClient, requestFactory, parser, "gpt-5.5", List.of(callback));
+
+        var result = gateway.complete(contextPackage());
+
+        assertEquals(ModelMessageType.CONVERSATION, result.messageType());
+        assertEquals(1, recorder.records().size());
+        assertEquals("flavor_suggestion", recorder.records().getFirst().toolName());
+        assertEquals(2, client.bodies().size());
+        assertTrue(client.bodies().get(1).contains("function_call_output"));
+        assertTrue(client.bodies().get(1).contains("甜橙"));
     }
 
     private SpringAiModelGateway gateway(ChatModel chatModel) {
@@ -141,6 +198,26 @@ class SpringAiModelGatewayTest {
 
         private Prompt lastPrompt() {
             return lastPrompt.get();
+        }
+    }
+
+    private static final class CapturingResponsesClient extends OpenAiResponsesLlmClient {
+        private final List<String> responses;
+        private final List<String> bodies = new ArrayList<>();
+        private int index = 0;
+
+        private CapturingResponsesClient(List<String> responses) {
+            this.responses = responses;
+        }
+
+        @Override
+        public LlmResponse createResponse(String baseUrl, String apiKey, String body, int timeoutSeconds) {
+            bodies.add(body);
+            return new LlmResponse(200, responses.get(index++));
+        }
+
+        private List<String> bodies() {
+            return bodies;
         }
     }
 }

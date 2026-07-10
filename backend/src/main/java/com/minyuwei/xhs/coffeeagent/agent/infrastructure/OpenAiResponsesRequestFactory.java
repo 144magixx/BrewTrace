@@ -7,9 +7,15 @@ import com.minyuwei.xhs.coffeeagent.agent.infrastructure.prompt.PromptBundle;
 import com.minyuwei.xhs.coffeeagent.agent.infrastructure.prompt.PromptComposer;
 import com.minyuwei.xhs.coffeeagent.agent.infrastructure.prompt.PromptTemplateLoader;
 import com.minyuwei.xhs.coffeeagent.shared.error.SensitiveValueRedactor;
+import org.springframework.ai.chat.messages.AssistantMessage;
+import org.springframework.ai.chat.messages.Message;
+import org.springframework.ai.chat.messages.MessageType;
 import org.springframework.ai.chat.messages.SystemMessage;
+import org.springframework.ai.chat.messages.ToolResponseMessage;
 import org.springframework.ai.chat.messages.UserMessage;
 import org.springframework.ai.chat.prompt.Prompt;
+import org.springframework.ai.model.tool.ToolCallingChatOptions;
+import org.springframework.ai.tool.ToolCallback;
 
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -43,18 +49,21 @@ public class OpenAiResponsesRequestFactory {
     }
 
     public String createBody(String modelName, Prompt prompt) {
+        return createBody(modelName, prompt, List.of());
+    }
+
+    public String createBody(String modelName, Prompt prompt, List<ToolCallback> fallbackToolCallbacks) {
         Map<String, Object> body = new LinkedHashMap<>();
         body.put("model", modelName);
         body.put("instructions", systemText(prompt));
         body.put("reasoning", Map.of("effort", "low"));
         body.put("max_output_tokens", 1800);
-        body.put("input", List.of(Map.of(
-                "role", "user",
-                "content", List.of(Map.of(
-                        "type", "input_text",
-                        "text", userText(prompt)
-                ))
-        )));
+        body.put("input", input(prompt));
+        List<Map<String, Object>> tools = tools(prompt, fallbackToolCallbacks);
+        if (!tools.isEmpty()) {
+            body.put("tools", tools);
+            body.put("tool_choice", "auto");
+        }
         body.put("text", Map.of("format", schema()));
         return toJson(body);
     }
@@ -73,6 +82,87 @@ public class OpenAiResponsesRequestFactory {
 
     private String userText(Prompt prompt) {
         return prompt.getUserMessage() == null ? prompt.getContents() : prompt.getUserMessage().getText();
+    }
+
+    private List<Map<String, Object>> input(Prompt prompt) {
+        List<Map<String, Object>> input = new java.util.ArrayList<>();
+        for (Message message : prompt.getInstructions()) {
+            if (message.getMessageType() == MessageType.SYSTEM) {
+                continue;
+            }
+            if (message instanceof ToolResponseMessage toolResponseMessage) {
+                input.addAll(toolResponseMessage.getResponses().stream()
+                        .map(response -> mapOf(
+                                "type", "function_call_output",
+                                "call_id", response.id(),
+                                "output", response.responseData()
+                        ))
+                        .toList());
+                continue;
+            }
+            if (message instanceof AssistantMessage assistantMessage && assistantMessage.hasToolCalls()) {
+                input.addAll(assistantMessage.getToolCalls().stream()
+                        .map(toolCall -> mapOf(
+                                "type", "function_call",
+                                "call_id", toolCall.id(),
+                                "name", toolCall.name(),
+                                "arguments", toolCall.arguments()
+                        ))
+                        .toList());
+                continue;
+            }
+            input.add(Map.of(
+                    "role", message.getMessageType().getValue(),
+                    "content", List.of(Map.of(
+                            "type", message.getMessageType() == MessageType.ASSISTANT ? "output_text" : "input_text",
+                            "text", message.getText()
+                    ))
+            ));
+        }
+        return input.isEmpty() ? List.of(Map.of(
+                "role", "user",
+                "content", List.of(Map.of("type", "input_text", "text", userText(prompt)))
+        )) : input;
+    }
+
+    private Map<String, Object> mapOf(Object... keyValues) {
+        Map<String, Object> value = new LinkedHashMap<>();
+        for (int i = 0; i < keyValues.length; i += 2) {
+            value.put(String.valueOf(keyValues[i]), keyValues[i + 1]);
+        }
+        return value;
+    }
+
+    private List<Map<String, Object>> tools(Prompt prompt, List<ToolCallback> fallbackToolCallbacks) {
+        List<ToolCallback> callbacks = fallbackToolCallbacks == null ? List.of() : fallbackToolCallbacks;
+        if (prompt.getOptions() instanceof ToolCallingChatOptions options && !options.getToolCallbacks().isEmpty()) {
+            callbacks = options.getToolCallbacks();
+        }
+        return callbacks.stream()
+                .map(this::tool)
+                .toList();
+    }
+
+    private Map<String, Object> tool(ToolCallback callback) {
+        org.springframework.ai.tool.definition.ToolDefinition definition = callback.getToolDefinition();
+        Map<String, Object> tool = new LinkedHashMap<>();
+        tool.put("type", "function");
+        tool.put("name", definition.name());
+        tool.put("description", definition.description());
+        tool.put("parameters", parseSchema(definition.inputSchema()));
+        tool.put("strict", true);
+        return tool;
+    }
+
+    private Object parseSchema(String schema) {
+        if (schema == null || schema.isBlank()) {
+            return Map.of("type", "object", "additionalProperties", false, "properties", Map.of());
+        }
+        try {
+            return OBJECT_MAPPER.readValue(schema, Object.class);
+        } catch (JsonProcessingException exception) {
+            throw new ModelGatewayException(com.minyuwei.xhs.coffeeagent.agent.application.RecoverableModelError.Code.MODEL_FORMAT_INVALID, "工具 JSON Schema 构造失败");
+        }
     }
 
     private String userInput(ModelContextPackage contextPackage, PromptBundle promptBundle) {

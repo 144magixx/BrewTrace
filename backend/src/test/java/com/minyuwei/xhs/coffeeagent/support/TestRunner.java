@@ -14,6 +14,8 @@ import com.minyuwei.xhs.coffeeagent.trace.api.AgentTraceApiContractTest;
 import com.minyuwei.xhs.coffeeagent.trace.api.AgentTraceSseTest;
 import com.minyuwei.xhs.coffeeagent.trace.application.TraceSecretRedactionTest;
 import com.minyuwei.xhs.coffeeagent.tools.infrastructure.ImageGenerationToolAdapterTest;
+import com.minyuwei.xhs.coffeeagent.tools.infrastructure.FlavorSuggestionToolAdapterTest;
+import com.minyuwei.xhs.coffeeagent.tools.infrastructure.SpringAiToolCallbackAdapterTest;
 import com.minyuwei.xhs.coffeeagent.tools.infrastructure.XiaohongshuToolAdapterTest;
 
 public final class TestRunner {
@@ -35,6 +37,8 @@ public final class TestRunner {
         TraceSecretRedactionTest.run();
         ExternalReferenceApiContractTest.run();
         PublishingPackageStateTest.run();
+        FlavorSuggestionToolAdapterTest.run();
+        SpringAiToolCallbackAdapterTest.run();
         XiaohongshuToolAdapterTest.run();
         ImageGenerationToolAdapterTest.run();
         ModelMessageRoutingBehaviorTest.run();

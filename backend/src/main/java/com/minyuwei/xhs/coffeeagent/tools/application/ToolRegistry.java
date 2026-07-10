@@ -26,12 +26,49 @@ public class ToolRegistry {
         return definitions.values();
     }
 
-    public record ToolDefinition(String name, String description, RiskLevel riskLevel, boolean requiresConfirmation) {
+    public record ToolDefinition(
+            String name,
+            String description,
+            RiskLevel riskLevel,
+            boolean requiresConfirmation,
+            String inputSchema,
+            String outputSchema,
+            ResultBoundary resultBoundary,
+            SideEffectType sideEffectType,
+            boolean autonomousAllowed
+    ) {
+        public ToolDefinition(String name, String description, RiskLevel riskLevel, boolean requiresConfirmation) {
+            this(
+                    name,
+                    description,
+                    riskLevel,
+                    requiresConfirmation,
+                    "{}",
+                    "{}",
+                    ResultBoundary.TOOL_RESULT,
+                    SideEffectType.NONE,
+                    !requiresConfirmation && riskLevel == RiskLevel.LOW
+            );
+        }
     }
 
     public enum RiskLevel {
         LOW,
         MEDIUM,
         HIGH
+    }
+
+    public enum ResultBoundary {
+        TOOL_RESULT,
+        PENDING_ASSOCIATION,
+        CANDIDATE_MEMORY,
+        REVIEW_RESULT
+    }
+
+    public enum SideEffectType {
+        NONE,
+        READ_EXTERNAL,
+        WRITE_LOCAL,
+        PUBLIC_ACTION
     }
 }

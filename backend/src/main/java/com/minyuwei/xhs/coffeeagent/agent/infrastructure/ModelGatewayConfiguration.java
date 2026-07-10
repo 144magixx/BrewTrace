@@ -15,6 +15,7 @@ import org.springframework.ai.chat.client.advisor.api.Advisor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.ai.tool.ToolCallback;
 
 import java.util.List;
 
@@ -50,9 +51,10 @@ public class ModelGatewayConfiguration {
     public ChatModel responsesApiChatModel(
             OpenAiResponsesLlmClient client,
             OpenAiResponsesRequestFactory requestFactory,
-            ModelProperties modelProperties
+            ModelProperties modelProperties,
+            List<ToolCallback> toolCallbacks
     ) {
-        return new ResponsesApiChatModel(client, requestFactory, modelProperties.baseUrl(), modelProperties.textModel(), modelProperties.timeoutSeconds(), modelProperties.apiKey());
+        return new ResponsesApiChatModel(client, requestFactory, modelProperties.baseUrl(), modelProperties.textModel(), modelProperties.timeoutSeconds(), modelProperties.apiKey(), toolCallbacks);
     }
 
     @Bean
@@ -72,13 +74,14 @@ public class ModelGatewayConfiguration {
 
     @Bean
     public ChatClient chatClient(ChatModel chatModel, List<Advisor> advisors, List<ChatClientBuilderCustomizer> customizers) {
-        ChatClient.Builder builder = ChatClient.builder(chatModel).defaultAdvisors(advisors);
+        ChatClient.Builder builder = ChatClient.builder(chatModel)
+                .defaultAdvisors(advisors);
         customizers.forEach(customizer -> customizer.customize(builder));
         return builder.build();
     }
 
     @Bean
-    public ModelGateway modelGateway(ChatClient chatClient, OpenAiResponsesRequestFactory requestFactory, OpenAiResponsesParser parser, ModelProperties modelProperties) {
-        return new SpringAiModelGateway(chatClient, requestFactory, parser, modelProperties.textModel());
+    public ModelGateway modelGateway(ChatClient chatClient, OpenAiResponsesRequestFactory requestFactory, OpenAiResponsesParser parser, ModelProperties modelProperties, List<ToolCallback> toolCallbacks) {
+        return new SpringAiModelGateway(chatClient, requestFactory, parser, modelProperties.textModel(), toolCallbacks);
     }
 }

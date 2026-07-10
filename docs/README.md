@@ -19,6 +19,7 @@
 - [技术选型决策记录 v0.1](./architecture/technology-decisions-v0.1.md)
 - [Spring AI Agent 能力演进建议 v0.1](./architecture/spring-ai-agent-evolution-plan-v0.1.md)
 - [后端设计 v0.1](./architecture/backend-design-v0.1.md)
+- [当前接口清单 v0.1](./architecture/api-interface-list-v0.1.md)
 - [前端工作台设计 v0.1](./architecture/frontend-design-v0.1.md)
 - [小红书发布能力调研 v0.1](./research/xiaohongshu-publish-research-v0.1.md)
 - [风味联想体系调研 v0.1](./research/flavor-system-research-v0.1.md)

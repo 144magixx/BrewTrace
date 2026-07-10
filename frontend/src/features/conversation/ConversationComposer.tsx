@@ -12,10 +12,12 @@ type ConversationComposerProps = {
 
 export function ConversationComposer(props: ConversationComposerProps) {
   return (
-    <form className="composer" onSubmit={(event) => { event.preventDefault(); props.onSubmit(); }}>
+    <form className="composer" autoComplete="off" onSubmit={(event) => { event.preventDefault(); props.onSubmit(); }}>
       <label className="sr-only" htmlFor="coffee-input">今天喝了什么咖啡？</label>
       <input
         id="coffee-input"
+        name="coffee-input-no-history"
+        autoComplete="off"
         value={props.value}
         disabled={props.disabled}
         placeholder="输入今天这杯的体验"

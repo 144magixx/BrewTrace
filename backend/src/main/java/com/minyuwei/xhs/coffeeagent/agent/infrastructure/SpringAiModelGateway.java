@@ -14,9 +14,16 @@ import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.ChatClientResponse;
 import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.ai.chat.prompt.Prompt;
+import org.springframework.ai.model.tool.DefaultToolCallingManager;
+import org.springframework.ai.model.tool.ToolCallingChatOptions;
+import org.springframework.ai.model.tool.ToolCallingManager;
+import org.springframework.ai.model.tool.ToolExecutionResult;
+import org.springframework.ai.tool.ToolCallback;
+import org.springframework.ai.tool.resolution.StaticToolCallbackResolver;
 
 import java.time.Instant;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 public class SpringAiModelGateway implements ModelGateway {
@@ -26,26 +33,42 @@ public class SpringAiModelGateway implements ModelGateway {
     private final OpenAiResponsesRequestFactory requestFactory;
     private final OpenAiResponsesParser parser;
     private final String modelName;
+    private final List<ToolCallback> toolCallbacks;
+    private final ToolCallingManager toolCallingManager;
 
     public SpringAiModelGateway(ChatClient chatClient, OpenAiResponsesRequestFactory requestFactory, OpenAiResponsesParser parser, String modelName) {
+        this(chatClient, requestFactory, parser, modelName, List.of());
+    }
+
+    public SpringAiModelGateway(ChatClient chatClient, OpenAiResponsesRequestFactory requestFactory, OpenAiResponsesParser parser, String modelName, List<ToolCallback> toolCallbacks) {
         this.chatClient = chatClient;
         this.requestFactory = requestFactory;
         this.parser = parser;
         this.modelName = modelName;
+        this.toolCallbacks = toolCallbacks == null ? List.of() : List.copyOf(toolCallbacks);
+        this.toolCallingManager = DefaultToolCallingManager.builder()
+                .toolCallbackResolver(new StaticToolCallbackResolver(this.toolCallbacks))
+                .build();
     }
 
     @Override
     public ModelResult complete(ModelContextPackage contextPackage) {
-        Prompt prompt = requestFactory.createPrompt(contextPackage);
+        Map<String, Object> toolContext = Map.of(
+                "sessionId", contextPackage.sessionId(),
+                "purpose", "模型在咖啡品鉴对话中补充待确认风味联想",
+                "confirmed", false
+        );
+        Prompt prompt = promptWithTools(requestFactory.createPrompt(contextPackage), toolContext);
         ModelPreview.ModelRequestPreview fallbackRequestPreview = fallbackRequestPreview(prompt);
         try {
-            ChatClientResponse chatClientResponse = chatClient.prompt(prompt)
-                    .advisors(advisor -> advisor.params(Map.of(
-                            ModelAdvisorContextKeys.MODEL_CONTEXT_PACKAGE, contextPackage,
-                            ModelAdvisorContextKeys.MODEL_NAME, modelName
-                    )))
-                    .call()
-                    .chatClientResponse();
+            ChatClientResponse chatClientResponse = callModel(prompt, contextPackage, toolContext);
+            int toolCallDepth = 0;
+            while (chatClientResponse.chatResponse() != null && chatClientResponse.chatResponse().hasToolCalls() && toolCallDepth < 3) {
+                ToolExecutionResult toolExecutionResult = toolCallingManager.executeToolCalls(prompt, chatClientResponse.chatResponse());
+                prompt = new Prompt(toolExecutionResult.conversationHistory(), prompt.getOptions());
+                chatClientResponse = callModel(prompt, contextPackage, toolContext);
+                toolCallDepth++;
+            }
             String responseContent = responseContent(chatClientResponse.chatResponse());
             ModelAgentMessage message = parser.parseMessage(responseContent);
             Instant receivedAt = Instant.now();
@@ -90,6 +113,29 @@ public class SpringAiModelGateway implements ModelGateway {
             );
             return errorResult(fallbackRequestPreview, error);
         }
+    }
+
+    private ChatClientResponse callModel(Prompt prompt, ModelContextPackage contextPackage, Map<String, Object> toolContext) {
+        return chatClient.prompt(prompt)
+                .advisors(advisor -> advisor.params(Map.of(
+                        ModelAdvisorContextKeys.MODEL_CONTEXT_PACKAGE, contextPackage,
+                        ModelAdvisorContextKeys.MODEL_NAME, modelName
+                )))
+                .toolContext(toolContext)
+                .call()
+                .chatClientResponse();
+    }
+
+    private Prompt promptWithTools(Prompt prompt, Map<String, Object> toolContext) {
+        if (toolCallbacks.isEmpty()) {
+            return prompt;
+        }
+        return prompt.mutate()
+                .chatOptions(ToolCallingChatOptions.builder()
+                        .toolCallbacks(toolCallbacks)
+                        .toolContext(toolContext)
+                        .build())
+                .build();
     }
 
     private ModelPreview.ModelRequestPreview fallbackRequestPreview(Prompt prompt) {

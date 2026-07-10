@@ -35,6 +35,7 @@ export function QuestionAnswerDialog({ question, options, disabled, onSelect, on
         </div>
         <form
           className="custom-answer-form"
+          autoComplete="off"
           onSubmit={(event) => {
             event.preventDefault();
             if (trimmedCustomAnswer.length > 0) {
@@ -46,6 +47,8 @@ export function QuestionAnswerDialog({ question, options, disabled, onSelect, on
           <div className="custom-answer-row">
             <input
               id="custom-answer"
+              name="custom-answer-no-history"
+              autoComplete="off"
               value={customAnswer}
               disabled={disabled}
               placeholder="输入自己的回答"
