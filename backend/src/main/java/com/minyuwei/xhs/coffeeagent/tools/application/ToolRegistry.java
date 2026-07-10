@@ -43,8 +43,8 @@ public class ToolRegistry {
                     description,
                     riskLevel,
                     requiresConfirmation,
-                    "{}",
-                    "{}",
+                    null,
+                    null,
                     ResultBoundary.TOOL_RESULT,
                     SideEffectType.NONE,
                     !requiresConfirmation && riskLevel == RiskLevel.LOW

@@ -2,8 +2,10 @@ package com.minyuwei.xhs.coffeeagent.workbench.application;
 
 import com.minyuwei.xhs.coffeeagent.agent.application.ModelContextPackage;
 import com.minyuwei.xhs.coffeeagent.agent.application.ModelMode;
+import com.minyuwei.xhs.coffeeagent.agent.infrastructure.prompt.PromptTemplateLoader;
 import com.minyuwei.xhs.coffeeagent.workbench.api.WebWorkbenchDtos;
 import com.minyuwei.xhs.coffeeagent.workbench.domain.AgentStateModels;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
@@ -12,6 +14,19 @@ import java.util.List;
 
 @Service
 public class ModelContextPackageAssembler {
+    private static final String FACT_BOUNDARY_CONSTRAINTS = "prompts/agent/model-context-constraints-v1.json";
+
+    private final PromptTemplateLoader promptTemplateLoader;
+
+    public ModelContextPackageAssembler() {
+        this(new PromptTemplateLoader());
+    }
+
+    @Autowired
+    public ModelContextPackageAssembler(PromptTemplateLoader promptTemplateLoader) {
+        this.promptTemplateLoader = promptTemplateLoader;
+    }
+
     public ModelContextPackage assemble(
             String sessionId,
             ModelMode mode,
@@ -34,14 +49,15 @@ public class ModelContextPackageAssembler {
                 pendingAssociations.stream().map(this::entry).toList(),
                 candidateMemories.stream().map(this::entry).toList(),
                 excluded,
-                List.of(
-                        "已确认事实可以进入文案依据。",
-                        "待确认联想只能标为待确认，不能写成用户事实。",
-                        "候选记忆仅来自真实长期记忆召回；当前未接入时为空。",
-                        "不得新增未提供的豆庄、海拔、处理法或用户偏好。"
-                ),
+                promptConstraints(),
                 Instant.now()
         );
+    }
+
+    private List<String> promptConstraints() {
+        List<String> constraints = new ArrayList<>();
+        promptTemplateLoader.loadJson(FACT_BOUNDARY_CONSTRAINTS).forEach(node -> constraints.add(node.asText()));
+        return List.copyOf(constraints);
     }
 
     private ModelContextPackage.ContextEntry entry(WebWorkbenchDtos.ContextItem item) {

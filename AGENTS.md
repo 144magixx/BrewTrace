@@ -41,7 +41,9 @@ Use descriptive names:
 
 Keep changes focused and avoid broad refactors unless they directly support the current task.
 
-Do not hardcode model prompts in Java, TypeScript, tests, or documentation examples that look like runtime code. Prompt text for Agent behavior, field definitions, fact-boundary rules, tool instructions, and output contracts must live under `backend/src/main/resources/prompts/` with a scenario and versioned filename, and runtime code must load the template through a prompt loader. Only stable resource paths, placeholder names, and enum values may remain in code.
+Every new or modified method, function, and constructor must have a contract comment explaining its purpose, every input parameter, and its return value or side effects when there is no return value. For Java, use Javadoc with a summary, `@param` for every parameter, `@return` for non-`void` methods, and `@throws` when an exception is part of the caller-visible contract. Comments must explain intent and boundaries rather than repeat names or types. Simple getters/setters, Java `record` accessors, and framework/compiler-generated methods are exempt.
+
+Do not hardcode model prompts or reusable JSON formats in Java, TypeScript, tests, or documentation examples that look like runtime code. Prompt text for Agent behavior, field definitions, fact-boundary rules, tool instructions, and output contracts, together with JSON Schema, structured-output contracts, tool input/output definitions, model request/response examples, and reusable JSON templates, must live under `backend/src/main/resources/prompts/` (or `backend/src/test/resources/prompts/` for test fixtures) with a scenario and versioned filename. Runtime code must load these resources through the prompt resource loader. Typed DTOs and runtime serialization of objects or maps are allowed; embedded JSON strings, hand-built reusable schemas, and manual JSON concatenation are not. Only stable resource paths, placeholder names, API field names, and enum values may remain in code.
 
 ## Testing Guidelines
 
@@ -49,7 +51,7 @@ Add tests with new behavior. Place Java tests under `src/test/java/` and name th
 
 For Agent behavior, test structured inputs, tool outputs, memory retrieval, and prompt constraints. If external APIs block full testing, document the gap and provide a local verification path.
 
-When adding or changing a prompt template, add tests that prove the template is loaded, dynamic placeholders are replaced, and no runtime request depends on duplicated hardcoded prompt text.
+When adding or changing a prompt or JSON resource, add tests that prove the resource is loaded, JSON resources are parseable, dynamic placeholders are replaced, and no runtime request depends on duplicated hardcoded prompt or JSON text.
 
 ## Commit & Pull Request Guidelines
 
@@ -68,6 +70,8 @@ Follow [AI_Coding_行为准则.md](./AI_Coding_行为准则.md) for project coll
 Follow [.specify/memory/constitution.md](./.specify/memory/constitution.md) for project governance. New specs, plans, tasks, and implementation reviews must preserve truthful coffee records, trace Agent state, confirm high-impact tool actions, deliver verified vertical slices, and keep the architecture learning-oriented.
 
 All generated project documentation must use Simplified Chinese by default, except for code identifiers, commands, API fields, library names, and required source quotations. This includes PRDs, architecture notes, research documents, spec-kit specs, plans, tasks, reviews, and learning materials.
+
+All flowcharts and other technical diagrams must be created with the `fireworks-tech-graph` skill. Store the generated SVG alongside the document or in the document's asset directory, and reference the SVG from the document instead of embedding Mermaid or manually authored diagram syntax.
 
 <!-- SPECKIT START -->
 For additional context about technologies to be used, project structure,

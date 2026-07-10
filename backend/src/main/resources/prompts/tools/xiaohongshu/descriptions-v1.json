@@ -1,0 +1,8 @@
+{
+  "xiaohongshu.checkLogin": "检查小红书账号当前登录状态，不执行公开或写入动作。",
+  "xiaohongshu.searchFeeds": "根据查询条件搜索小红书笔记，结果只作为外部参考，不得写成用户事实。",
+  "xiaohongshu.getFeedDetail": "读取指定小红书笔记详情，内容需保留外部来源边界。",
+  "xiaohongshu.fillPublish": "将已确认的发布草稿填入小红书发布页，执行前必须获得用户明确确认，不点击最终发布。",
+  "xiaohongshu.clickPublish": "点击小红书最终发布按钮，属于高影响公开动作，执行前必须获得用户明确确认。",
+  "xiaohongshu.saveDraft": "将已确认内容保存为小红书草稿，执行前必须获得用户明确确认。"
+}

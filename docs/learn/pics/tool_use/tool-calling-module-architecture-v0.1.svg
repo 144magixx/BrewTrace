@@ -1,0 +1,195 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1120" viewBox="0 0 1400 1120" role="img" aria-labelledby="title desc">
+  <title id="title">咖啡品鉴 Agent 工具调用模块架构</title>
+  <desc id="desc">展示 ToolConfiguration、ToolRegistry、FlavorSuggestionToolRegistrar、FlavorSuggestionToolAdapter、SpringAiToolCallbackAdapter 与业务服务之间的装配关系和运行时调用链。</desc>
+  <defs>
+    <marker id="arrow-blue" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#2563eb"/>
+    </marker>
+    <marker id="arrow-orange" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#ea580c"/>
+    </marker>
+    <marker id="arrow-purple" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#7c3aed"/>
+    </marker>
+    <marker id="arrow-gray" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#64748b"/>
+    </marker>
+    <filter id="soft-shadow" x="-20%" y="-25%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0f172a" flood-opacity="0.10"/>
+    </filter>
+    <linearGradient id="config-gradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff7ed"/>
+      <stop offset="1" stop-color="#ffedd5"/>
+    </linearGradient>
+    <linearGradient id="spring-gradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#eff6ff"/>
+      <stop offset="1" stop-color="#dbeafe"/>
+    </linearGradient>
+    <style>
+      text { font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif; fill: #0f172a; }
+      .title { font-size: 28px; font-weight: 700; }
+      .subtitle { font-size: 14px; fill: #64748b; }
+      .layer-title { font-size: 15px; font-weight: 700; letter-spacing: 0.3px; }
+      .node-title { font-size: 17px; font-weight: 700; }
+      .node-subtitle { font-size: 12px; fill: #475569; }
+      .node-detail { font-size: 12px; fill: #334155; }
+      .arrow-label { font-size: 12px; font-weight: 600; }
+      .legend { font-size: 12px; fill: #334155; }
+      .code { font-family: "SFMono-Regular", Consolas, monospace; }
+    </style>
+  </defs>
+
+  <rect width="1400" height="1120" fill="#f8fafc"/>
+  <text id="diagram-title" x="60" y="48" class="title">咖啡品鉴 Agent｜工具调用模块架构</text>
+  <text x="60" y="74" class="subtitle">橙色虚线表示应用启动时的 Spring 装配；蓝色实线表示模型运行时的工具调用；紫色表示工具结果回到模型形成下一轮推理。</text>
+
+  <!-- Layer containers -->
+  <rect x="50" y="100" width="1300" height="142" rx="18" fill="#fffaf5" stroke="#fdba74" stroke-width="1.5" stroke-dasharray="7 5"/>
+  <text x="72" y="126" class="layer-title" fill="#c2410c">① Spring 装配层 · Composition Root</text>
+
+  <rect x="50" y="270" width="1300" height="180" rx="18" fill="#f8fbff" stroke="#93c5fd" stroke-width="1.5" stroke-dasharray="7 5"/>
+  <text x="72" y="296" class="layer-title" fill="#1d4ed8">② 模型与 Spring AI 框架层</text>
+
+  <rect x="50" y="480" width="1300" height="220" rx="18" fill="#fafafa" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="7 5"/>
+  <text x="72" y="506" class="layer-title" fill="#475569">③ 项目内部工具应用层 · 统一安全边界</text>
+
+  <rect x="50" y="730" width="1300" height="160" rx="18" fill="#fbfaff" stroke="#c4b5fd" stroke-width="1.5" stroke-dasharray="7 5"/>
+  <text x="72" y="756" class="layer-title" fill="#6d28d9">④ 风味工具基础设施适配层</text>
+
+  <rect x="50" y="920" width="1300" height="130" rx="18" fill="#f6fffb" stroke="#86efac" stroke-width="1.5" stroke-dasharray="7 5"/>
+  <text x="72" y="946" class="layer-title" fill="#047857">⑤ 风味业务能力层</text>
+
+  <!-- Arrows rendered before nodes -->
+  <!-- Startup assembly -->
+  <path d="M625 226 L625 250 L1160 250 L1160 318" fill="none" stroke="#ea580c" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#arrow-orange)"/>
+  <text x="890" y="242" class="arrow-label" fill="#c2410c">创建 ToolCallback / Advisor</text>
+
+  <path d="M400 180 L32 180 L32 818 L168 818" fill="none" stroke="#ea580c" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#arrow-orange)"/>
+  <rect x="15" y="418" width="30" height="180" rx="8" fill="#fffaf5" opacity="0.98"/>
+  <text x="35" y="584" class="arrow-label" fill="#c2410c" text-anchor="middle" transform="rotate(-90 35 584)">调用 Registrar 注册具体工具</text>
+
+  <path d="M318 806 L318 680 L430 680 L430 645 L500 645" fill="none" stroke="#ea580c" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#arrow-orange)"/>
+  <text x="330" y="672" class="arrow-label" fill="#c2410c">register(definition, adapter)</text>
+
+  <!-- Runtime primary flow -->
+  <path d="M380 356 L520 356" fill="none" stroke="#2563eb" stroke-width="2.5" marker-end="url(#arrow-blue)"/>
+  <text x="450" y="346" class="arrow-label" fill="#1d4ed8" text-anchor="middle">检测 function_call</text>
+
+  <path d="M820 356 L980 356" fill="none" stroke="#2563eb" stroke-width="2.5" marker-end="url(#arrow-blue)"/>
+  <text x="900" y="346" class="arrow-label" fill="#1d4ed8" text-anchor="middle">解析并执行</text>
+
+  <path d="M1080 394 L1080 520 L1005 520 L1005 548" fill="none" stroke="#64748b" stroke-width="1.8" marker-end="url(#arrow-gray)"/>
+  <text x="1092" y="470" class="arrow-label" fill="#475569">记录轨迹</text>
+
+  <path d="M1040 394 L1040 465 L318 465 L318 548" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-blue)"/>
+  <text x="650" y="456" class="arrow-label" fill="#1d4ed8" text-anchor="middle">policy.verify(definition, confirmed)</text>
+
+  <path d="M1120 394 L1120 440 L640 440 L640 548" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-blue)"/>
+  <text x="855" y="431" class="arrow-label" fill="#1d4ed8" text-anchor="middle">definition() / adapter()</text>
+
+  <path d="M640 652 L640 786" fill="none" stroke="#2563eb" stroke-width="2.5" marker-end="url(#arrow-blue)"/>
+  <text x="652" y="720" class="arrow-label" fill="#1d4ed8">execute(ToolRequest)</text>
+
+  <path d="M700 850 L700 968" fill="none" stroke="#2563eb" stroke-width="2.5" marker-end="url(#arrow-blue)"/>
+  <text x="712" y="914" class="arrow-label" fill="#1d4ed8">suggest(...)</text>
+
+  <!-- Result feedback rail -->
+  <path d="M860 1006 L1320 1006 L1320 428 L230 428 L230 394" fill="none" stroke="#7c3aed" stroke-width="2.2" marker-end="url(#arrow-purple)"/>
+  <rect x="1070" y="991" width="210" height="25" rx="12" fill="#f5f3ff" stroke="#ddd6fe"/>
+  <text x="1175" y="1008" class="arrow-label" fill="#6d28d9" text-anchor="middle">结构化结果 → 模型下一轮</text>
+
+  <!-- Configuration node -->
+  <g filter="url(#soft-shadow)">
+    <rect x="400" y="132" width="450" height="94" rx="14" fill="url(#config-gradient)" stroke="#f97316" stroke-width="2"/>
+  </g>
+  <circle cx="430" cy="164" r="13" fill="#f97316"/>
+  <path d="M424 164 H436 M430 158 V170" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+  <text x="456" y="164" class="node-title code">ToolConfiguration</text>
+  <text x="430" y="192" class="node-subtitle">创建 Service、Registry、Policy、Recorder，</text>
+  <text x="430" y="210" class="node-subtitle">并装配 Callback 与 Advisor Bean</text>
+
+  <!-- Framework nodes -->
+  <g filter="url(#soft-shadow)">
+    <rect x="90" y="318" width="290" height="76" rx="14" fill="url(#spring-gradient)" stroke="#3b82f6" stroke-width="2"/>
+    <rect x="520" y="318" width="300" height="76" rx="14" fill="#eff6ff" stroke="#60a5fa" stroke-width="2"/>
+    <rect x="980" y="318" width="330" height="76" rx="14" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  </g>
+  <circle cx="120" cy="346" r="13" fill="#2563eb"/>
+  <path d="M114 346 L119 351 L127 341" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="146" y="346" class="node-title code">SpringAiModelGateway</text>
+  <text x="120" y="374" class="node-subtitle">模型主控：发请求、识别工具调用、把结果送回模型</text>
+
+  <circle cx="550" cy="346" r="13" fill="#3b82f6"/>
+  <path d="M544 342 H556 M544 347 H556 M544 352 H552" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round"/>
+  <text x="576" y="346" class="node-title">ToolCallingManager</text>
+  <text x="550" y="374" class="node-subtitle">根据工具名解析 ToolCallback 并驱动执行</text>
+
+  <circle cx="1010" cy="346" r="13" fill="#6366f1"/>
+  <path d="M1004 346 H1016 M1010 340 V352" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+  <text x="1036" y="346" class="node-title code">SpringAiToolCallbackAdapter</text>
+  <text x="1010" y="374" class="node-subtitle">内部工具体系 ↔ Spring AI ToolCallback 的框架桥</text>
+
+  <!-- Internal tool boundary nodes -->
+  <g filter="url(#soft-shadow)">
+    <rect x="180" y="548" width="276" height="104" rx="14" fill="#fff7ed" stroke="#fb923c" stroke-width="2"/>
+    <rect x="500" y="548" width="280" height="104" rx="14" fill="#ffffff" stroke="#64748b" stroke-width="2"/>
+    <rect x="900" y="548" width="280" height="104" rx="14" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+  </g>
+  <circle cx="210" cy="578" r="13" fill="#f97316"/>
+  <path d="M204 578 L209 583 L217 573" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="236" y="578" class="node-title code">ToolCallPolicy</text>
+  <text x="210" y="606" class="node-detail">执行前安全裁决</text>
+  <text x="210" y="628" class="node-subtitle">需要确认但 confirmed=false 时阻断</text>
+
+  <circle cx="530" cy="578" r="13" fill="#475569"/>
+  <path d="M524 573 H536 V583 H524 Z M527 570 H533" fill="none" stroke="#ffffff" stroke-width="1.6"/>
+  <text x="556" y="578" class="node-title code">ToolRegistry</text>
+  <text x="530" y="606" class="node-detail">唯一工具注册源 / 运行时目录</text>
+  <text x="530" y="628" class="node-subtitle">ToolDefinition 元数据 + ToolAdapter 执行器</text>
+
+  <circle cx="930" cy="578" r="13" fill="#64748b"/>
+  <path d="M924 573 H936 V583 H924 Z M927 576 H933 M927 580 H933" fill="none" stroke="#ffffff" stroke-width="1.5"/>
+  <text x="956" y="578" class="node-title code">ToolCallRecorder</text>
+  <text x="930" y="606" class="node-detail">记录输入摘要、结果、确认要求</text>
+  <text x="930" y="628" class="node-subtitle">同步写入 AgentTrace，敏感字段脱敏</text>
+
+  <!-- Concrete tool nodes -->
+  <g filter="url(#soft-shadow)">
+    <rect x="168" y="786" width="300" height="64" rx="14" fill="#fff7ed" stroke="#f97316" stroke-width="2"/>
+    <rect x="540" y="786" width="320" height="64" rx="14" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+  </g>
+  <text x="318" y="812" class="node-title code" text-anchor="middle">FlavorSuggestionToolRegistrar</text>
+  <text x="318" y="834" class="node-subtitle" text-anchor="middle">声明 Schema、安全属性，并把定义与适配器配对注册</text>
+
+  <text x="700" y="812" class="node-title code" text-anchor="middle">FlavorSuggestionToolAdapter</text>
+  <text x="700" y="834" class="node-subtitle" text-anchor="middle">通用 ToolRequest → 风味业务参数 → 结构化 ToolResult</text>
+
+  <!-- Business node -->
+  <g filter="url(#soft-shadow)">
+    <rect x="540" y="968" width="320" height="64" rx="14" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  </g>
+  <text x="700" y="994" class="node-title code" text-anchor="middle">FlavorSuggestionService</text>
+  <text x="700" y="1016" class="node-subtitle" text-anchor="middle">生成风味候选；结果仍属于 PENDING_ASSOCIATION</text>
+
+  <!-- Boundary annotation -->
+  <rect x="910" y="774" width="380" height="92" rx="12" fill="#ffffff" stroke="#ddd6fe"/>
+  <text x="930" y="800" class="node-detail" font-weight="700" fill="#6d28d9">两个 Adapter 的方向不同</text>
+  <text x="930" y="824" class="node-subtitle">FlavorSuggestionToolAdapter：业务能力 → 内部 ToolAdapter</text>
+  <text x="930" y="846" class="node-subtitle">SpringAiToolCallbackAdapter：内部工具 → Spring AI ToolCallback</text>
+
+  <!-- Legend -->
+  <g>
+    <rect x="870" y="111" width="450" height="105" rx="12" fill="#ffffff" stroke="#e2e8f0"/>
+    <text x="892" y="136" class="legend" font-weight="700">图例</text>
+    <line x1="892" y1="157" x2="946" y2="157" stroke="#2563eb" stroke-width="2.5" marker-end="url(#arrow-blue)"/>
+    <text x="960" y="161" class="legend">运行时调用</text>
+    <line x1="1065" y1="157" x2="1119" y2="157" stroke="#ea580c" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#arrow-orange)"/>
+    <text x="1133" y="161" class="legend">启动装配</text>
+    <line x1="892" y1="187" x2="946" y2="187" stroke="#7c3aed" stroke-width="2.2" marker-end="url(#arrow-purple)"/>
+    <text x="960" y="191" class="legend">工具结果反馈</text>
+    <line x1="1065" y1="187" x2="1119" y2="187" stroke="#64748b" stroke-width="1.8" marker-end="url(#arrow-gray)"/>
+    <text x="1133" y="191" class="legend">审计记录</text>
+  </g>
+
+  <text x="60" y="1090" class="subtitle">阅读顺序：先看橙色装配关系，再沿蓝色箭头从 SpringAiModelGateway 向下，最后沿紫色反馈线回到模型。</text>
+</svg>

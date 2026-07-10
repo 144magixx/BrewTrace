@@ -99,7 +99,7 @@ public class ResponsesApiChatModel implements ChatModel {
         if ("function_call".equals(node.path("type").asText())) {
             String callId = text(node, "call_id", text(node, "id", ""));
             String name = text(node, "name", "");
-            String arguments = text(node, "arguments", "{}");
+            String arguments = text(node, "arguments", OBJECT_MAPPER.createObjectNode().toString());
             if (!callId.isBlank() && !name.isBlank()) {
                 result.add(new AssistantMessage.ToolCall(callId, "function", name, arguments));
             }

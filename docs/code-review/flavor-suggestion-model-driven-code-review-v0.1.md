@@ -23,22 +23,7 @@
 
 ## 2. 业务链路审核
 
-```mermaid
-flowchart TD
-    A["用户输入模糊风味"] --> B["主模型选择 flavor_suggestion"]
-    B --> C["SpringAiToolCallbackAdapter"]
-    C --> D["ToolCallPolicy 校验"]
-    D --> E["FlavorSuggestionToolAdapter 解析入参"]
-    E --> F["FlavorSuggestionService 编排"]
-    F --> G["FlavorSuggestionGenerator 端口"]
-    G --> H["专用无工具 ChatClient"]
-    H --> I["结构化风味候选响应"]
-    I --> J["过滤空项 去重 最多 8 项"]
-    J --> K["映射为待确认 FlavorSuggestion"]
-    K --> L["Adapter 执行最终 limit"]
-    L --> M["ToolCallRecorder 记录工具结果"]
-    M --> N["主模型继续返回 CONVERSATION 或 POST"]
-```
+![flavor_suggestion 模型驱动业务链路](./assets/flavor-suggestion-model-driven-flow-v0.1.svg)
 
 ### 2.1 主模型暴露并执行工具：沿用现有架构
 

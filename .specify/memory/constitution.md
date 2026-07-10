@@ -1,22 +1,19 @@
 <!--
 同步影响报告
-版本变更：1.0.0 -> 1.1.0
+版本变更：1.1.0 -> 1.2.0
 修改原则：
-- I. Truthful Coffee Experience -> I. 真实咖啡体验
-- II. Traceable Agent State -> II. 可追踪的 Agent 状态
-- III. Tool Safety and User Confirmation -> III. 工具安全与用户确认
-- IV. Verified Vertical Slices -> IV. 可验证的垂直切片
-- V. Learning-Oriented Simplicity -> V. 面向学习的克制架构
+- V. 面向学习的克制架构（补充方法契约注释要求）
 新增章节：
-- 文档语言与知识沉淀
+- 无
 移除章节：
 - 无
 需要同步的模板：
 - ✅ updated .specify/templates/plan-template.md
-- ✅ updated .specify/templates/spec-template.md
+- ✅ checked .specify/templates/spec-template.md（无需修改，规格不承载实现级注释要求）
 - ✅ updated .specify/templates/tasks-template.md
 - ✅ checked .specify/templates/commands/*.md（目录不存在）
 - ✅ updated AGENTS.md
+- ✅ updated AI_Coding_行为准则.md
 后续 TODO：
 - 无
 -->
@@ -42,7 +39,7 @@
 
 ### V. 面向学习的克制架构
 
-项目必须优先采用可理解、可讲清楚的架构，而不是过早抽象。Spring Boot、Spring AI、Maven、PostgreSQL、pgvector、React、Vite 和 TypeScript 是默认技术栈，除非有记录在案的技术决策变更。多 Agent 行为应先作为应用内逻辑角色实现，再按真实复杂度拆分为独立运行时。理由：本项目的目标是通过真实产品学习 Agent 全链路，同时保持系统可维护。
+项目必须优先采用可理解、可讲清楚的架构，而不是过早抽象。Spring Boot、Spring AI、Maven、PostgreSQL、pgvector、React、Vite 和 TypeScript 是默认技术栈，除非有记录在案的技术决策变更。多 Agent 行为应先作为应用内逻辑角色实现，再按真实复杂度拆分为独立运行时。所有新增或修改的方法、函数和构造器必须包含契约注释，明确说明方法作用、每个输入参数的语义，以及返回值或无返回值副作用；Java 默认使用 Javadoc 的方法摘要、`@param` 和非 `void` 方法的 `@return`，异常是调用方契约的一部分时还必须使用 `@throws`。注释必须解释意图和边界，不得只是复述方法名或类型；简单 getter、setter、Java `record` 自动访问器，以及框架或编译器生成的方法可以豁免。理由：本项目既用于交付产品也用于学习 Agent 全链路，稳定的方法契约能降低阅读、评审、调试和后续维护成本。
 
 ## 文档语言与知识沉淀
 
@@ -85,4 +82,4 @@
 
 所有规格、计划、任务列表和实现评审都必须检查是否符合本宪法。违反宪法只允许在明确记录理由、被拒绝的替代方案和后续缓解计划后发生。
 
-**Version**: 1.1.0 | **Ratified**: 2026-06-29 | **Last Amended**: 2026-06-30
+**Version**: 1.2.0 | **Ratified**: 2026-06-29 | **Last Amended**: 2026-07-10
