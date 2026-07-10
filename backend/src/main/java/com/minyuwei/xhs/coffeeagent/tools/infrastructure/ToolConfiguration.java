@@ -1,5 +1,6 @@
 package com.minyuwei.xhs.coffeeagent.tools.infrastructure;
 
+import com.minyuwei.xhs.coffeeagent.agent.infrastructure.prompt.PromptTemplateLoader;
 import com.minyuwei.xhs.coffeeagent.flavor.application.FlavorSuggestionService;
 import com.minyuwei.xhs.coffeeagent.tools.application.ToolCallPolicy;
 import com.minyuwei.xhs.coffeeagent.tools.application.ToolCallRecorder;
@@ -18,14 +19,9 @@ import java.util.List;
 @Configuration
 public class ToolConfiguration {
     @Bean
-    public FlavorSuggestionService flavorSuggestionService() {
-        return new FlavorSuggestionService();
-    }
-
-    @Bean
-    public ToolRegistry toolRegistry(FlavorSuggestionService flavorSuggestionService) {
+    public ToolRegistry toolRegistry(FlavorSuggestionService flavorSuggestionService, PromptTemplateLoader promptTemplateLoader) {
         ToolRegistry registry = new ToolRegistry();
-        new FlavorSuggestionToolRegistrar().register(registry, flavorSuggestionService);
+        new FlavorSuggestionToolRegistrar(promptTemplateLoader).register(registry, flavorSuggestionService);
         return registry;
     }
 

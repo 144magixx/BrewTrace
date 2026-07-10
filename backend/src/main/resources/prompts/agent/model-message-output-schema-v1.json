@@ -1,0 +1,202 @@
+{
+  "type": "json_schema",
+  "name": "coffee_model_message",
+  "strict": true,
+  "schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "messageType",
+      "talk",
+      "conversation",
+      "post",
+      "warnings"
+    ],
+    "properties": {
+      "messageType": {
+        "type": "string",
+        "enum": [
+          "CONVERSATION",
+          "POST"
+        ]
+      },
+      "talk": {
+        "type": "string"
+      },
+      "conversation": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "additionalProperties": false,
+        "required": [
+          "questions",
+          "answerOptions",
+          "pendingConfirmations",
+          "warnings"
+        ],
+        "properties": {
+          "questions": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 1,
+            "items": {
+              "type": "string"
+            }
+          },
+          "answerOptions": {
+            "type": "array",
+            "maxItems": 4,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "id",
+                "label",
+                "content"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                },
+                "content": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "pendingConfirmations": {
+            "$ref": "#/$defs/usageArray"
+          },
+          "warnings": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "post": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "additionalProperties": false,
+        "required": [
+          "variants",
+          "warnings"
+        ],
+        "properties": {
+          "variants": {
+            "type": "array",
+            "minItems": 3,
+            "maxItems": 3,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "style",
+                "styleLabel",
+                "title",
+                "body",
+                "tags",
+                "factUsages",
+                "inferences",
+                "pendingConfirmations",
+                "warnings"
+              ],
+              "properties": {
+                "style": {
+                  "type": "string",
+                  "enum": [
+                    "RESTRAINED",
+                    "EXAGGERATED",
+                    "SHARP_REVIEW"
+                  ]
+                },
+                "styleLabel": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "body": {
+                  "type": "string"
+                },
+                "tags": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "factUsages": {
+                  "$ref": "#/$defs/usageArray"
+                },
+                "inferences": {
+                  "$ref": "#/$defs/usageArray"
+                },
+                "pendingConfirmations": {
+                  "$ref": "#/$defs/usageArray"
+                },
+                "warnings": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "warnings": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "warnings": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "$defs": {
+      "usageArray": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "expression",
+            "basisType",
+            "sourceReference",
+            "sourceId",
+            "confidenceLabel"
+          ],
+          "properties": {
+            "expression": {
+              "type": "string"
+            },
+            "basisType": {
+              "type": "string"
+            },
+            "sourceReference": {
+              "type": "string"
+            },
+            "sourceId": {
+              "type": "string"
+            },
+            "confidenceLabel": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}

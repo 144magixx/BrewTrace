@@ -1,0 +1,157 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="920" viewBox="0 0 1200 920" role="img" aria-labelledby="title desc">
+  <title id="title">flavor_suggestion 模型驱动业务链路</title>
+  <desc id="desc">从用户输入、主模型工具选择、安全校验，到专用无工具模型生成风味候选，再经过过滤、待确认映射、结果记录并返回主模型的完整业务流程。</desc>
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#0f172a" flood-opacity="0.10"/>
+    </filter>
+    <marker id="arrow-blue" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#2563eb"/>
+    </marker>
+    <marker id="arrow-purple" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#7c3aed"/>
+    </marker>
+    <marker id="arrow-green" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#059669"/>
+    </marker>
+    <style>
+      text { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #172033; }
+      .title { font-size: 28px; font-weight: 700; }
+      .subtitle { font-size: 14px; fill: #64748b; }
+      .section-label { font-size: 14px; font-weight: 700; letter-spacing: 0.5px; }
+      .node-title { font-size: 15px; font-weight: 700; text-anchor: middle; }
+      .node-subtitle { font-size: 12px; fill: #64748b; text-anchor: middle; }
+      .step { font-size: 12px; font-weight: 700; fill: #ffffff; text-anchor: middle; dominant-baseline: middle; }
+      .legend { font-size: 12px; fill: #475569; }
+      .flow { fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="920" fill="#f8fafc"/>
+  <text x="60" y="58" class="title">flavor_suggestion 模型驱动业务链路</text>
+  <text x="60" y="86" class="subtitle">主模型选择工具 → 安全编排 → 专用无工具模型生成 → 待确认结果回传</text>
+
+  <rect x="40" y="118" width="1120" height="176" rx="18" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+  <text x="64" y="148" class="section-label" fill="#1d4ed8">01 · 主模型与工具入口</text>
+
+  <rect x="40" y="318" width="1120" height="248" rx="18" fill="#faf5ff" stroke="#ddd6fe" stroke-width="1.5"/>
+  <text x="64" y="348" class="section-label" fill="#6d28d9">02 · 风味生成专用链路（无 Tool Calling）</text>
+
+  <rect x="40" y="590" width="1120" height="252" rx="18" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1.5"/>
+  <text x="64" y="620" class="section-label" fill="#047857">03 · 事实边界与结果回传</text>
+
+  <!-- arrows: entry layer -->
+  <path class="flow" d="M244 216 H294" stroke="#2563eb" marker-end="url(#arrow-blue)"/>
+  <path class="flow" d="M504 216 H554" stroke="#2563eb" marker-end="url(#arrow-blue)"/>
+  <path class="flow" d="M764 216 H814" stroke="#2563eb" marker-end="url(#arrow-blue)"/>
+  <path class="flow" d="M919 256 V330 H984 V382" stroke="#7c3aed" marker-end="url(#arrow-purple)"/>
+
+  <!-- arrows: dedicated model layer, right to left -->
+  <path class="flow" d="M879 422 H829" stroke="#7c3aed" marker-end="url(#arrow-purple)"/>
+  <path class="flow" d="M619 422 H569" stroke="#7c3aed" marker-end="url(#arrow-purple)"/>
+  <path class="flow" d="M359 422 H309" stroke="#7c3aed" marker-end="url(#arrow-purple)"/>
+  <path class="flow" d="M204 462 V520 H334 V654" stroke="#059669" marker-end="url(#arrow-green)"/>
+
+  <!-- arrows: result layer -->
+  <path class="flow" d="M439 694 H489" stroke="#059669" marker-end="url(#arrow-green)"/>
+  <path class="flow" d="M699 694 H749" stroke="#059669" marker-end="url(#arrow-green)"/>
+  <path class="flow" d="M959 694 H1009 V790 H829" stroke="#059669" marker-end="url(#arrow-green)"/>
+  <path class="flow" d="M619 790 H569" stroke="#2563eb" marker-end="url(#arrow-blue)"/>
+
+  <!-- nodes: row 1 -->
+  <g filter="url(#shadow)">
+    <rect x="84" y="176" width="160" height="80" rx="14" fill="#ffffff" stroke="#93c5fd" stroke-width="1.5"/>
+    <circle cx="104" cy="196" r="13" fill="#2563eb"/><text x="104" y="196" class="step">1</text>
+    <text x="164" y="209" class="node-title">用户输入</text>
+    <text x="164" y="232" class="node-subtitle">模糊风味描述</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="294" y="176" width="210" height="80" rx="14" fill="#ffffff" stroke="#93c5fd" stroke-width="1.5"/>
+    <circle cx="314" cy="196" r="13" fill="#2563eb"/><text x="314" y="196" class="step">2</text>
+    <text x="399" y="209" class="node-title">主模型选择工具</text>
+    <text x="399" y="232" class="node-subtitle">flavor_suggestion</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="554" y="176" width="210" height="80" rx="14" fill="#ffffff" stroke="#93c5fd" stroke-width="1.5"/>
+    <circle cx="574" cy="196" r="13" fill="#2563eb"/><text x="574" y="196" class="step">3</text>
+    <text x="659" y="209" class="node-title">工具回调适配</text>
+    <text x="659" y="232" class="node-subtitle">SpringAiToolCallbackAdapter</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="814" y="176" width="210" height="80" rx="14" fill="#ffffff" stroke="#93c5fd" stroke-width="1.5"/>
+    <circle cx="834" cy="196" r="13" fill="#2563eb"/><text x="834" y="196" class="step">4</text>
+    <text x="919" y="209" class="node-title">安全策略校验</text>
+    <text x="919" y="232" class="node-subtitle">ToolCallPolicy</text>
+  </g>
+
+  <!-- nodes: row 2 -->
+  <g filter="url(#shadow)">
+    <rect x="879" y="382" width="210" height="80" rx="14" fill="#ffffff" stroke="#c4b5fd" stroke-width="1.5"/>
+    <circle cx="899" cy="402" r="13" fill="#7c3aed"/><text x="899" y="402" class="step">5</text>
+    <text x="984" y="415" class="node-title">解析工具入参</text>
+    <text x="984" y="438" class="node-subtitle">FlavorSuggestionToolAdapter</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="619" y="382" width="210" height="80" rx="14" fill="#ffffff" stroke="#c4b5fd" stroke-width="1.5"/>
+    <circle cx="639" cy="402" r="13" fill="#7c3aed"/><text x="639" y="402" class="step">6</text>
+    <text x="724" y="415" class="node-title">业务服务编排</text>
+    <text x="724" y="438" class="node-subtitle">FlavorSuggestionService</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="359" y="382" width="210" height="80" rx="14" fill="#ffffff" stroke="#c4b5fd" stroke-width="1.5"/>
+    <circle cx="379" cy="402" r="13" fill="#7c3aed"/><text x="379" y="402" class="step">7</text>
+    <text x="464" y="415" class="node-title">调用生成端口</text>
+    <text x="464" y="438" class="node-subtitle">FlavorSuggestionGenerator</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="99" y="382" width="210" height="80" rx="14" fill="#ffffff" stroke="#8b5cf6" stroke-width="2"/>
+    <circle cx="119" cy="402" r="13" fill="#7c3aed"/><text x="119" y="402" class="step">8</text>
+    <text x="204" y="415" class="node-title">专用 ChatClient</text>
+    <text x="204" y="438" class="node-subtitle">无工具定义 · 阻断递归</text>
+  </g>
+
+  <!-- nodes: row 3 -->
+  <g filter="url(#shadow)">
+    <rect x="229" y="654" width="210" height="80" rx="14" fill="#ffffff" stroke="#6ee7b7" stroke-width="1.5"/>
+    <circle cx="249" cy="674" r="13" fill="#059669"/><text x="249" y="674" class="step">9</text>
+    <text x="334" y="687" class="node-title">结构化候选响应</text>
+    <text x="334" y="710" class="node-subtitle">name · description · reason</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="489" y="654" width="210" height="80" rx="14" fill="#ffffff" stroke="#6ee7b7" stroke-width="1.5"/>
+    <circle cx="509" cy="674" r="13" fill="#059669"/><text x="509" y="674" class="step">10</text>
+    <text x="594" y="687" class="node-title">业务防御过滤</text>
+    <text x="594" y="710" class="node-subtitle">过滤空项 · 去重 · 最多 8 项</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="749" y="654" width="210" height="80" rx="14" fill="#ffffff" stroke="#6ee7b7" stroke-width="1.5"/>
+    <circle cx="769" cy="674" r="13" fill="#059669"/><text x="769" y="674" class="step">11</text>
+    <text x="854" y="687" class="node-title">映射待确认对象</text>
+    <text x="854" y="710" class="node-subtitle">PENDING_ASSOCIATION</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="619" y="750" width="210" height="80" rx="14" fill="#ffffff" stroke="#6ee7b7" stroke-width="1.5"/>
+    <circle cx="639" cy="770" r="13" fill="#059669"/><text x="639" y="770" class="step">12</text>
+    <text x="724" y="783" class="node-title">最终数量限制</text>
+    <text x="724" y="806" class="node-subtitle">Adapter 执行 limit</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="359" y="750" width="210" height="80" rx="14" fill="#ffffff" stroke="#93c5fd" stroke-width="1.5"/>
+    <circle cx="379" cy="770" r="13" fill="#2563eb"/><text x="379" y="770" class="step">13</text>
+    <text x="464" y="783" class="node-title">记录并返回主模型</text>
+    <text x="464" y="806" class="node-subtitle">ToolCallRecorder → CONVERSATION / POST</text>
+  </g>
+
+  <!-- legend -->
+  <g transform="translate(770,55)">
+    <line x1="0" y1="0" x2="34" y2="0" stroke="#2563eb" stroke-width="2.5" marker-end="url(#arrow-blue)"/>
+    <text x="44" y="4" class="legend">主链调用</text>
+    <line x1="126" y1="0" x2="160" y2="0" stroke="#7c3aed" stroke-width="2.5" marker-end="url(#arrow-purple)"/>
+    <text x="170" y="4" class="legend">模型生成</text>
+    <line x1="252" y1="0" x2="286" y2="0" stroke="#059669" stroke-width="2.5" marker-end="url(#arrow-green)"/>
+    <text x="296" y="4" class="legend">候选处理</text>
+  </g>
+
+  <text x="60" y="884" class="subtitle">关键约束：专用模型链不携带 tools/tool_choice；所有候选在用户确认前均不写入正向咖啡事实。</text>
+</svg>
+

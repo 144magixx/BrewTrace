@@ -112,7 +112,7 @@ public class SpringAiToolCallbackAdapter implements ToolCallback {
         try {
             return OBJECT_MAPPER.writerWithDefaultPrettyPrinter().writeValueAsString(value);
         } catch (JsonProcessingException exception) {
-            return "{\"status\":\"FAILED\",\"errorCode\":\"TOOL_RESULT_SERIALIZATION_FAILED\"}";
+            throw new IllegalStateException("工具结果 JSON 序列化失败", exception);
         }
     }
 }

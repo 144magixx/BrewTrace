@@ -1,0 +1,13 @@
+{
+  "output": [
+    {
+      "type": "message",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "{\"suggestions\":[{\"name\":\"佛手柑\",\"description\":\"温热阶段的香气仍然清扬。\",\"reason\":\"它能把模糊的柑橘香具体化为带花香的柑橘皮联想。\"},{\"name\":\"甜橙皮\",\"description\":\"柔和甜香中带轻微果皮气息。\",\"reason\":\"温热阶段的香气比尖锐酸味更适合圆润的甜橙皮联想。\"}]}"
+        }
+      ]
+    }
+  ]
+}

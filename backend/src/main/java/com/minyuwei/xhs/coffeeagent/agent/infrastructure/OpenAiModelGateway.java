@@ -140,7 +140,7 @@ public class OpenAiModelGateway implements ModelGateway {
         try {
             return SensitiveValueRedactor.redact(OBJECT_MAPPER.writerWithDefaultPrettyPrinter().writeValueAsString(value));
         } catch (JsonProcessingException exception) {
-            return "{}";
+            return OBJECT_MAPPER.createObjectNode().toString();
         }
     }
 }

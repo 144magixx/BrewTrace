@@ -1,6 +1,7 @@
 package com.minyuwei.xhs.coffeeagent.workbench.api;
 
 import com.minyuwei.xhs.coffeeagent.CoffeeAgentApplication;
+import com.minyuwei.xhs.coffeeagent.support.ApiContractTestSupport;
 import com.jayway.jsonpath.JsonPath;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,8 @@ import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+
+import java.util.Map;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.not;
@@ -28,7 +31,7 @@ class WorkbenchAgentStateContractTest {
 
         mockMvc.perform(post("/api/workbench/sessions/{sessionId}/messages", sessionId)
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"content\":\"今天喝了一支水洗埃塞，有柑橘和红茶感\"}"))
+                        .content(ApiContractTestSupport.json(Map.of("content", "今天喝了一支水洗埃塞，有柑橘和红茶感"))))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.data.status").value("ERROR_RECOVERABLE"))
                 .andExpect(jsonPath("$.data.conversation", hasSize(1)))
@@ -49,7 +52,7 @@ class WorkbenchAgentStateContractTest {
 
         mockMvc.perform(post("/api/workbench/sessions/{sessionId}/messages", sessionId)
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"content\":\"我喝了杯可乐\",\"modelMode\":\"openai-gpt55\"}"))
+                        .content(ApiContractTestSupport.json(Map.of("content", "我喝了杯可乐", "modelMode", "openai-gpt55"))))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.data.conversation", hasSize(1)))
                 .andExpect(jsonPath("$.data.conversation[0].content").value("我喝了杯可乐"))
@@ -64,7 +67,7 @@ class WorkbenchAgentStateContractTest {
     private String createSession() throws Exception {
         String body = mockMvc.perform(post("/api/workbench/sessions")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"mode\":\"EXPLICIT_WORKFLOW\"}"))
+                        .content(ApiContractTestSupport.json(Map.of("mode", "EXPLICIT_WORKFLOW"))))
                 .andExpect(status().isOk())
                 .andReturn()
                 .getResponse()

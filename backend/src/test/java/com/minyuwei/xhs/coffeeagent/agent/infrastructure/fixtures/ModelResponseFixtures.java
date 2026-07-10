@@ -1,98 +1,97 @@
 package com.minyuwei.xhs.coffeeagent.agent.infrastructure.fixtures;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.minyuwei.xhs.coffeeagent.agent.infrastructure.prompt.PromptTemplateLoader;
+
+import java.util.function.Consumer;
+
 public final class ModelResponseFixtures {
+    private static final String CONVERSATION_RESOURCE = "prompts/fixtures/model-responses/conversation-v1.json";
+    private static final String POST_RESOURCE = "prompts/fixtures/model-responses/post-v1.json";
+    private static final String INVALID_MINIMAL_RESOURCE = "prompts/fixtures/model-responses/invalid-minimal-v1.json";
+    private static final String FLAVOR_TOOL_CALL_RESOURCE = "prompts/fixtures/model-responses/flavor-suggestion-tool-call-v1.json";
+    private static final PromptTemplateLoader RESOURCE_LOADER = new PromptTemplateLoader();
+    private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
+
     private ModelResponseFixtures() {
     }
 
     public static String conversation() {
-        return """
-                {
-                  "messageType": "CONVERSATION",
-                  "talk": "听起来不错，你这杯喝到最明显的风味是什么？",
-                  "conversation": {
-                    "questions": ["这杯你喝到最明显的风味是什么？"],
-                    "answerOptions": [
-                      {
-                        "id": "citrus",
-                        "label": "柑橘感",
-                        "content": "我喝到比较明显的柑橘感。"
-                      },
-                      {
-                        "id": "black_tea",
-                        "label": "红茶感",
-                        "content": "我喝到一点红茶感。"
-                      },
-                      {
-                        "id": "not_sure",
-                        "label": "说不清",
-                        "content": "我暂时说不太清楚，只觉得整体比较干净。"
-                      }
-                    ],
-                    "pendingConfirmations": [{
-                      "expression": "主要风味仍需用户补充",
-                      "basisType": "PENDING_ASSOCIATION",
-                      "sourceReference": "model.routing",
-                      "sourceId": "",
-                      "confidenceLabel": "LOW"
-                    }],
-                    "warnings": ["当前信息不足，不能生成真实咖啡品鉴文案。"]
-                  },
-                  "post": null,
-                  "warnings": []
-                }
-                """;
+        return RESOURCE_LOADER.load(CONVERSATION_RESOURCE);
     }
 
     public static String post() {
-        return """
-                {
-                  "messageType": "POST",
-                  "talk": "信息已经够了，我先整理成三版文案，你可以选一版再继续改。",
-                  "conversation": null,
-                  "post": {
-                    "variants": [
-                      {
-                        "style": "RESTRAINED",
-                        "styleLabel": "克制版",
-                        "title": "橙色茶感的水洗埃塞",
-                        "body": "这杯水洗埃塞喝起来更偏橙柑和红茶感，整体干净。",
-                        "tags": ["手冲咖啡", "咖啡品鉴"],
-                        "factUsages": [{"expression":"水洗埃塞、橙柑和红茶感","basisType":"USER_CONFIRMED","sourceReference":"currentSession[0].content","sourceId":"context-1","confidenceLabel":"HIGH"}],
-                        "inferences": [],
-                        "pendingConfirmations": [],
-                        "warnings": []
-                      },
-                      {
-                        "style": "EXAGGERATED",
-                        "styleLabel": "夸张版",
-                        "title": "一杯橙色茶汤炸开了",
-                        "body": "这支水洗埃塞像把橙柑和红茶一起推到杯口。",
-                        "tags": ["手冲咖啡", "咖啡豆分享"],
-                        "factUsages": [],
-                        "inferences": [],
-                        "pendingConfirmations": [],
-                        "warnings": []
-                      },
-                      {
-                        "style": "SHARP_REVIEW",
-                        "styleLabel": "锐评版",
-                        "title": "这杯水洗埃塞至少没乱装",
-                        "body": "先说结论：这杯靠干净度和茶感站住。",
-                        "tags": ["咖啡锐评", "手冲咖啡"],
-                        "factUsages": [],
-                        "inferences": [],
-                        "pendingConfirmations": [],
-                        "warnings": []
-                      }
-                    ],
-                    "warnings": []
-                  },
-                  "warnings": []
-                }
-                """;
+        return RESOURCE_LOADER.load(POST_RESOURCE);
+    }
+
+    public static String invalidMinimal() {
+        return RESOURCE_LOADER.load(INVALID_MINIMAL_RESOURCE);
+    }
+
+    public static String flavorSuggestionToolCall() {
+        return RESOURCE_LOADER.load(FLAVOR_TOOL_CALL_RESOURCE);
+    }
+
+    public static String conversationWithoutAnswerOptions() {
+        return mutate(conversation(), root -> conversationNode(root).remove("answerOptions"));
     }
 
     public static String invalidPostMissingStyle() {
-        return post().replace("\"style\": \"SHARP_REVIEW\"", "\"style\": \"EXAGGERATED\"");
+        return mutate(post(), root -> variant(root, 2).put("style", "EXAGGERATED"));
+    }
+
+    public static String conversationWithoutTalk() {
+        return mutate(conversation(), root -> root.remove("talk"));
+    }
+
+    public static String conversationCarryingPostDrafts() {
+        return mutate(post(), root -> root.put("messageType", "CONVERSATION"));
+    }
+
+    public static String illegalMessageType() {
+        return mutate(conversation(), root -> root.put("messageType", "PUBLISH"));
+    }
+
+    public static String conversationWithTooManyQuestions() {
+        return mutate(conversation(), root -> ((ArrayNode) conversationNode(root).path("questions"))
+                .add("是否知道产区或处理法？"));
+    }
+
+    public static String conversationWithTooManyAnswerOptions() {
+        return mutate(conversation(), root -> {
+            ArrayNode options = (ArrayNode) conversationNode(root).path("answerOptions");
+            addAnswerOption(options, "four", "四", "四");
+            addAnswerOption(options, "five", "五", "五");
+        });
+    }
+
+    private static ObjectNode conversationNode(ObjectNode root) {
+        return (ObjectNode) root.path("conversation");
+    }
+
+    private static ObjectNode variant(ObjectNode root, int index) {
+        return (ObjectNode) root.path("post").path("variants").path(index);
+    }
+
+    private static void addAnswerOption(ArrayNode options, String id, String label, String content) {
+        ObjectNode option = options.addObject();
+        option.put("id", id);
+        option.put("label", label);
+        option.put("content", content);
+    }
+
+    private static String mutate(String source, Consumer<ObjectNode> mutation) {
+        try {
+            JsonNode parsed = OBJECT_MAPPER.readTree(source);
+            ObjectNode root = (ObjectNode) parsed;
+            mutation.accept(root);
+            return OBJECT_MAPPER.writeValueAsString(root);
+        } catch (JsonProcessingException exception) {
+            throw new IllegalStateException("模型响应测试资源处理失败", exception);
+        }
     }
 }
