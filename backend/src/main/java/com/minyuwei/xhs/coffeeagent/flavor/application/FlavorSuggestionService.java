@@ -3,21 +3,74 @@ package com.minyuwei.xhs.coffeeagent.flavor.application;
 import com.minyuwei.xhs.coffeeagent.flavor.domain.FlavorSuggestion;
 import com.minyuwei.xhs.coffeeagent.tasting.domain.TemperatureFlavor;
 
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 
 public class FlavorSuggestionService {
+    private static final int MAX_CANDIDATES = 8;
+
+    private final FlavorSuggestionGenerator generator;
+
+    public FlavorSuggestionService(FlavorSuggestionGenerator generator) {
+        this.generator = generator;
+    }
+
     public List<FlavorSuggestion> suggest(String sessionId, String inputTerm, TemperatureFlavor.TemperatureStage stage, TemperatureFlavor.SenseType senseType) {
-        if ("柑橘".equals(inputTerm)) {
-            return List.of(
-                    FlavorSuggestion.suggested(sessionId, inputTerm, "柠檬", "明亮、尖锐、清爽，高酸感明显。", stage, senseType),
-                    FlavorSuggestion.suggested(sessionId, inputTerm, "青柠", "比柠檬更青绿，带轻微皮感。", stage, senseType),
-                    FlavorSuggestion.suggested(sessionId, inputTerm, "甜橙", "圆润、甜感更高，适合中温段描述。", stage, senseType),
-                    FlavorSuggestion.suggested(sessionId, inputTerm, "血橙", "带红色水果联想，酸甜更厚。", stage, senseType),
-                    FlavorSuggestion.suggested(sessionId, inputTerm, "葡萄柚", "明亮但略带苦韵，适合锐评版参考。", stage, senseType),
-                    FlavorSuggestion.suggested(sessionId, inputTerm, "蜜柑", "柔和、甜润、亲和。", stage, senseType),
-                    FlavorSuggestion.suggested(sessionId, inputTerm, "柚子", "清透、带皮香和尾段清苦。", stage, senseType)
-            );
+        if (inputTerm == null || inputTerm.isBlank()) {
+            return List.of();
         }
-        return List.of(FlavorSuggestion.suggested(sessionId, inputTerm, inputTerm + "延展", "基于输入词的待确认联想。", stage, senseType));
+
+        List<FlavorSuggestionGenerator.FlavorCandidate> generated;
+        try {
+            generated = generator.generate(new FlavorSuggestionGenerator.GenerationRequest(inputTerm, stage, senseType));
+        } catch (RuntimeException exception) {
+            return List.of();
+        }
+        if (generated == null || generated.isEmpty()) {
+            return List.of();
+        }
+
+        Map<String, FlavorSuggestionGenerator.FlavorCandidate> uniqueCandidates = new LinkedHashMap<>();
+        for (FlavorSuggestionGenerator.FlavorCandidate candidate : generated) {
+            FlavorSuggestionGenerator.FlavorCandidate normalized = normalize(candidate);
+            if (normalized == null) {
+                continue;
+            }
+            uniqueCandidates.putIfAbsent(normalized.name().toLowerCase(Locale.ROOT), normalized);
+            if (uniqueCandidates.size() == MAX_CANDIDATES) {
+                break;
+            }
+        }
+
+        return uniqueCandidates.values().stream()
+                .map(candidate -> FlavorSuggestion.pendingAssociation(
+                        sessionId,
+                        inputTerm,
+                        candidate.name(),
+                        candidate.description(),
+                        stage,
+                        senseType,
+                        candidate.reason()
+                ))
+                .toList();
+    }
+
+    private FlavorSuggestionGenerator.FlavorCandidate normalize(FlavorSuggestionGenerator.FlavorCandidate candidate) {
+        if (candidate == null) {
+            return null;
+        }
+        String name = trim(candidate.name());
+        String description = trim(candidate.description());
+        String reason = trim(candidate.reason());
+        if (name.isBlank() || description.isBlank() || reason.isBlank()) {
+            return null;
+        }
+        return new FlavorSuggestionGenerator.FlavorCandidate(name, description, reason);
+    }
+
+    private String trim(String value) {
+        return value == null ? "" : value.trim();
     }
 }

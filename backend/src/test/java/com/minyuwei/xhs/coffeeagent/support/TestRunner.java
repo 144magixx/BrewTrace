@@ -1,6 +1,5 @@
 package com.minyuwei.xhs.coffeeagent.support;
 
-import com.minyuwei.xhs.coffeeagent.flavor.application.FlavorSuggestionAgentTest;
 import com.minyuwei.xhs.coffeeagent.memory.application.MemoryRecallAgentTest;
 import com.minyuwei.xhs.coffeeagent.memory.infrastructure.MemoryEmbeddingJdbcTest;
 import com.minyuwei.xhs.coffeeagent.publishing.api.ExternalReferenceApiContractTest;
@@ -26,7 +25,6 @@ public final class TestRunner {
         FoundationSmokeTest.run();
         TastingSessionApiContractTest.run();
         TastingTemplateApiContractTest.run();
-        FlavorSuggestionAgentTest.run();
         BagImageExtractionTest.run();
         ArchiveApiContractTest.run();
         MemoryEmbeddingJdbcTest.run();

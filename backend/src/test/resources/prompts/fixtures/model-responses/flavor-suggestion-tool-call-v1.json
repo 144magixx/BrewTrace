@@ -1,0 +1,10 @@
+{
+  "output": [
+    {
+      "type": "function_call",
+      "call_id": "call_1",
+      "name": "flavor_suggestion",
+      "arguments": "{\"sessionId\":\"s1\",\"inputTerm\":\"柑橘\",\"temperatureStage\":\"HOT\",\"senseType\":\"TASTE\",\"limit\":2}"
+    }
+  ]
+}

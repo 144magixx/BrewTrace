@@ -20,7 +20,31 @@ public record FlavorSuggestion(
         String reason
 ) {
     public static FlavorSuggestion suggested(String sessionId, String inputTerm, String name, String description, TemperatureFlavor.TemperatureStage stage, TemperatureFlavor.SenseType senseType) {
-        return new FlavorSuggestion(UUID.randomUUID().toString(), sessionId, inputTerm, name, description, stage, senseType, TemperatureFlavor.Polarity.POSITIVE, List.of(SensoryScore.Dimension.ACIDITY, SensoryScore.Dimension.AFTERTASTE), Status.SUGGESTED, "由稳定风味词库基于输入词扩展，接受前不是事实。");
+        return pendingAssociation(sessionId, inputTerm, name, description, stage, senseType, "由风味联想生成器提供，接受前不是事实。");
+    }
+
+    public static FlavorSuggestion pendingAssociation(
+            String sessionId,
+            String inputTerm,
+            String name,
+            String description,
+            TemperatureFlavor.TemperatureStage stage,
+            TemperatureFlavor.SenseType senseType,
+            String reason
+    ) {
+        return new FlavorSuggestion(
+                UUID.randomUUID().toString(),
+                sessionId,
+                inputTerm,
+                name,
+                description,
+                stage,
+                senseType,
+                TemperatureFlavor.Polarity.NEUTRAL,
+                List.of(),
+                Status.SUGGESTED,
+                reason
+        );
     }
 
     public enum Status {

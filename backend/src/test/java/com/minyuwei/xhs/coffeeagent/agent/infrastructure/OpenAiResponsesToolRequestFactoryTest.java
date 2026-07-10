@@ -3,7 +3,9 @@ package com.minyuwei.xhs.coffeeagent.agent.infrastructure;
 import com.minyuwei.xhs.coffeeagent.agent.application.ModelContextPackage;
 import com.minyuwei.xhs.coffeeagent.agent.application.ModelMode;
 import com.minyuwei.xhs.coffeeagent.agent.infrastructure.prompt.PromptTemplateLoader;
+import com.minyuwei.xhs.coffeeagent.flavor.application.FlavorSuggestionGenerator;
 import com.minyuwei.xhs.coffeeagent.flavor.application.FlavorSuggestionService;
+import com.minyuwei.xhs.coffeeagent.support.FakeFlavorSuggestionGenerator;
 import com.minyuwei.xhs.coffeeagent.tools.application.ToolCallPolicy;
 import com.minyuwei.xhs.coffeeagent.tools.application.ToolCallRecorder;
 import com.minyuwei.xhs.coffeeagent.tools.application.ToolRegistry;
@@ -40,7 +42,11 @@ class OpenAiResponsesToolRequestFactoryTest {
 
     private SpringAiToolCallbackAdapter flavorSuggestionCallback() {
         ToolRegistry registry = new ToolRegistry();
-        new FlavorSuggestionToolRegistrar().register(registry, new FlavorSuggestionService());
+        new FlavorSuggestionToolRegistrar(new PromptTemplateLoader()).register(registry, new FlavorSuggestionService(
+                new FakeFlavorSuggestionGenerator(List.of(
+                        new FlavorSuggestionGenerator.FlavorCandidate("甜橙", "圆润甜感", "由柑橘词联想到甜橙")
+                ))
+        ));
         return new SpringAiToolCallbackAdapter(registry, new ToolCallPolicy(), new ToolCallRecorder(), FlavorSuggestionToolAdapter.TOOL_NAME);
     }
 

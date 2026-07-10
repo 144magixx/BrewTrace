@@ -1,0 +1,44 @@
+{
+  "type": "json_schema",
+  "name": "model_flavor_suggestion_candidates_v1",
+  "strict": true,
+  "schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "suggestions"
+    ],
+    "properties": {
+      "suggestions": {
+        "type": "array",
+        "maxItems": 8,
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "name",
+            "description",
+            "reason"
+          ],
+          "properties": {
+            "name": {
+              "type": "string",
+              "minLength": 1,
+              "description": "具体的咖啡风味联想名称。"
+            },
+            "description": {
+              "type": "string",
+              "minLength": 1,
+              "description": "该候选在咖啡中的感官表现。"
+            },
+            "reason": {
+              "type": "string",
+              "minLength": 1,
+              "description": "候选与输入词、温度阶段和感官类型的关联理由。"
+            }
+          }
+        }
+      }
+    }
+  }
+}

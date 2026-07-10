@@ -1,0 +1,40 @@
+{
+  "messageType": "CONVERSATION",
+  "talk": "听起来不错，你这杯喝到最明显的风味是什么？",
+  "conversation": {
+    "questions": [
+      "这杯你喝到最明显的风味是什么？"
+    ],
+    "answerOptions": [
+      {
+        "id": "citrus",
+        "label": "柑橘感",
+        "content": "我喝到比较明显的柑橘感。"
+      },
+      {
+        "id": "black_tea",
+        "label": "红茶感",
+        "content": "我喝到一点红茶感。"
+      },
+      {
+        "id": "not_sure",
+        "label": "说不清",
+        "content": "我暂时说不太清楚，只觉得整体比较干净。"
+      }
+    ],
+    "pendingConfirmations": [
+      {
+        "expression": "主要风味仍需用户补充",
+        "basisType": "PENDING_ASSOCIATION",
+        "sourceReference": "model.routing",
+        "sourceId": "",
+        "confidenceLabel": "LOW"
+      }
+    ],
+    "warnings": [
+      "当前信息不足，不能生成真实咖啡品鉴文案。"
+    ]
+  },
+  "post": null,
+  "warnings": []
+}

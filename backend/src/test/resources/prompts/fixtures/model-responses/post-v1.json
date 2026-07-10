@@ -1,0 +1,61 @@
+{
+  "messageType": "POST",
+  "talk": "信息已经够了，我先整理成三版文案，你可以选一版再继续改。",
+  "conversation": null,
+  "post": {
+    "variants": [
+      {
+        "style": "RESTRAINED",
+        "styleLabel": "克制版",
+        "title": "橙色茶感的水洗埃塞",
+        "body": "这杯水洗埃塞喝起来更偏橙柑和红茶感，整体干净。",
+        "tags": [
+          "手冲咖啡",
+          "咖啡品鉴"
+        ],
+        "factUsages": [
+          {
+            "expression": "水洗埃塞、橙柑和红茶感",
+            "basisType": "USER_CONFIRMED",
+            "sourceReference": "currentSession[0].content",
+            "sourceId": "context-1",
+            "confidenceLabel": "HIGH"
+          }
+        ],
+        "inferences": [],
+        "pendingConfirmations": [],
+        "warnings": []
+      },
+      {
+        "style": "EXAGGERATED",
+        "styleLabel": "夸张版",
+        "title": "一杯橙色茶汤炸开了",
+        "body": "这支水洗埃塞像把橙柑和红茶一起推到杯口。",
+        "tags": [
+          "手冲咖啡",
+          "咖啡豆分享"
+        ],
+        "factUsages": [],
+        "inferences": [],
+        "pendingConfirmations": [],
+        "warnings": []
+      },
+      {
+        "style": "SHARP_REVIEW",
+        "styleLabel": "锐评版",
+        "title": "这杯水洗埃塞至少没乱装",
+        "body": "先说结论：这杯靠干净度和茶感站住。",
+        "tags": [
+          "咖啡锐评",
+          "手冲咖啡"
+        ],
+        "factUsages": [],
+        "inferences": [],
+        "pendingConfirmations": [],
+        "warnings": []
+      }
+    ],
+    "warnings": []
+  },
+  "warnings": []
+}

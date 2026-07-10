@@ -9,7 +9,9 @@ import com.minyuwei.xhs.coffeeagent.agent.infrastructure.advisor.ContextPreviewA
 import com.minyuwei.xhs.coffeeagent.agent.infrastructure.advisor.FactBoundaryAdvisor;
 import com.minyuwei.xhs.coffeeagent.agent.infrastructure.fixtures.ModelResponseFixtures;
 import com.minyuwei.xhs.coffeeagent.agent.infrastructure.prompt.PromptTemplateLoader;
+import com.minyuwei.xhs.coffeeagent.flavor.application.FlavorSuggestionGenerator;
 import com.minyuwei.xhs.coffeeagent.flavor.application.FlavorSuggestionService;
+import com.minyuwei.xhs.coffeeagent.support.FakeFlavorSuggestionGenerator;
 import com.minyuwei.xhs.coffeeagent.tools.application.ToolCallPolicy;
 import com.minyuwei.xhs.coffeeagent.tools.application.ToolCallRecorder;
 import com.minyuwei.xhs.coffeeagent.tools.application.ToolRegistry;
@@ -74,7 +76,7 @@ class SpringAiModelGatewayTest {
 
     @Test
     void mapsInvalidModelPayloadToRecoverableFormatError() {
-        SpringAiModelGateway gateway = gateway(new CapturingChatModel("{\"messageType\":\"POST\"}"));
+        SpringAiModelGateway gateway = gateway(new CapturingChatModel(ModelResponseFixtures.invalidMinimal()));
 
         var result = gateway.complete(contextPackage());
 
@@ -106,7 +108,7 @@ class SpringAiModelGatewayTest {
     @Test
     void executesFlavorSuggestionToolCallThroughSpringAiToolCallback() {
         ToolRegistry registry = new ToolRegistry();
-        new FlavorSuggestionToolRegistrar().register(registry, new FlavorSuggestionService());
+        new FlavorSuggestionToolRegistrar(new PromptTemplateLoader()).register(registry, flavorSuggestionService());
         ToolCallRecorder recorder = new ToolCallRecorder();
         SpringAiToolCallbackAdapter callback = new SpringAiToolCallbackAdapter(
                 registry,
@@ -115,18 +117,7 @@ class SpringAiModelGatewayTest {
                 FlavorSuggestionToolAdapter.TOOL_NAME
         );
         CapturingResponsesClient client = new CapturingResponsesClient(List.of(
-                """
-                        {
-                          "output": [
-                            {
-                              "type": "function_call",
-                              "call_id": "call_1",
-                              "name": "flavor_suggestion",
-                              "arguments": "{\\"sessionId\\":\\"s1\\",\\"inputTerm\\":\\"柑橘\\",\\"temperatureStage\\":\\"HOT\\",\\"senseType\\":\\"TASTE\\",\\"limit\\":2}"
-                            }
-                          ]
-                        }
-                        """,
+                ModelResponseFixtures.flavorSuggestionToolCall(),
                 ModelResponseFixtures.conversation()
         ));
         ResponsesApiChatModel chatModel = new ResponsesApiChatModel(client, requestFactory, "https://example.test/v1", "gpt-5.5", 10, "test-key", List.of(callback));
@@ -151,6 +142,12 @@ class SpringAiModelGatewayTest {
 
     private SpringAiModelGateway gateway(ChatModel chatModel) {
         return new SpringAiModelGateway(ChatClient.create(chatModel), requestFactory, parser, "gpt-5.5");
+    }
+
+    private FlavorSuggestionService flavorSuggestionService() {
+        return new FlavorSuggestionService(new FakeFlavorSuggestionGenerator(List.of(
+                new FlavorSuggestionGenerator.FlavorCandidate("甜橙", "圆润甜感", "由柑橘词联想到甜橙")
+        )));
     }
 
     private ModelContextPackage contextPackage() {
