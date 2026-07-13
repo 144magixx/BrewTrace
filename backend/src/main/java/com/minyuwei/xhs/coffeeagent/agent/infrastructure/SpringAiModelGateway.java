@@ -36,6 +36,7 @@ public class SpringAiModelGateway implements ModelGateway {
     private final String modelName;
     private final List<ToolCallback> toolCallbacks;
     private final ToolCallingManager toolCallingManager;
+    private final ActualModelRequestCapture requestCapture;
 
     /**
      * 创建不暴露工具的模型网关。
@@ -46,7 +47,7 @@ public class SpringAiModelGateway implements ModelGateway {
      * @param modelName 实际调用及预览展示使用的模型名称
      */
     public SpringAiModelGateway(ChatClient chatClient, OpenAiResponsesRequestFactory requestFactory, OpenAiResponsesParser parser, String modelName) {
-        this(chatClient, requestFactory, parser, modelName, List.of());
+        this(chatClient, requestFactory, parser, modelName, List.of(), new ActualModelRequestCapture());
     }
 
     /**
@@ -59,11 +60,33 @@ public class SpringAiModelGateway implements ModelGateway {
      * @param toolCallbacks 允许模型调用的工具回调；为 {@code null} 时按空集合处理
      */
     public SpringAiModelGateway(ChatClient chatClient, OpenAiResponsesRequestFactory requestFactory, OpenAiResponsesParser parser, String modelName, List<ToolCallback> toolCallbacks) {
+        this(chatClient, requestFactory, parser, modelName, toolCallbacks, new ActualModelRequestCapture());
+    }
+
+    /**
+     * 创建共享实际发送请求体捕获器的模型网关，并初始化对应的工具调用管理器。
+     *
+     * @param chatClient 执行模型请求的 Spring AI 客户端
+     * @param requestFactory 将业务上下文转换为模型 Prompt 的工厂
+     * @param parser 将模型文本响应解析为应用层消息的解析器
+     * @param modelName 实际调用及预览展示使用的模型名称
+     * @param toolCallbacks 允许模型调用的工具回调；为 {@code null} 时按空集合处理
+     * @param requestCapture 与真实模型发送层共享的请求体捕获器
+     */
+    public SpringAiModelGateway(
+            ChatClient chatClient,
+            OpenAiResponsesRequestFactory requestFactory,
+            OpenAiResponsesParser parser,
+            String modelName,
+            List<ToolCallback> toolCallbacks,
+            ActualModelRequestCapture requestCapture
+    ) {
         this.chatClient = chatClient;
         this.requestFactory = requestFactory;
         this.parser = parser;
         this.modelName = modelName;
         this.toolCallbacks = toolCallbacks == null ? List.of() : List.copyOf(toolCallbacks);
+        this.requestCapture = requestCapture == null ? new ActualModelRequestCapture() : requestCapture;
         this.toolCallingManager = DefaultToolCallingManager.builder()
                 .toolCallbackResolver(new StaticToolCallbackResolver(this.toolCallbacks))
                 .build();
@@ -80,13 +103,13 @@ public class SpringAiModelGateway implements ModelGateway {
      */
     @Override
     public ModelResult complete(ModelContextPackage contextPackage) {
+        requestCapture.clear();
         Map<String, Object> toolContext = Map.of(
                 "sessionId", contextPackage.sessionId(),
                 "purpose", "模型在咖啡品鉴对话中补充待确认风味联想",
                 "confirmed", false
         );
         Prompt prompt = promptWithTools(requestFactory.createPrompt(contextPackage), toolContext);
-        ModelPreview.ModelRequestPreview fallbackRequestPreview = fallbackRequestPreview(prompt);
         try {
             ChatClientResponse chatClientResponse = callModel(prompt, contextPackage, toolContext);
             int toolCallDepth = 0;
@@ -105,11 +128,12 @@ public class SpringAiModelGateway implements ModelGateway {
             responsePreview.put("talk", message.talk());
             responsePreview.put("post", message.post());
             responsePreview.put("conversation", message.conversation());
+            responsePreview.put("factUpdates", message.factUpdates());
             responsePreview.put("warnings", message.warnings());
             responsePreview.put("advisorTraceRecorded", chatClientResponse.context().getOrDefault(ModelAdvisorContextKeys.TRACE_RECORDED, false));
             responsePreview.put("durationMs", chatClientResponse.context().getOrDefault(ModelAdvisorContextKeys.CALL_DURATION_MS, 0L));
             String responsePreviewBody = SensitiveValueRedactor.redact(previewJson(responsePreview));
-            ModelPreview.ModelRequestPreview requestPreview = requestPreview(chatClientResponse.context(), fallbackRequestPreview);
+            ModelPreview.ModelRequestPreview requestPreview = requestPreview(chatClientResponse.context());
             return new ModelResult(
                     ModelMode.OPENAI_GPT55,
                     "REAL_MODEL",
@@ -121,6 +145,7 @@ public class SpringAiModelGateway implements ModelGateway {
                     message.talk(),
                     message.post(),
                     message.conversation(),
+                    message.factUpdates(),
                     message.warnings(),
                     message.variants(),
                     requestPreview,
@@ -130,7 +155,7 @@ public class SpringAiModelGateway implements ModelGateway {
             );
         } catch (ModelGatewayException exception) {
             RecoverableModelError error = toRecoverableError(exception, contextPackage.sessionId());
-            return errorResult(fallbackRequestPreview, error);
+            return errorResult(actualRequestPreview(), error);
         } catch (Exception exception) {
             RecoverableModelError error = RecoverableModelError.of(
                     RecoverableModelError.Code.MODEL_SERVICE_UNAVAILABLE,
@@ -138,7 +163,9 @@ public class SpringAiModelGateway implements ModelGateway {
                     contextPackage.sessionId(),
                     "RETRY"
             );
-            return errorResult(fallbackRequestPreview, error);
+            return errorResult(actualRequestPreview(), error);
+        } finally {
+            requestCapture.clear();
         }
     }
 
@@ -181,33 +208,31 @@ public class SpringAiModelGateway implements ModelGateway {
     }
 
     /**
-     * 在 Advisor 尚未产出真实请求预览时，根据当前 Prompt 创建安全的兜底请求预览。
+     * 将发送层捕获的实际请求体转换为脱敏预览，不调用请求工厂重新序列化。
      *
-     * @param prompt 即将发送或已经尝试发送的模型 Prompt
-     * @return 可在工作台展示的脱敏请求预览
+     * @return 实际请求体的脱敏预览；发送层未执行时正文为空
      */
-    private ModelPreview.ModelRequestPreview fallbackRequestPreview(Prompt prompt) {
+    private ModelPreview.ModelRequestPreview actualRequestPreview() {
         return new ModelPreview.ModelRequestPreview(
-                "已通过 Spring AI 发送给大模型",
+                "实际发送给大模型的请求",
                 modelName,
                 ModelMode.OPENAI_GPT55.code(),
                 "Spring AI ChatClient -> Responses API",
-                requestFactory.createPreviewBody(modelName, prompt),
+                requestCapture.latest().map(SensitiveValueRedactor::redact).orElse(""),
                 "SAFE_TO_DISPLAY",
                 Instant.now()
         );
     }
 
     /**
-     * 优先从 Advisor 上下文读取真实请求预览，缺失或类型不匹配时使用兜底预览。
+     * 优先从 Advisor 上下文读取实际请求预览，缺失时直接读取发送层捕获内容。
      *
      * @param context Spring AI Advisor 返回的调用上下文
-     * @param fallback 预先构造的兜底请求预览
-     * @return Advisor 记录的请求预览或兜底预览
+     * @return Advisor 记录的实际请求预览，或发送层捕获内容的脱敏预览
      */
-    private ModelPreview.ModelRequestPreview requestPreview(Map<String, Object> context, ModelPreview.ModelRequestPreview fallback) {
+    private ModelPreview.ModelRequestPreview requestPreview(Map<String, Object> context) {
         Object value = context.get(ModelAdvisorContextKeys.REQUEST_PREVIEW);
-        return value instanceof ModelPreview.ModelRequestPreview preview ? preview : fallback;
+        return value instanceof ModelPreview.ModelRequestPreview preview ? preview : actualRequestPreview();
     }
 
     /**
@@ -242,6 +267,7 @@ public class SpringAiModelGateway implements ModelGateway {
                 "",
                 null,
                 null,
+                java.util.List.of(),
                 java.util.List.of(),
                 java.util.List.of(),
                 requestPreview,

@@ -89,6 +89,13 @@ public class WebWorkbenchService {
         ModelGateway.ModelResult modelResult = agentStateAssembler.completeModel(workspace, modelMode);
         if (modelResult == null) {
             lastModelResults.remove(sessionId);
+        } else if (modelResult.recoverableError() == null) {
+            TastingSessionApplicationService.FactUpdateApplicationResult applicationResult =
+                    tastingSessionService.applyFactUpdates(sessionId, modelResult.factUpdates());
+            if (!applicationResult.applied()) {
+                modelResult = factUpdateRejectedResult(modelResult, applicationResult.errors(), sessionId);
+            }
+            lastModelResults.put(sessionId, modelResult);
         } else {
             lastModelResults.put(sessionId, modelResult);
         }
@@ -179,7 +186,7 @@ public class WebWorkbenchService {
                 workspace.orchestrationMode(),
                 conversation,
                 new WebWorkbenchDtos.RecordSummary(
-                        workspace.confirmedFacts(),
+                        workspace.confirmedFacts().stream().map(com.minyuwei.xhs.coffeeagent.tasting.domain.FactStateItem::value).toList(),
                         pendingQuestions,
                         List.of(),
                         draftTabs.isEmpty() ? "HIDDEN" : "VISIBLE",
@@ -239,6 +246,30 @@ public class WebWorkbenchService {
                 variant.tags(),
                 factBoundaryNotes,
                 variant.warnings()
+        );
+    }
+
+    /**
+     * 将事实增量校验失败安全降级为可恢复模型错误，阻断草稿和任何后续高影响动作。
+     *
+     * @param original 原始模型结果
+     * @param validationErrors 已脱离用户敏感原文的协议错误摘要
+     * @param sessionId 当前会话 ID
+     * @return 保留请求预览但不暴露未应用业务输出的失败结果
+     */
+    private ModelGateway.ModelResult factUpdateRejectedResult(ModelGateway.ModelResult original, List<String> validationErrors, String sessionId) {
+        com.minyuwei.xhs.coffeeagent.agent.application.RecoverableModelError error =
+                com.minyuwei.xhs.coffeeagent.agent.application.RecoverableModelError.of(
+                        com.minyuwei.xhs.coffeeagent.agent.application.RecoverableModelError.Code.MODEL_FORMAT_INVALID,
+                        "模型事实状态更新未通过安全校验，当前会话状态未改变，请重试。",
+                        sessionId,
+                        "RETRY"
+                );
+        return new ModelGateway.ModelResult(
+                original.mode(), "ERROR", original.modelName(), "事实状态更新已拒绝",
+                "模型输出未通过证据或状态流转校验，未写入会话。", "", null, "", null, null,
+                List.of(), List.of("事实增量校验失败，共 " + validationErrors.size() + " 项"), List.of(),
+                original.requestPreview(), original.responsePreview(), error, Instant.now()
         );
     }
 

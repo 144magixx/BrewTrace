@@ -19,7 +19,10 @@ class AgentStateAssemblerTest {
                 OrchestrationMode.EXPLICIT_WORKFLOW,
                 List.of(ConversationMessage.user("s1", "今天喝了一支水洗埃塞，有柑橘和红茶感")),
                 List.of(),
-                List.of("处理法：水洗", "产地：埃塞", "用户确认风味：柑橘", "用户确认风味：红茶")
+                List.of(),
+                List.of(),
+                List.of(),
+                List.of()
         ));
 
         assertTrue(state.pendingAssociations().isEmpty());

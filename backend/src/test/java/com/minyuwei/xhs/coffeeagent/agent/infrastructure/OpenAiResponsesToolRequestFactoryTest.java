@@ -29,6 +29,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class OpenAiResponsesToolRequestFactoryTest {
     private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
+    /**
+     * 验证 Prompt 自带工具选项时，Responses API 请求包含完整工具 Schema。
+     *
+     * @throws Exception 当请求 JSON 无法解析时抛出
+     */
     @Test
     void serializesFlavorSuggestionToolSchemaIntoResponsesBody() throws Exception {
         OpenAiResponsesRequestFactory requestFactory = new OpenAiResponsesRequestFactory(new PromptTemplateLoader());

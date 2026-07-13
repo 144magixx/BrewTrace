@@ -44,9 +44,15 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class SpringAiModelGatewayTest {
+    private static final String CAPTURED_REQUEST_BODY = new PromptTemplateLoader()
+            .load("prompts/fixtures/model-requests/captured-request-v1.json")
+            .trim();
     private final OpenAiResponsesRequestFactory requestFactory = new OpenAiResponsesRequestFactory(new PromptTemplateLoader());
     private final OpenAiResponsesParser parser = new OpenAiResponsesParser();
 
+    /**
+     * 验证不具备真实 HTTP 发送层的通用 ChatModel 仍能完成会话消息映射，且不会伪造请求预览正文。
+     */
     @Test
     void mapsConversationMessageFromSpringAiChatClient() {
         CapturingChatModel chatModel = new CapturingChatModel(ModelResponseFixtures.conversation());
@@ -57,7 +63,7 @@ class SpringAiModelGatewayTest {
         assertEquals("REAL_MODEL", result.outputType());
         assertEquals(ModelMessageType.CONVERSATION, result.messageType(), () -> "recoverableError=" + result.recoverableError() + ", responsePreview=" + result.responsePreview().rawJson());
         assertTrue(result.talk().contains("最明显的风味"));
-        assertTrue(result.requestPreview().label().contains("Spring AI"));
+        assertTrue(result.requestPreview().rawJson().isEmpty());
         assertTrue(chatModel.lastPrompt().getContents().contains("currentSession"));
     }
 
@@ -85,26 +91,33 @@ class SpringAiModelGatewayTest {
         assertEquals(RecoverableModelError.Code.MODEL_FORMAT_INVALID, result.recoverableError().code());
     }
 
+    /**
+     * 验证 Advisor 链展示发送层捕获的原始请求体，并继续记录模型调用轨迹。
+     */
     @Test
     void runsSpringAiAdvisorChainAndKeepsGatewayContract() {
-        CapturingChatModel chatModel = new CapturingChatModel(ModelResponseFixtures.post());
+        ActualModelRequestCapture requestCapture = new ActualModelRequestCapture();
+        CapturingChatModel chatModel = new CapturingChatModel(ModelResponseFixtures.post(), requestCapture);
         AgentTraceRepositoryAdapter repository = new AgentTraceRepositoryAdapter();
         ChatClient chatClient = ChatClient.builder(chatModel).defaultAdvisors(List.of(
                 new FactBoundaryAdvisor(),
-                new ContextPreviewAdvisor(requestFactory),
+                new ContextPreviewAdvisor(requestCapture),
                 new AgentTraceAdvisor(new AgentTraceRecorder(new AgentTraceService(repository)))
         )).build();
-        SpringAiModelGateway gateway = new SpringAiModelGateway(chatClient, requestFactory, parser, "gpt-5.5");
+        SpringAiModelGateway gateway = new SpringAiModelGateway(chatClient, requestFactory, parser, "gpt-5.5", List.of(), requestCapture);
 
         var result = gateway.complete(contextPackage());
 
         assertEquals("REAL_MODEL", result.outputType());
         assertEquals(ModelMessageType.POST, result.messageType());
-        assertTrue(result.requestPreview().label().contains("Advisor"));
+        assertEquals(CAPTURED_REQUEST_BODY, result.requestPreview().rawJson());
         assertTrue(result.responsePreview().rawJson().contains("advisorTraceRecorded"));
         assertEquals(1, repository.findBySessionId("s1").size());
     }
 
+    /**
+     * 验证工具调用循环结束后，请求预览与 HTTP Client 收到的最后一份请求体完全一致。
+     */
     @Test
     void executesFlavorSuggestionToolCallThroughSpringAiToolCallback() {
         ToolRegistry registry = new ToolRegistry();
@@ -120,7 +133,9 @@ class SpringAiModelGatewayTest {
                 ModelResponseFixtures.flavorSuggestionToolCall(),
                 ModelResponseFixtures.conversation()
         ));
-        ResponsesApiChatModel chatModel = new ResponsesApiChatModel(client, requestFactory, "https://example.test/v1", "gpt-5.5", 10, "test-key", List.of(callback));
+        ActualModelRequestCapture requestCapture = new ActualModelRequestCapture();
+        ResponsesApiChatModel chatModel = new ResponsesApiChatModel(client, requestFactory, "https://example.test/v1", "gpt-5.5", 10,
+                "test-key", List.of(callback), requestCapture);
         ChatClient chatClient = ChatClient.builder(chatModel)
                 .defaultAdvisors(ToolCallingAdvisor.builder()
                         .toolCallingManager(DefaultToolCallingManager.builder()
@@ -128,7 +143,7 @@ class SpringAiModelGatewayTest {
                                 .build())
                         .build())
                 .build();
-        SpringAiModelGateway gateway = new SpringAiModelGateway(chatClient, requestFactory, parser, "gpt-5.5", List.of(callback));
+        SpringAiModelGateway gateway = new SpringAiModelGateway(chatClient, requestFactory, parser, "gpt-5.5", List.of(callback), requestCapture);
 
         var result = gateway.complete(contextPackage());
 
@@ -138,6 +153,8 @@ class SpringAiModelGatewayTest {
         assertEquals(2, client.bodies().size());
         assertTrue(client.bodies().get(1).contains("function_call_output"));
         assertTrue(client.bodies().get(1).contains("甜橙"));
+        assertEquals(client.bodies().getLast(), result.requestPreview().rawJson());
+        assertTrue(result.requestPreview().rawJson().contains("根据用户给出的模糊咖啡风味词"));
     }
 
     private SpringAiModelGateway gateway(ChatModel chatModel) {
@@ -167,14 +184,40 @@ class SpringAiModelGatewayTest {
     private static final class CapturingChatModel implements ChatModel {
         private final String responseContent;
         private final AtomicReference<Prompt> lastPrompt = new AtomicReference<>();
+        private final ActualModelRequestCapture requestCapture;
 
+        /**
+         * 创建仅捕获 Prompt 的测试模型。
+         *
+         * @param responseContent 固定返回的模型内容
+         */
         private CapturingChatModel(String responseContent) {
-            this.responseContent = responseContent;
+            this(responseContent, null);
         }
 
+        /**
+         * 创建同时模拟发送层实际请求体捕获的测试模型。
+         *
+         * @param responseContent 固定返回的模型内容
+         * @param requestCapture 需要记录实际发送体的共享捕获器
+         */
+        private CapturingChatModel(String responseContent, ActualModelRequestCapture requestCapture) {
+            this.responseContent = responseContent;
+            this.requestCapture = requestCapture;
+        }
+
+        /**
+         * 保存 Prompt，按需记录模拟的实际发送体并返回固定响应。
+         *
+         * @param prompt 本轮测试 Prompt
+         * @return 固定的 ChatResponse
+         */
         @Override
         public ChatResponse call(Prompt prompt) {
             lastPrompt.set(prompt);
+            if (requestCapture != null) {
+                requestCapture.record(CAPTURED_REQUEST_BODY);
+            }
             return new ChatResponse(List.of(new Generation(new AssistantMessage(responseContent))));
         }
 

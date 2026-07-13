@@ -1,0 +1,33 @@
+{
+  "messageType": "CONVERSATION",
+  "talk": "这杯你最确定的感受是什么？",
+  "conversation": {
+    "questions": ["这杯你最确定的感受是什么？"],
+    "answerOptions": [],
+    "pendingConfirmations": [],
+    "warnings": []
+  },
+  "post": null,
+  "factUpdates": [
+    {
+      "action": "ADD_CONFIRMED_FACT",
+      "boundary": "USER_STATED",
+      "value": "风味：柑橘",
+      "sourceMessageId": "message-1",
+      "sourceQuote": "柑橘感",
+      "reason": "用户明确陈述自己喝到了柑橘感。",
+      "targetItemId": null
+    },
+    {
+      "action": "ADD_PENDING_ASSOCIATION",
+      "boundary": "USER_UNCERTAIN",
+      "value": "风味：红茶",
+      "sourceMessageId": "message-1",
+      "sourceQuote": "可能有一点红茶",
+      "reason": "用户使用了不确定表达。",
+      "targetItemId": null
+    }
+  ],
+  "warnings": []
+}
+

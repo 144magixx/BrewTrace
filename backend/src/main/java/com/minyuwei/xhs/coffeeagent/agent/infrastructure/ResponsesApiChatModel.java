@@ -26,12 +26,59 @@ public class ResponsesApiChatModel implements ChatModel {
     private final int timeoutSeconds;
     private final String apiKey;
     private final List<ToolCallback> toolCallbacks;
+    private final ActualModelRequestCapture requestCapture;
 
+    /**
+     * 创建不暴露工具的 Responses API 模型适配器。
+     *
+     * @param client 实际执行 HTTP 请求的客户端
+     * @param requestFactory 将 Prompt 序列化为 Responses API 请求体的工厂
+     * @param baseUrl 模型服务基础地址
+     * @param modelName 实际模型名称
+     * @param timeoutSeconds 单次 HTTP 请求超时秒数
+     * @param apiKey 本地运行环境提供的模型鉴权值
+     */
     public ResponsesApiChatModel(OpenAiResponsesLlmClient client, OpenAiResponsesRequestFactory requestFactory, String baseUrl, String modelName, int timeoutSeconds, String apiKey) {
-        this(client, requestFactory, baseUrl, modelName, timeoutSeconds, apiKey, List.of());
+        this(client, requestFactory, baseUrl, modelName, timeoutSeconds, apiKey, List.of(), new ActualModelRequestCapture());
     }
 
+    /**
+     * 创建带受控工具集合的 Responses API 模型适配器，并使用独立请求捕获器。
+     *
+     * @param client 实际执行 HTTP 请求的客户端
+     * @param requestFactory 将 Prompt 序列化为 Responses API 请求体的工厂
+     * @param baseUrl 模型服务基础地址
+     * @param modelName 实际模型名称
+     * @param timeoutSeconds 单次 HTTP 请求超时秒数
+     * @param apiKey 本地运行环境提供的模型鉴权值
+     * @param toolCallbacks 允许发送给模型的工具回调
+     */
     public ResponsesApiChatModel(OpenAiResponsesLlmClient client, OpenAiResponsesRequestFactory requestFactory, String baseUrl, String modelName, int timeoutSeconds, String apiKey, List<ToolCallback> toolCallbacks) {
+        this(client, requestFactory, baseUrl, modelName, timeoutSeconds, apiKey, toolCallbacks, new ActualModelRequestCapture());
+    }
+
+    /**
+     * 创建与请求预览链路共享实际发送体捕获器的 Responses API 模型适配器。
+     *
+     * @param client 实际执行 HTTP 请求的客户端
+     * @param requestFactory 将 Prompt 序列化为 Responses API 请求体的工厂
+     * @param baseUrl 模型服务基础地址
+     * @param modelName 实际模型名称
+     * @param timeoutSeconds 单次 HTTP 请求超时秒数
+     * @param apiKey 本地运行环境提供的模型鉴权值
+     * @param toolCallbacks 允许发送给模型的工具回调
+     * @param requestCapture 保存实际交给 HTTP Client 的请求体
+     */
+    public ResponsesApiChatModel(
+            OpenAiResponsesLlmClient client,
+            OpenAiResponsesRequestFactory requestFactory,
+            String baseUrl,
+            String modelName,
+            int timeoutSeconds,
+            String apiKey,
+            List<ToolCallback> toolCallbacks,
+            ActualModelRequestCapture requestCapture
+    ) {
         this.client = client;
         this.requestFactory = requestFactory;
         this.baseUrl = baseUrl;
@@ -39,11 +86,19 @@ public class ResponsesApiChatModel implements ChatModel {
         this.timeoutSeconds = timeoutSeconds;
         this.apiKey = apiKey;
         this.toolCallbacks = toolCallbacks == null ? List.of() : List.copyOf(toolCallbacks);
+        this.requestCapture = requestCapture;
     }
 
+    /**
+     * 序列化并记录实际请求体，然后调用 Responses API 并转换模型响应。
+     *
+     * @param prompt Spring AI 传入的本轮 Prompt
+     * @return 标准 Spring AI ChatResponse
+     */
     @Override
     public ChatResponse call(Prompt prompt) {
         String requestBody = requestFactory.createBody(modelName, prompt, toolCallbacks);
+        requestCapture.record(requestBody);
         OpenAiResponsesLlmClient.LlmResponse response = client.createResponse(baseUrl, apiKey, requestBody, timeoutSeconds);
         return toChatResponse(response.body());
     }

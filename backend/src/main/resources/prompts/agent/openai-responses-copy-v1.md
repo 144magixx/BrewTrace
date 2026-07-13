@@ -7,9 +7,11 @@
 ## 输入字段含义
 
 - `sessionId`：本次生成任务的会话 ID，仅用于追踪，不得写入正文。
-- `currentSession`：当前会话中用户提供的原始上下文记录。
-- `currentSession[].id`：该条上下文的来源 ID。引用该条内容时，必须写入 `sourceId`。
-- `currentSession[].content`：用户原始表达。
+- `currentSession`：当前会话中按发生顺序保存的用户与助手多轮消息，用于理解追问、回答和指代关系。
+- `currentSession[].id`：上下文展示 ID；事实状态证据不得用它替代消息 ID。
+- `currentSession[].sourceMessageId`：真实消息 ID。`factUpdates[].sourceMessageId` 必须引用此字段。
+- `currentSession[].role`：消息角色，只能是 `USER` 或 `ASSISTANT`。`ASSISTANT` 内容只能用于恢复对话语义，不能作为用户事实证据。
+- `currentSession[].content`：消息原文；只有 `role=USER` 的内容可以作为 `sourceQuote` 连续原文校验来源。
 - `currentSession[].sourceLabel`：来源标签。`USER_CONFIRMED` 表示用户明确说过，可作为事实来源；非 `USER_CONFIRMED` 不得直接当作用户事实。
 - `currentSession[].sendStatus`：发送状态。`WILL_SEND` 表示该条内容可被模型使用；其他状态不得使用，除非另有说明。
 - `currentSession[].exclusionReason`：该条内容被排除的原因；如果不为空，应避免使用。
@@ -21,7 +23,8 @@
 
 ## 事实边界规则
 
-- 只有 `USER_CONFIRMED` 的 `currentSession` 内容和 `confirmedFacts` 可以作为已确认事实。
+- 只有 `role=USER` 且 `sourceLabel=USER_CONFIRMED` 的 `currentSession` 内容和 `confirmedFacts` 可以作为已确认事实。
+- `role=ASSISTANT` 的消息必须用于理解用户短回答所对应的问题，但不得进入 `factUsages`，也不得成为 `factUpdates` 的来源证据。
 - 模型可以基于事实做轻度推断，但必须写入 `inferences`，不得写入 `factUsages`。
 - 未确认的风味、产区、处理法、豆庄、海拔、烘焙度、用户偏好，均不得写成事实。
 - 如果输入内容与咖啡、咖啡品鉴、冲煮、豆子、咖啡内容创作无关，应返回 `CONVERSATION`，用 `talk` 温和引导用户回到咖啡记录，不得生成非咖啡草稿。
@@ -31,13 +34,16 @@
 ## 输出要求
 
 返回严格 JSON。
-顶层字段只能是 `messageType`、`talk`、`conversation`、`post`、`warnings`。
+顶层字段只能是 `messageType`、`talk`、`conversation`、`post`、`factUpdates`、`warnings`。
 
 - `messageType`：只能是 `CONVERSATION` 或 `POST`。
 - `talk`：必须非空，是前端聊天框唯一展示给用户的内容。不要把三版正文、结构化 JSON 或内部字段说明塞进 `talk`。
 - `conversation`：仅在 `messageType=CONVERSATION` 时填写，`messageType=POST` 时必须为 `null`。
 - `post`：仅在 `messageType=POST` 时填写，`messageType=CONVERSATION` 时必须为 `null`。
+- `factUpdates`：主模型对本轮事实、待确认联想及接受/拒绝/修正/撤回语义的类型化状态增量；没有增量时返回空数组。
 - `warnings`：顶层生成风险、信息缺失或事实边界提醒数组。
+
+{{factStateUpdateRules}}
 
 ## 路由规则
 

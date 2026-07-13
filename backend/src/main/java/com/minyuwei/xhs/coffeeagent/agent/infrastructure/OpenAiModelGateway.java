@@ -37,7 +37,7 @@ public class OpenAiModelGateway implements ModelGateway {
     @Override
     public ModelResult complete(ModelContextPackage contextPackage) {
         String requestBody = requestFactory.createBody(modelName, contextPackage);
-        String requestPreviewBody = requestFactory.createPreviewBody(modelName, contextPackage);
+        String requestPreviewBody = SensitiveValueRedactor.redact(requestBody);
         Instant sentAt = Instant.now();
         ModelPreview.ModelRequestPreview requestPreview = new ModelPreview.ModelRequestPreview(
                 "已发送给大模型",
@@ -58,6 +58,7 @@ public class OpenAiModelGateway implements ModelGateway {
             responsePreview.put("talk", message.talk());
             responsePreview.put("post", message.post());
             responsePreview.put("conversation", message.conversation());
+            responsePreview.put("factUpdates", message.factUpdates());
             responsePreview.put("warnings", message.warnings());
             String responsePreviewBody = SensitiveValueRedactor.redact(previewJson(responsePreview));
             return new ModelResult(
@@ -71,6 +72,7 @@ public class OpenAiModelGateway implements ModelGateway {
                     message.talk(),
                     message.post(),
                     message.conversation(),
+                    message.factUpdates(),
                     message.warnings(),
                     message.variants(),
                     requestPreview,
@@ -111,6 +113,7 @@ public class OpenAiModelGateway implements ModelGateway {
                 "",
                 null,
                 null,
+                java.util.List.of(),
                 java.util.List.of(),
                 java.util.List.of(),
                 requestPreview,

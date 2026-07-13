@@ -1,5 +1,6 @@
 package com.minyuwei.xhs.coffeeagent.agent.infrastructure;
 
+import com.minyuwei.xhs.coffeeagent.agent.application.FactUpdate;
 import com.minyuwei.xhs.coffeeagent.agent.application.ModelMessageType;
 import com.minyuwei.xhs.coffeeagent.agent.application.RecoverableModelError;
 import com.minyuwei.xhs.coffeeagent.agent.infrastructure.fixtures.ModelResponseFixtures;
@@ -24,6 +25,17 @@ class OpenAiResponsesParserTest {
         assertEquals(3, message.conversation().answerOptions().size());
         assertEquals("柑橘感", message.conversation().answerOptions().getFirst().label());
         assertEquals(0, message.variants().size());
+    }
+
+    @Test
+    void parsesTypedFactUpdatesWithEvidenceAndKeepsMissingUpdatesBackwardCompatible() {
+        var message = parser.parseMessage(ModelResponseFixtures.conversationWithFactUpdates());
+
+        assertEquals(2, message.factUpdates().size());
+        assertEquals(FactUpdate.Action.ADD_CONFIRMED_FACT, message.factUpdates().getFirst().action());
+        assertEquals("message-1", message.factUpdates().getFirst().sourceMessageId());
+        assertEquals("柑橘感", message.factUpdates().getFirst().sourceQuote());
+        assertTrue(parser.parseMessage(ModelResponseFixtures.conversation()).factUpdates().isEmpty());
     }
 
     @Test

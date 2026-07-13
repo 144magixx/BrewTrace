@@ -12,6 +12,7 @@ import java.util.function.Consumer;
 public final class ModelResponseFixtures {
     private static final String CONVERSATION_RESOURCE = "prompts/fixtures/model-responses/conversation-v1.json";
     private static final String POST_RESOURCE = "prompts/fixtures/model-responses/post-v1.json";
+    private static final String FACT_UPDATES_RESOURCE = "prompts/fixtures/model-responses/conversation-fact-updates-v2.json";
     private static final String INVALID_MINIMAL_RESOURCE = "prompts/fixtures/model-responses/invalid-minimal-v1.json";
     private static final String FLAVOR_TOOL_CALL_RESOURCE = "prompts/fixtures/model-responses/flavor-suggestion-tool-call-v1.json";
     private static final PromptTemplateLoader RESOURCE_LOADER = new PromptTemplateLoader();
@@ -26,6 +27,10 @@ public final class ModelResponseFixtures {
 
     public static String post() {
         return RESOURCE_LOADER.load(POST_RESOURCE);
+    }
+
+    public static String conversationWithFactUpdates() {
+        return RESOURCE_LOADER.load(FACT_UPDATES_RESOURCE);
     }
 
     public static String invalidMinimal() {

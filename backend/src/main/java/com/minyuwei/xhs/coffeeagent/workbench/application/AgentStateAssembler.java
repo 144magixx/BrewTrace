@@ -9,6 +9,7 @@ import com.minyuwei.xhs.coffeeagent.shared.domain.ConfirmationStatus;
 import com.minyuwei.xhs.coffeeagent.shared.domain.SourceType;
 import com.minyuwei.xhs.coffeeagent.tasting.application.TastingSessionApplicationService;
 import com.minyuwei.xhs.coffeeagent.tasting.domain.ConversationMessage;
+import com.minyuwei.xhs.coffeeagent.tasting.domain.FactStateItem;
 import com.minyuwei.xhs.coffeeagent.workbench.api.WebWorkbenchDtos;
 import com.minyuwei.xhs.coffeeagent.workbench.domain.AgentStateModels;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -94,9 +95,9 @@ public class AgentStateAssembler {
 
     public ModelGateway.ModelResult completeModel(TastingSessionApplicationService.WorkspaceSnapshot workspace, String requestedMode) {
         List<WebWorkbenchDtos.ContextItem> contextItems = contextItems(workspace.conversation());
-        List<WebWorkbenchDtos.ConfirmedFact> confirmedFacts = confirmedFacts(workspace.confirmedFacts(), contextItems);
+        List<WebWorkbenchDtos.ConfirmedFact> confirmedFacts = confirmedFacts(workspace.confirmedFacts());
         ModelMode mode = resolveMode(requestedMode);
-        List<WebWorkbenchDtos.PendingAssociation> pendingAssociations = List.of();
+        List<WebWorkbenchDtos.PendingAssociation> pendingAssociations = pendingAssociations(workspace.pendingAssociations());
         List<WebWorkbenchDtos.CandidateMemory> candidateMemories = List.of();
         return contextItems.isEmpty()
                 ? null
@@ -105,9 +106,9 @@ public class AgentStateAssembler {
 
     public WebWorkbenchDtos.AgentStateSnapshot assembleWithModelResult(TastingSessionApplicationService.WorkspaceSnapshot workspace, String requestedMode, ModelGateway.ModelResult modelResult) {
         List<WebWorkbenchDtos.ContextItem> contextItems = contextItems(workspace.conversation());
-        List<WebWorkbenchDtos.ConfirmedFact> confirmedFacts = confirmedFacts(workspace.confirmedFacts(), contextItems);
+        List<WebWorkbenchDtos.ConfirmedFact> confirmedFacts = confirmedFacts(workspace.confirmedFacts());
         ModelMode mode = resolveMode(requestedMode);
-        List<WebWorkbenchDtos.PendingAssociation> pendingAssociations = List.of();
+        List<WebWorkbenchDtos.PendingAssociation> pendingAssociations = pendingAssociations(workspace.pendingAssociations());
         List<WebWorkbenchDtos.CandidateMemory> candidateMemories = List.of();
         WebWorkbenchDtos.ContextPreview contextPreview = contextPreview(contextItems, confirmedFacts, pendingAssociations, candidateMemories, modelResult);
         WebWorkbenchDtos.ModelOutputSnapshot modelOutput = modelOutput(modelResult);
@@ -147,6 +148,13 @@ public class AgentStateAssembler {
         );
     }
 
+    /**
+     * 将完整会话历史映射为模型上下文候选，并保留用户与助手角色顺序。
+     * 助手消息可用于理解下一轮回答，但仍保持模型来源和待确认边界，不能充当用户事实证据。
+     *
+     * @param conversation 当前会话中按时间顺序保存的用户与助手消息
+     * @return 全部允许发送给模型的会话上下文项
+     */
     private List<WebWorkbenchDtos.ContextItem> contextItems(List<ConversationMessage> conversation) {
         return conversation.stream()
                 .map(message -> new WebWorkbenchDtos.ContextItem(
@@ -155,32 +163,52 @@ public class AgentStateAssembler {
                         message.content(),
                         message.sourceType(),
                         message.role() == ConversationMessage.Role.USER ? ConfirmationStatus.CONFIRMED : ConfirmationStatus.PENDING_CONFIRMATION,
-                        message.role() == ConversationMessage.Role.USER ? AgentStateModels.SendStatus.WILL_SEND : AgentStateModels.SendStatus.PAGE_ONLY,
+                        AgentStateModels.SendStatus.WILL_SEND,
                         message.id(),
                         message.createdAt()
                 ))
                 .toList();
     }
 
-    private List<WebWorkbenchDtos.ConfirmedFact> confirmedFacts(List<String> facts, List<WebWorkbenchDtos.ContextItem> contextItems) {
-        String sourceContextId = contextItems.stream()
-                .filter(item -> "USER".equals(item.role()))
-                .map(WebWorkbenchDtos.ContextItem::id)
-                .findFirst()
-                .orElse(null);
-        List<WebWorkbenchDtos.ConfirmedFact> result = new ArrayList<>();
-        for (int i = 0; i < facts.size(); i++) {
-            String fact = facts.get(i);
-            result.add(new WebWorkbenchDtos.ConfirmedFact(
-                    "fact-" + i,
-                    fact.contains("风味") ? "FLAVOR" : "TASTING_FACT",
-                    fact,
-                    sourceContextId,
-                    ConfirmationStatus.CONFIRMED,
-                    AgentStateModels.SendStatus.WILL_SEND
-            ));
-        }
-        return result;
+    /**
+     * 将领域层已确认事实映射为工作台 DTO，不根据事实文本猜测分类或语义。
+     *
+     * @param facts 会话中已通过校验的确认事实状态
+     * @return 保留证据和边界的确认事实 DTO
+     */
+    private List<WebWorkbenchDtos.ConfirmedFact> confirmedFacts(List<FactStateItem> facts) {
+        return facts.stream().map(fact -> new WebWorkbenchDtos.ConfirmedFact(
+                fact.id(),
+                "TASTING_FACT",
+                fact.value(),
+                "context-" + fact.sourceMessageId(),
+                fact.sourceMessageId(),
+                fact.sourceQuote(),
+                fact.reason(),
+                fact.boundary(),
+                ConfirmationStatus.CONFIRMED,
+                AgentStateModels.SendStatus.WILL_SEND
+        )).toList();
+    }
+
+    /**
+     * 将领域层待确认联想映射为工作台 DTO，保持其不可作为确认事实发送的边界。
+     *
+     * @param associations 会话中当前待确认的联想状态
+     * @return 保留证据和模型理由的待确认联想 DTO
+     */
+    private List<WebWorkbenchDtos.PendingAssociation> pendingAssociations(List<FactStateItem> associations) {
+        return associations.stream().map(association -> new WebWorkbenchDtos.PendingAssociation(
+                association.id(),
+                association.value(),
+                null,
+                association.sourceMessageId(),
+                association.sourceQuote(),
+                association.reason(),
+                association.boundary(),
+                ConfirmationStatus.PENDING_CONFIRMATION,
+                AgentStateModels.SendStatus.SEND_AFTER_CONFIRMATION
+        )).toList();
     }
 
     private WebWorkbenchDtos.ContextPreview contextPreview(
@@ -310,6 +338,7 @@ public class AgentStateAssembler {
                 result.talk(),
                 result.post(),
                 result.conversation(),
+                result.factUpdates(),
                 result.warnings(),
                 result.variants(),
                 result.requestPreview(),

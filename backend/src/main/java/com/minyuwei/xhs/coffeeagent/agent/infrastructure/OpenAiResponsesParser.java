@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.minyuwei.xhs.coffeeagent.agent.application.ConversationModelMessage;
 import com.minyuwei.xhs.coffeeagent.agent.application.CopyVariant;
+import com.minyuwei.xhs.coffeeagent.agent.application.FactUpdate;
 import com.minyuwei.xhs.coffeeagent.agent.application.ModelAgentMessage;
 import com.minyuwei.xhs.coffeeagent.agent.application.ModelMessageType;
 import com.minyuwei.xhs.coffeeagent.agent.application.PostModelMessage;
@@ -26,6 +27,7 @@ public class OpenAiResponsesParser {
                     text(payload, "talk"),
                     parsePost(payload.path("post")),
                     parseConversation(payload.path("conversation")),
+                    factUpdates(payload.path("factUpdates")),
                     strings(payload.path("warnings")),
                     null
             );
@@ -141,6 +143,60 @@ public class OpenAiResponsesParser {
             ));
         }
         return usages;
+    }
+
+    /**
+     * 将模型返回的类型化事实状态增量解析为应用层契约；缺失字段由后续验证拒绝。
+     *
+     * @param array 模型响应中的 factUpdates 数组
+     * @return 解析后的事实状态增量，缺失数组时为空
+     */
+    private List<FactUpdate> factUpdates(JsonNode array) {
+        if (!array.isArray()) {
+            return List.of();
+        }
+        List<FactUpdate> updates = new ArrayList<>();
+        for (JsonNode item : array) {
+            updates.add(new FactUpdate(
+                    enumValue(FactUpdate.Action.class, item, "action"),
+                    enumValue(FactUpdate.Boundary.class, item, "boundary"),
+                    textOrDefault(item, "value", ""),
+                    textOrDefault(item, "sourceMessageId", ""),
+                    textOrDefault(item, "sourceQuote", ""),
+                    textOrDefault(item, "reason", ""),
+                    nullableText(item, "targetItemId")
+            ));
+        }
+        return updates;
+    }
+
+    /**
+     * 解析指定枚举字段并将非法枚举统一映射为模型格式错误。
+     *
+     * @param enumType 目标枚举类型
+     * @param node 包含枚举字段的 JSON 节点
+     * @param field 字段名
+     * @param <E> 枚举类型
+     * @return 解析后的枚举值
+     */
+    private <E extends Enum<E>> E enumValue(Class<E> enumType, JsonNode node, String field) {
+        try {
+            return Enum.valueOf(enumType, text(node, field));
+        } catch (IllegalArgumentException exception) {
+            throw invalid();
+        }
+    }
+
+    /**
+     * 读取允许为 JSON null 的文本字段。
+     *
+     * @param node 包含字段的 JSON 节点
+     * @param field 字段名
+     * @return null 节点返回 {@code null}，否则返回文本值
+     */
+    private String nullableText(JsonNode node, String field) {
+        JsonNode value = node.path(field);
+        return value.isMissingNode() || value.isNull() ? null : value.asText();
     }
 
     private List<ConversationModelMessage.AnswerOption> answerOptions(JsonNode array) {

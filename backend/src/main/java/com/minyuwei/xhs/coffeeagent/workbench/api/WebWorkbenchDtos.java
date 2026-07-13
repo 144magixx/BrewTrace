@@ -3,6 +3,7 @@ package com.minyuwei.xhs.coffeeagent.workbench.api;
 import com.minyuwei.xhs.coffeeagent.agent.application.OrchestrationMode;
 import com.minyuwei.xhs.coffeeagent.agent.application.ConversationModelMessage;
 import com.minyuwei.xhs.coffeeagent.agent.application.CopyVariant;
+import com.minyuwei.xhs.coffeeagent.agent.application.FactUpdate;
 import com.minyuwei.xhs.coffeeagent.agent.application.ModelMessageType;
 import com.minyuwei.xhs.coffeeagent.agent.application.ModelPreview;
 import com.minyuwei.xhs.coffeeagent.agent.application.PostModelMessage;
@@ -117,19 +118,56 @@ public final class WebWorkbenchDtos {
             String factType,
             String value,
             String sourceContextItemId,
+            String sourceMessageId,
+            String sourceQuote,
+            String reason,
+            FactUpdate.Boundary boundary,
             ConfirmationStatus confirmationStatus,
             AgentStateModels.SendStatus sendStatus
     ) {
+        /**
+         * 保留旧工作台测试和调用方的简化构造方式。
+         *
+         * @param id 事实 ID
+         * @param factType 事实展示类型
+         * @param value 事实值
+         * @param sourceContextItemId 来源上下文项 ID
+         * @param confirmationStatus 确认状态
+         * @param sendStatus 发送状态
+         */
+        public ConfirmedFact(String id, String factType, String value, String sourceContextItemId,
+                             ConfirmationStatus confirmationStatus, AgentStateModels.SendStatus sendStatus) {
+            this(id, factType, value, sourceContextItemId, null, null, null, FactUpdate.Boundary.USER_CONFIRMED,
+                    confirmationStatus, sendStatus);
+        }
     }
 
     public record PendingAssociation(
             String id,
             String value,
             String triggerFactId,
+            String sourceMessageId,
+            String sourceQuote,
             String reason,
+            FactUpdate.Boundary boundary,
             ConfirmationStatus confirmationStatus,
             AgentStateModels.SendStatus sendStatus
     ) {
+        /**
+         * 保留旧工作台测试和调用方的简化待确认联想构造方式。
+         *
+         * @param id 联想 ID
+         * @param value 联想值
+         * @param triggerFactId 触发事实 ID
+         * @param reason 联想理由
+         * @param confirmationStatus 确认状态
+         * @param sendStatus 发送状态
+         */
+        public PendingAssociation(String id, String value, String triggerFactId, String reason,
+                                  ConfirmationStatus confirmationStatus, AgentStateModels.SendStatus sendStatus) {
+            this(id, value, triggerFactId, null, null, reason, FactUpdate.Boundary.PENDING_ASSOCIATION,
+                    confirmationStatus, sendStatus);
+        }
     }
 
     public record CandidateMemory(
@@ -181,6 +219,7 @@ public final class WebWorkbenchDtos {
             String talk,
             PostModelMessage post,
             ConversationModelMessage conversation,
+            List<FactUpdate> factUpdates,
             List<String> warnings,
             List<CopyVariant> variants,
             ModelPreview.ModelRequestPreview requestPreview,
@@ -189,7 +228,7 @@ public final class WebWorkbenchDtos {
             Instant generatedAt
     ) {
         public ModelOutputSnapshot(String outputType, String content, String sourceBoundary, Instant generatedAt) {
-            this(outputType, "openai-gpt55", "gpt-5.5", sourceBoundary, content, sourceBoundary, null, "", null, null, List.of(), List.of(), null, null, null, generatedAt);
+            this(outputType, "openai-gpt55", "gpt-5.5", sourceBoundary, content, sourceBoundary, null, "", null, null, List.of(), List.of(), List.of(), null, null, null, generatedAt);
         }
     }
 

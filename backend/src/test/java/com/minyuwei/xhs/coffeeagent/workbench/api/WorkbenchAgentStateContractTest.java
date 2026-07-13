@@ -12,9 +12,9 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.Map;
 
+import static org.hamcrest.Matchers.empty;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.not;
-import static org.hamcrest.Matchers.empty;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -36,7 +36,7 @@ class WorkbenchAgentStateContractTest {
                 .andExpect(jsonPath("$.data.status").value("ERROR_RECOVERABLE"))
                 .andExpect(jsonPath("$.data.conversation", hasSize(1)))
                 .andExpect(jsonPath("$.data.agentState.contextItems", not(empty())))
-                .andExpect(jsonPath("$.data.agentState.confirmedFacts", not(empty())))
+                .andExpect(jsonPath("$.data.agentState.confirmedFacts", empty()))
                 .andExpect(jsonPath("$.data.agentState.pendingAssociations", empty()))
                 .andExpect(jsonPath("$.data.agentState.candidateMemories", empty()))
                 .andExpect(jsonPath("$.data.agentState.contextItems[0].sourceType").value("USER_CONFIRMED"))

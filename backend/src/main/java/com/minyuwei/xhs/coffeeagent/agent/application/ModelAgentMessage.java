@@ -9,14 +9,21 @@ public record ModelAgentMessage(
         String talk,
         PostModelMessage post,
         ConversationModelMessage conversation,
+        List<FactUpdate> factUpdates,
         List<String> warnings,
         Instant generatedAt
 ) {
     public ModelAgentMessage {
+        factUpdates = factUpdates == null ? List.of() : List.copyOf(factUpdates);
         warnings = warnings == null ? List.of() : List.copyOf(warnings);
         generatedAt = generatedAt == null ? Instant.now() : generatedAt;
     }
 
+    /**
+     * 校验模型消息路由结构及事实增量的基础数量约束，不执行证据或状态流转校验。
+     *
+     * @return 模型响应结构错误；空集合表示可进入应用层事实增量校验
+     */
     public List<String> validationErrors() {
         List<String> errors = new ArrayList<>();
         if (messageType == null) {
@@ -24,6 +31,9 @@ public record ModelAgentMessage(
         }
         if (talk == null || talk.isBlank()) {
             errors.add("缺少 talk");
+        }
+        if (factUpdates.size() > 20) {
+            errors.add("factUpdates 不能超过 20 项");
         }
         if (messageType == ModelMessageType.CONVERSATION) {
             if (conversation == null) {
@@ -52,6 +62,12 @@ public record ModelAgentMessage(
         return errors;
     }
 
+    /**
+     * 判断备选回答是否缺少模型消息契约要求的展示或提交字段。
+     *
+     * @param option 待检查的备选回答
+     * @return 任一必填字段缺失时返回 {@code true}
+     */
     private boolean invalidAnswerOption(ConversationModelMessage.AnswerOption option) {
         return option == null
                 || option.id() == null || option.id().isBlank()
@@ -59,6 +75,11 @@ public record ModelAgentMessage(
                 || option.content() == null || option.content().isBlank();
     }
 
+    /**
+     * 以统一方式读取 POST 文案变体，CONVERSATION 消息返回空集合。
+     *
+     * @return POST 文案变体或空集合
+     */
     public List<CopyVariant> variants() {
         return post == null ? List.of() : post.variants();
     }

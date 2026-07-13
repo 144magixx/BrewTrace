@@ -25,7 +25,7 @@ import java.util.Map;
 public class OpenAiResponsesRequestFactory {
     private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
     private static final String COPY_TASK_TEMPLATE = "prompts/agent/openai-responses-copy-task-v1.md";
-    private static final String MODEL_MESSAGE_OUTPUT_SCHEMA = "prompts/agent/model-message-output-schema-v1.json";
+    private static final String MODEL_MESSAGE_OUTPUT_SCHEMA = "prompts/agent/model-message-output-schema-v2.json";
     private static final String EMPTY_TOOL_INPUT_SCHEMA = "prompts/tools/common/empty-input-schema-v1.json";
     private final PromptComposer promptComposer;
     private final PromptTemplateLoader promptTemplateLoader;
@@ -60,7 +60,7 @@ public class OpenAiResponsesRequestFactory {
         body.put("model", modelName);
         body.put("instructions", systemText(prompt));
         body.put("reasoning", Map.of("effort", "low"));
-        body.put("max_output_tokens", 1800);
+        body.put("max_output_tokens", 2600);
         body.put("input", input(prompt));
         List<Map<String, Object>> tools = tools(prompt, fallbackToolCallbacks);
         if (!tools.isEmpty()) {
